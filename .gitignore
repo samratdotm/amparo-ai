@@ -1,1 +1,16 @@
 .rocketride/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Credentials
+.env.local
+.env
+
+# Editor / OS
+.DS_Store
+
+# MCP local config
+.mcp.json
