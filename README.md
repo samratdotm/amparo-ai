@@ -10,11 +10,11 @@ Hackathon project — Moss @ YC.
 
 ## Demo
 
-<!-- Drop your screenshot/GIF here -->
 ![Panel showing 28 Moss lookups and ranked plan comparison](screenshots/panel_demo.png)
 
-<!-- Drop your citation chip screenshot here -->
-![Citation chip opening real Covered California PDF](screenshots/citation_chip.png)
+![Citation chip opening real Covered California PDF](screenshots/citation_chip_1.png)
+
+![Citation chip detail](screenshots/citation_chip_2.png)
 
 ---
 
