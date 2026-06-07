@@ -160,19 +160,34 @@ All three P0 test cases passed with real Moss data (not fallback):
 
 ## Phone number — DONE (Jun 7 2026)
 - **Number:** `+1 (415) 417-6002` — purchased via `lk number purchase`
-- **Dispatch rule:** `SDR_3qzmNjDj3jSo` — Direct → room `amparo-demo`, agent `agent-py` (catch-all trunk)
+- **Dispatch rule:** `SDR_GiLDu6QcuMYQ` — catch-all (`SipTrunks: <any>`) → room `amparo-demo`, agent `agent-py`
 - Any call to the number creates room `amparo-demo` and dispatches `agent-py` automatically
 - Live-tested: full call pipeline worked end-to-end (STT → extract_constraints → compare_plans → MiniMax TTS)
 - **Browser panel** must join room `amparo-demo` as a subscriber-only observer to display `plan_comparison` data
+
+### LiveKit dispatch rule gotchas (hard-won)
+- **Catch-all rules (`SipTrunks: <any>`) are the only thing that works for LiveKit hosted numbers.** They cannot be "assigned" to a number via the API (that API call errors), but they route correctly regardless.
+- **Dashboard-created rules** (with `SipTrunks: PN_*`) do NOT route correctly — the SIP engine doesn't match the phone number ID as a trunk.
+- **Stale room blocks dispatch**: if `amparo-demo` already exists (e.g., from a browser panel observer), close the browser panel tab AND `lk room delete amparo-demo` before calling. Otherwise the agent is dispatched but may not answer.
+- **`ctx.connect()` MUST come before `AgentSession()` and `session.start()`** — reversed order silently prevents SIP calls from being answered. The agent registers but never joins the room.
 
 ## Agent tuning — DONE (Jun 7 2026)
 - Noise cancellation: `QUAIL_VF_S` (reverted back to original — better quality for demo; ~540 MB memory warning is cosmetic)
 - Turn handling migrated off deprecated params: `turn_detection=` + `preemptive_generation=` → `turn_handling={"turn_detection": MultilingualModel(), "preemptive_generation": {"enabled": True}}`
 
+## Track B — Frontend Panel — DONE (Jun 7 2026)
+- Next.js app at `frontend/` — `pnpm dev` serves on `localhost:3000`
+- `frontend/.env.local` is a symlink to `agent-py/.env.local` — same credentials, no duplication
+- **`frontend/app/api/token/route.ts`**: generates subscriber-only LiveKit JWT (canSubscribe, canPublish=false, canPublishData=false) for room `amparo-demo`
+- **`frontend/hooks/usePlanComparison.ts`**: connects to LiveKit room, listens for `RoomEvent.DataReceived`, parses `{type: "plan_comparison"}` messages
+- **`frontend/components/PlanComparisonPanel.tsx`**: dark panel with green status dot, Moss lookup counters, trap warning banner, ranked plan cards (annual cost breakdown, uncovered drugs/providers, sources)
+- Plan ID → label mapping: `bronze-2024→HMO Bronze`, `silver-2024→PPO Silver`, `gold-2024→HDHP Gold`, `platinum-2024→EPO Platinum`
+- **Live verified (Jun 7 2026)**: panel updates in real-time during phone calls, lookup counter increments, sources from Moss shown, out-of-network providers highlighted in yellow
+
 ## Team assignment
 - **Track A (core engine)** — handled by Samrat: `extract_constraints`, `compare_plans`, cost math, guardrail
-- **Track C (data)** — handed off to teammate: 4 plan JSONs, Maria's persona, Moss index builder (`create_index.py`)
-- **Track B (frontend panel)** — TBD
+- **Track B (frontend panel)** — DONE: Next.js subscriber panel at `frontend/`
+- **Track C (data)** — handled by teammate: 4 plan JSONs, Maria's persona, Moss index builder (`create_index.py`)
 
 ## Environment setup (already done)
 - LiveKit CLI installed (`brew install livekit-cli`) and authenticated to project **amparo-ai**

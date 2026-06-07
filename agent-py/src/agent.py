@@ -426,6 +426,9 @@ async def my_agent(ctx: JobContext):
         except json.JSONDecodeError:
             logger.warning("ctx.job.metadata was not valid JSON; using default user_id")
 
+    # Join the room first so the agent is present before starting the voice pipeline
+    await ctx.connect()
+
     # Set up a voice AI pipeline using LiveKit Inference and the LiveKit turn detector
     session = AgentSession(
         # Speech-to-text (STT) is your agent's ears, turning the user's speech into text that the LLM can understand
@@ -453,9 +456,6 @@ async def my_agent(ctx: JobContext):
             ),
         ),
     )
-
-    # Join the room and connect to the user
-    await ctx.connect()
 
     # Greet the user once connected. Triggered here (not in Agent.on_enter) per
     # the documented LiveKit pattern so the greeting runs against a connected
