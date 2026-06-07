@@ -132,28 +132,34 @@ guardrail → curveball → multilingual.
 - No dynamic model switching required: LLM outputs Spanish → MiniMax speaks Spanish automatically
 - **Smoke tested (Jun 7 2026)**: voice heard, STT transcribing, MiniMax streaming sentence by sentence, no errors
 
-## Track C — COMPLETE (Jun 7 2026)
-- 4 plan JSONs: `data/plans/{hmo,ppo,hdhp,epo}_2024.json`
-- Maria persona: `data/personas/maria.json`
+## Track C — COMPLETE (Jun 7 2026, updated with real plans Jun 7 2026)
+- 4 **real** CA ACA plan JSONs: `data/plans/{cchp,trio,kaiser,ppo}_2024.json`
+  - **CCHP Balance Bronze 60 HMO** (`cchp-2024`) — $989.76/mo, UCSF excluded ← CHEAP PLAN TRAP
+  - **Blue Shield Silver Trio HMO** (`trio-2024`) — $1,163.34/mo, UCSF excluded (narrow Trio network)
+  - **Kaiser Permanente Gold 80 HMO** (`kaiser-2024`) — $1,392.09/mo, UCSF excluded (closed system, 5-star)
+  - **Blue Shield HDHP PPO** (`ppo-2024`) — $1,472.88/mo, UCSF in-network ← TRUE WINNER
+- **The real trap**: network exclusion, NOT drug coverage — all 4 plans cover Humira (~$250-500/fill). 3 of 4 exclude UCSF. $25k uncovered UCSF delivery cost bypasses OOP max.
+- Maria persona: `data/personas/maria.json` (coverage_tier: individual)
 - Index builder: `scripts/create_index.py` — run from `agent-py/` dir: `uv run python ../scripts/create_index.py`
-- Moss `knowledge` index seeded: **48 docs** (4 plans × 12 facts: 4 benefit + 4 formulary + 4 network)
+- Moss `knowledge` index seeded: **37 docs** (4 plans × 9-10 facts each)
+- `out_of_network_cost` now flows from plan JSON → Moss metadata → cost math (was hardcoded "0")
 - Moss `memory` index: 1 seed doc (per-user memory store)
-- 17 golden tests passing: `cd agent-py && uv run pytest ../tests/test_golden.py -v`
-- Plan ID mapping: `hmo→bronze-2024` (trap), `ppo→silver-2024`, `hdhp→gold-2024`, `epo→platinum-2024`
+- 27 golden tests passing: `cd agent-py && uv run pytest ../tests/test_golden.py -v`
+- Plan ID mapping: `cchp_2024→cchp-2024`, `trio_2024→trio-2024`, `kaiser_2024→kaiser-2024`, `ppo_2024→ppo-2024`
 
 ## Full P0 Demo — END-TO-END VERIFIED (Jun 7 2026)
 Ran `uv run python src/agent.py console` with real LiveKit + Moss + MiniMax credentials.
-All three P0 test cases passed with real Moss data (not fallback):
+All three P0 test cases passed with real Moss data (not fallback).
 
-**Maria's demo ask** (24 Moss lookups):
+**Maria's demo ask with REAL plan data** (expected, not re-verified after real plan swap):
 - `extract_constraints` → `drugs=['Humira'], providers=['UCSF'], events=['pregnancy']`
-- `compare_plans` → 24 parallel queries, `trap=True`
-- Live ranking: HDHP $14,160 < EPO $15,780 < PPO $18,360 < HMO $47,360 (trap)
-- Agent correctly exposed HMO trap: $38k uncovered Humira is NOT capped by $8k OOP max
+- `compare_plans` → parallel queries, `trap=True`
+- Expected ranking: PPO $23,675 < Trio $44,960 < CCHP $45,877 < Kaiser $47,705
+- Agent exposes UCSF OON trap: $25k uncovered delivery NOT capped by OOP max
+- CCHP (cheapest premium $990/mo) costs $22k MORE/yr than PPO for Maria
 
 **Curveball — "What about Stanford?"** (28 Moss lookups):
 - Merged constraints: `providers=['UCSF', 'Stanford']`, Humira preserved — nothing dropped
-- Rankings unchanged; UCSF and Stanford both flagged OON on HMO and EPO
 
 **Clinical guardrail — "What's the right dose of Humira?"**:
 - Exact handoff line fired instantly (regex, no LLM): "That's a question for your doctor or pharmacist..."
@@ -180,9 +186,50 @@ All three P0 test cases passed with real Moss data (not fallback):
 - `frontend/.env.local` is a symlink to `agent-py/.env.local` — same credentials, no duplication
 - **`frontend/app/api/token/route.ts`**: generates subscriber-only LiveKit JWT (canSubscribe, canPublish=false, canPublishData=false) for room `amparo-demo`
 - **`frontend/hooks/usePlanComparison.ts`**: connects to LiveKit room, listens for `RoomEvent.DataReceived`, parses `{type: "plan_comparison"}` messages
-- **`frontend/components/PlanComparisonPanel.tsx`**: dark panel with green status dot, Moss lookup counters, trap warning banner, ranked plan cards (annual cost breakdown, uncovered drugs/providers, sources)
-- Plan ID → label mapping: `bronze-2024→HMO Bronze`, `silver-2024→PPO Silver`, `gold-2024→HDHP Gold`, `platinum-2024→EPO Platinum`
+- **`frontend/components/PlanComparisonPanel.tsx`**: dark panel with green status dot, Moss lookup counters, trap warning banner, ranked plan cards (annual cost breakdown, uncovered drugs/providers, sources), `CitationChip` for real PDF links
+- Plan ID → label mapping (real plans): `cchp-2024→CCHP Bronze HMO`, `trio-2024→Blue Shield Trio HMO`, `kaiser-2024→Kaiser Gold HMO`, `ppo-2024→Blue Shield HDHP PPO`
 - **Live verified (Jun 7 2026)**: panel updates in real-time during phone calls, lookup counter increments, sources from Moss shown, out-of-network providers highlighted in yellow
+- **Citation chips** render under each plan card linking to real Covered CA PDFs served from `frontend/public/pdfs/`
+
+## Unsiloed Citations — DONE (Jun 7 2026)
+- **What it does**: every benefit fact the agent states is linked to its exact location in the real Covered California PDF — page number + normalized bbox coordinates. Judges click a chip and see the actual "$989.76/month" row in the real insurer document.
+- **Why it matters**: closes the loop on the Moss thesis — retrieval quality *demonstrated*, not just asserted. Insurance is a trust-deficit domain; bbox citations from real documents are the hard moat.
+- **Real PDFs** (from Covered California 2024) stored in `data/pdfs/` and `frontend/public/pdfs/`
+
+### Files
+| File | What it does |
+|---|---|
+| `data/pdfs/{plan_id}.pdf` | Real Covered California "Health Plan Details" PDFs (10 pages each, ~100-400KB) |
+| `scripts/parse_with_unsiloed.py` | Submits each real PDF to Unsiloed, searches ALL pages for keywords (not fixed pages), maps segments → fact keys, normalizes bbox to 0–1. Output: `data/citations/{plan_id}_citations.json` |
+| `scripts/create_index.py` | Loads citation JSON and injects `pdf_url`, `bbox_page`, `bbox_left/top/width/height` into each Moss doc's metadata. Also reads `out_of_network_cost` from plan JSON (was hardcoded "0") |
+| `src/cost_math.py` | `Citation` dataclass; `DrugCoverage` + `ProviderCoverage` carry `citation: Citation | None`; `CostResult` carries `citations: list[Citation]` |
+| `src/compare_plans_engine.py` | `_citation_from_meta()` extracts bbox fields from Moss metadata at query time |
+| `frontend/hooks/usePlanComparison.ts` | `Citation` interface and `citations: Citation[]` on `CostResult` |
+| `frontend/components/PlanComparisonPanel.tsx` | `CitationChip` — blue chip, opens PDF at `#page=N`; trap banner text updated for network trap |
+
+### Citation coverage (real PDFs)
+Covered CA plan summary documents contain benefit facts but NOT full formulary/network data:
+- **Found**: premium (page 1-2), deductible (page 2), OOP max (page 2), HSA eligible (page 2) — 3-4 per plan
+- **Not found**: Humira, UCSF — these require full formulary + network PDFs (not included in plan summary docs)
+- Citations are injected on benefit docs only; drug/provider Moss docs have no bbox (still work, just no chip)
+
+### Unsiloed API
+- Endpoint: `POST https://prod.visionapi.unsiloed.ai/parse`
+- Auth: `api-key: $UNSILOED_API_KEY` header (key in `agent-py/.env.local`)
+- Async: submit → poll `GET /parse/{job_id}` until `status == "Succeeded"` (~90s per PDF)
+- bbox format: `{left, top, width, height}` in pixels; normalize by `page_width` / `page_height`
+- Script searches ALL pages per keyword (real PDFs vary in page layout unlike synthetic ones)
+
+### To re-run the full pipeline
+```
+cd agent-py
+# Real PDFs are already in data/pdfs/ — no need to generate synthetic ones
+uv run python ../scripts/parse_with_unsiloed.py  # re-parse with Unsiloed (~6 min for 4 PDFs)
+uv run python ../scripts/create_index.py          # re-seed Moss with bbox metadata
+```
+
+### Demo moment
+Agent says "CCHP Bronze looks cheapest at $990/month — but UCSF is out-of-network, adding $25,000 that's NOT capped by your OOP maximum" → panel shows `⚠ TRAP` + blue chip `CCHP Balance Bronze 60 HMO SBC 2024` → judge clicks → real Covered California PDF opens at page showing premium and cost table.
 
 ## Team assignment
 - **Track A (core engine)** — handled by Samrat: `extract_constraints`, `compare_plans`, cost math, guardrail
