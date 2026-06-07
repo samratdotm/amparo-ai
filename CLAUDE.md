@@ -36,6 +36,29 @@ Index at the FACT level — one doc per (plan, fact): benefit fields; formulary 
 `{plan, type:'provider', in_network, source}`. Query = hybrid (`alpha≈0.6`) + metadata
 filter by `{plan, type}`.
 
+## Where Moss is wired
+
+| Where | File | What it does |
+|---|---|---|
+| **Credentials + preload** | `agent.py:108` + `on_enter` | `MossClient(project_id, project_key)` created once; both indexes preloaded on session start |
+| **Query time** | `compare_plans_engine.py:57` | `_moss_query()` fires `moss.query(index, query, QueryOptions(top_k=1, alpha=0.6, filter=_plan_filter(plan_id)))` — 24 concurrent queries per Maria turn |
+| **Index population** | `src/create_index.py` | **Track C's job** — loads plan docs into Moss; agent queries this at runtime |
+
+### Metadata shape Track C must produce (one doc per plan × fact)
+```
+# Benefit
+{"plan": "silver-2024", "type": "benefit", "field": "premium",     "value": "350",  "source": "Silver 2024 SBC p.1"}
+{"plan": "silver-2024", "type": "benefit", "field": "oop_max",     "value": "6000", "source": "Silver 2024 SBC p.2"}
+# Drug covered
+{"plan": "silver-2024", "type": "drug", "covered": "true",  "coinsurance": "0.30", "fills_per_year": "12", "list_price_per_year": "50000", "source": "Silver 2024 formulary p.3"}
+# Drug NOT covered
+{"plan": "bronze-2024", "type": "drug", "covered": "false", "list_price_per_year": "84000", "source": "Bronze 2024 formulary"}
+# Provider
+{"plan": "silver-2024", "type": "provider", "in_network": "true",  "source": "Silver 2024 directory"}
+```
+
+### Fallback (no Track C data yet)
+`compare_plans_engine.py` treats missing drug docs as uncovered at `$84k/year` — the Bronze trap fires even without real data, so a demo is possible before Track C finishes.
 ## Code practices
 - Match the starter's structure/conventions; reuse its tools and panel — don't rebuild.
 - Small, single-purpose, typed functions; clear names.
@@ -49,5 +72,56 @@ Voice in → Maria's messy ask → 4-plan personalized comparison in <~1.5s, the
 trap exposed, panel showing ~40 lookups at <100ms. Then layer: citations → clinical-handoff
 guardrail → curveball → multilingual.
 
+## Track A progress
+- [x] Step 1: Agent instructions rewritten to Amparo insurance navigator + safety guardrail (other session)
+- [x] Step 2: `extract_constraints` @function_tool + `Constraints` dataclass + 11 tests passing
+- [x] Step 3: Deterministic cost math (`src/cost_math.py`) + 17 golden tests passing
+  - `PlanData`, `DrugCoverage`, `ProviderCoverage`, `CostResult` typed structs
+  - `compute_annual_cost(plan, drugs, providers)` — formula: `premium*12 + min(covered_oop, oop_max) + uncovered_costs`
+  - `rank_plans(results)` — sort by annual_total cheapest first
+  - Key invariant: uncovered drug costs are NOT capped by OOP-max (the trap)
+  - Golden test values for Maria's 4-plan scenario: Silver $8,200 < Gold $9,000 < Platinum $10,200 < Bronze $51,800 (trap)
+- [x] Step 4: `compare_plans` — parallel Moss retrieval + cost math + trap flag
+  - `compare_plans_engine.py`: `_fetch_plan_data()` fires 6 Moss queries/plan concurrently, `run_comparison()` fires all 4 plans in parallel (24 total queries)
+  - `compare_plans` @function_tool wired into agent, gracefully errors if `extract_constraints` not called first
+  - 18 tests passing (query count, plan filter, trap flag, serialization, tool behavior)
+- [x] Step 5: Clinical-handoff guardrail — deterministic regex classifier + `on_user_turn_completed` hook + 28 tests passing
+  - `src/guardrail.py`: `is_clinical_question(text)` — no LLM, instant; `_COVERAGE_EXEMPTIONS` regex exempts coverage-framed questions
+  - `CLINICAL_HANDOFF` constant: "That's a question for your doctor or pharmacist. I can tell you what your plan covers, but medical advice isn't something I can give."
+  - `agent.py`: `on_user_turn_completed` injects system-level guardrail instruction when clinical question detected, before LLM sees the message
+  - Integration evals (test_agent.py) skip cleanly without real credentials; run automatically with `.env.local`
+
+## Track A — ALL 5 STEPS COMPLETE ✓
+
+## Multilingual TTS — DONE (Jun 7 2026)
+- Swapped TTS from `cartesia/sonic-3` to `elevenlabs/eleven_multilingual_v2` (29 languages, auto code-switching)
+- MiniMax/Qwen not available on LiveKit Inference — ElevenLabs multilingual is the right swap
+- Added language instruction to agent: "Always respond in the same language the user speaks"
+- STT already runs `language="multi"` (Deepgram nova-3) — no STT change needed
+- No dynamic model switching required: LLM outputs Spanish → ElevenLabs speaks Spanish automatically
+- 77 tests passing, 3 skipped (integration evals)
+- To test: `uv run python src/agent.py console` → speak Spanish → agent replies in Spanish
+
+## Smoke test — PASSED (Jun 7 2026)
+Ran `uv run python src/agent.py console` with real LiveKit + Moss credentials.
+- STT transcribed voice input correctly
+- `extract_constraints` fired → `drugs: ['Humira'], providers: ['UCSF OB']`
+- `compare_plans` fired 24 parallel Moss queries in ~460ms
+- Cost math ran and `trap=True` — Bronze trap detected and flagged
+- Graceful fallback worked: Moss returned 503s (index not seeded yet) but no crash
+- **Blocker:** `knowledge` Moss index does not exist yet — Track C must run `create_index.py` to seed it
+
+## Team assignment
+- **Track A (core engine)** — handled by Samrat: `extract_constraints`, `compare_plans`, cost math, guardrail
+- **Track C (data)** — handed off to teammate: 4 plan JSONs, Maria's persona, Moss index builder (`create_index.py`)
+- **Track B (frontend panel)** — TBD
+
+## Environment setup (already done)
+- LiveKit CLI installed (`brew install livekit-cli`) and authenticated to project **amparo-ai**
+- Credentials written to `agent-py/.env.local` via `lk app env -w`
+- LiveKit Docs MCP server connected at `https://docs.livekit.io/mcp/` (project `.mcp.json`)
+- To re-auth or refresh credentials: `lk cloud auth` then `lk app env -w` from `agent-py/`
+
 ## Commands
-`pnpm setup` · `lk app env` · build the Moss index · `pnpm dev`  (confirm against starter README).
+`pnpm setup` · `lk app env -w` · build the Moss index · `pnpm dev`  (confirm against starter README).
+- Agent dev loop: `cd agent-py && uv run python src/agent.py download-files` (first run only), then `uv run python src/agent.py console` (local terminal test) or `uv run python src/agent.py dev` (with frontend).
