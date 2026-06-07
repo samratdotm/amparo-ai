@@ -50,7 +50,7 @@ PLAN_ID_MAP: dict[str, str] = {
     "epo_2024": "platinum-2024",  # Humira covered, UCSF out-of-network
 }
 
-DEFAULT_SPECIALTY_LIST_PRICE = 50_000.0
+DEFAULT_SPECIALTY_LIST_PRICE = 84_000.0
 
 
 def _doc(text: str, metadata: dict) -> "DocumentInfo":
@@ -193,6 +193,16 @@ async def main() -> None:
         print(f"  {json_id} -> {moss_id}: {len(b)} benefit + {len(fd)} formulary + {len(n)} network")
         all_docs.extend(b + fd + n)
 
+    # List existing indexes so we can delete-and-recreate knowledge without
+    # hitting the free-tier limit, and skip memory if it already exists.
+    existing = await client.list_indexes()
+    existing_names = {idx.name for idx in existing}
+    print(f"Existing indexes: {sorted(existing_names)}")
+
+    if KNOWLEDGE_INDEX in existing_names:
+        print(f"Deleting stale '{KNOWLEDGE_INDEX}' index...")
+        await client.delete_index(KNOWLEDGE_INDEX)
+
     print(f"\nCreating Moss index '{KNOWLEDGE_INDEX}' with {len(all_docs)} documents...")
     result = await client.create_index(KNOWLEDGE_INDEX, all_docs)
     print(f"Index created: {result}")
@@ -201,16 +211,21 @@ async def main() -> None:
     await client.load_index(KNOWLEDGE_INDEX)
     print("Knowledge index loaded.")
 
-    # Create the memory index (per-user facts — must exist even when empty)
-    print(f"\nCreating Moss memory index '{MEMORY_INDEX}'...")
-    seed_doc = DocumentInfo(
-        id=str(uuid.uuid4()),
-        text="Amparo AI per-user memory store initialized",
-        metadata={"type": "system", "note": "seed"},
-    )
-    await client.create_index(MEMORY_INDEX, [seed_doc])
-    await client.load_index(MEMORY_INDEX)
-    print(f"Memory index loaded.")
+    # Create the memory index only if it doesn't exist yet.
+    if MEMORY_INDEX in existing_names:
+        print(f"\nMemory index '{MEMORY_INDEX}' already exists — skipping creation.")
+        await client.load_index(MEMORY_INDEX)
+        print("Memory index loaded.")
+    else:
+        print(f"\nCreating Moss memory index '{MEMORY_INDEX}'...")
+        seed_doc = DocumentInfo(
+            id=str(uuid.uuid4()),
+            text="Amparo AI per-user memory store initialized",
+            metadata={"type": "system", "note": "seed"},
+        )
+        await client.create_index(MEMORY_INDEX, [seed_doc])
+        await client.load_index(MEMORY_INDEX)
+        print("Memory index loaded.")
 
     # Smoke test — Humira on bronze must be covered=false
     print("\nSmoke test — Humira coverage on bronze-2024...")

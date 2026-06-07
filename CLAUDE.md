@@ -132,14 +132,42 @@ guardrail → curveball → multilingual.
 - No dynamic model switching required: LLM outputs Spanish → MiniMax speaks Spanish automatically
 - **Smoke tested (Jun 7 2026)**: voice heard, STT transcribing, MiniMax streaming sentence by sentence, no errors
 
-## Smoke test — PASSED (Jun 7 2026)
-Ran `uv run python src/agent.py console` with real LiveKit + Moss credentials.
-- STT transcribed voice input correctly
-- `extract_constraints` fired → `drugs: ['Humira'], providers: ['UCSF OB']`
-- `compare_plans` fired 24 parallel Moss queries in ~460ms
-- Cost math ran and `trap=True` — Bronze trap detected and flagged
-- Graceful fallback worked: Moss returned 503s (index not seeded yet) but no crash
-- **Blocker:** `knowledge` Moss index does not exist yet — Track C must run `create_index.py` to seed it
+## Track C — COMPLETE (Jun 7 2026)
+- 4 plan JSONs: `data/plans/{hmo,ppo,hdhp,epo}_2024.json`
+- Maria persona: `data/personas/maria.json`
+- Index builder: `scripts/create_index.py` — run from `agent-py/` dir: `uv run python ../scripts/create_index.py`
+- Moss `knowledge` index seeded: **48 docs** (4 plans × 12 facts: 4 benefit + 4 formulary + 4 network)
+- Moss `memory` index: 1 seed doc (per-user memory store)
+- 17 golden tests passing: `cd agent-py && uv run pytest ../tests/test_golden.py -v`
+- Plan ID mapping: `hmo→bronze-2024` (trap), `ppo→silver-2024`, `hdhp→gold-2024`, `epo→platinum-2024`
+
+## Full P0 Demo — END-TO-END VERIFIED (Jun 7 2026)
+Ran `uv run python src/agent.py console` with real LiveKit + Moss + MiniMax credentials.
+All three P0 test cases passed with real Moss data (not fallback):
+
+**Maria's demo ask** (24 Moss lookups):
+- `extract_constraints` → `drugs=['Humira'], providers=['UCSF'], events=['pregnancy']`
+- `compare_plans` → 24 parallel queries, `trap=True`
+- Live ranking: HDHP $14,160 < EPO $15,780 < PPO $18,360 < HMO $47,360 (trap)
+- Agent correctly exposed HMO trap: $38k uncovered Humira is NOT capped by $8k OOP max
+
+**Curveball — "What about Stanford?"** (28 Moss lookups):
+- Merged constraints: `providers=['UCSF', 'Stanford']`, Humira preserved — nothing dropped
+- Rankings unchanged; UCSF and Stanford both flagged OON on HMO and EPO
+
+**Clinical guardrail — "What's the right dose of Humira?"**:
+- Exact handoff line fired instantly (regex, no LLM): "That's a question for your doctor or pharmacist..."
+
+## Phone number — DONE (Jun 7 2026)
+- **Number:** `+1 (415) 417-6002` — purchased via `lk number purchase`
+- **Dispatch rule:** `SDR_3qzmNjDj3jSo` — Direct → room `amparo-demo`, agent `agent-py` (catch-all trunk)
+- Any call to the number creates room `amparo-demo` and dispatches `agent-py` automatically
+- Live-tested: full call pipeline worked end-to-end (STT → extract_constraints → compare_plans → MiniMax TTS)
+- **Browser panel** must join room `amparo-demo` as a subscriber-only observer to display `plan_comparison` data
+
+## Agent tuning — DONE (Jun 7 2026)
+- Noise cancellation: `QUAIL_VF_S` (reverted back to original — better quality for demo; ~540 MB memory warning is cosmetic)
+- Turn handling migrated off deprecated params: `turn_detection=` + `preemptive_generation=` → `turn_handling={"turn_detection": MultilingualModel(), "preemptive_generation": {"enabled": True}}`
 
 ## Team assignment
 - **Track A (core engine)** — handled by Samrat: `extract_constraints`, `compare_plans`, cost math, guardrail

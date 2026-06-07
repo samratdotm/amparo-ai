@@ -434,13 +434,11 @@ async def my_agent(ctx: JobContext):
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
         # MiniMax Speech-02-HD: 40+ languages, inline code-switching, hackathon sponsor tool.
         tts=MinimaxTTS(),
-        # VAD and turn detection are used to determine when the user is speaking and when the agent should respond
-        # See more at https://docs.livekit.io/agents/build/turns
-        turn_detection=MultilingualModel(),
         vad=ctx.proc.userdata["vad"],
-        # allow the LLM to generate a response while waiting for the end of turn
-        # See more at https://docs.livekit.io/agents/build/audio/#preemptive-generation
-        preemptive_generation=True,
+        turn_handling={
+            "turn_detection": MultilingualModel(),
+            "preemptive_generation": {"enabled": True},
+        },
     )
 
     # Start the session, which initializes the voice pipeline and warms up the models
