@@ -1,0 +1,97 @@
+{
+  "plan_id": "ppo_2024",
+  "plan_type": "PPO",
+  "plan_name": "Anthem PPO Plus",
+  "premium_monthly_individual": 580,
+  "premium_monthly_family": 1380,
+  "deductible_individual": 800,
+  "deductible_family": 1600,
+  "oop_max_individual": 6000,
+  "oop_max_family": 12000,
+  "hsa_eligible": false,
+  "source": "Anthem PPO Plus SBC 2024, page 2",
+
+  "formulary": [
+    {
+      "drug_name": "Humira",
+      "generic_name": "adalimumab",
+      "drug_class": "specialty biologic",
+      "covered": true,
+      "tier": 4,
+      "member_cost_per_month": 150,
+      "annual_cost_if_uncovered": null,
+      "note": "Tier 4 specialty. Prior authorization required. $150/fill after deductible. Counts toward OOP maximum.",
+      "source": "Anthem PPO Plus Formulary 2024, page 12"
+    },
+    {
+      "drug_name": "Prenatal vitamins",
+      "generic_name": "folic acid / iron",
+      "drug_class": "OTC preventive",
+      "covered": true,
+      "tier": 1,
+      "member_cost_per_month": 0,
+      "annual_cost_if_uncovered": null,
+      "note": "Covered at $0 cost-share as ACA preventive benefit.",
+      "source": "Anthem PPO Plus Formulary 2024, page 6"
+    },
+    {
+      "drug_name": "Metformin",
+      "generic_name": "metformin",
+      "drug_class": "oral antidiabetic",
+      "covered": true,
+      "tier": 1,
+      "member_cost_per_month": 5,
+      "annual_cost_if_uncovered": null,
+      "note": null,
+      "source": "Anthem PPO Plus Formulary 2024, page 8"
+    },
+    {
+      "drug_name": "Lisinopril",
+      "generic_name": "lisinopril",
+      "drug_class": "ACE inhibitor",
+      "covered": true,
+      "tier": 1,
+      "member_cost_per_month": 5,
+      "annual_cost_if_uncovered": null,
+      "note": null,
+      "source": "Anthem PPO Plus Formulary 2024, page 8"
+    }
+  ],
+
+  "network": [
+    {
+      "provider_name": "UCSF Medical Center",
+      "specialty": "OB-GYN",
+      "in_network": true,
+      "note": "UCSF is a Tier 1 preferred provider. Standard in-network cost-sharing applies.",
+      "source": "Anthem PPO Plus Provider Directory 2024"
+    },
+    {
+      "provider_name": "Sutter Health OB-GYN",
+      "specialty": "OB-GYN",
+      "in_network": true,
+      "note": null,
+      "source": "Anthem PPO Plus Provider Directory 2024"
+    },
+    {
+      "provider_name": "UCSF Benioff Children's Hospital",
+      "specialty": "Pediatrics / NICU",
+      "in_network": true,
+      "note": "NICU and newborn care covered in-network.",
+      "source": "Anthem PPO Plus Provider Directory 2024"
+    },
+    {
+      "provider_name": "San Francisco General Hospital",
+      "specialty": "Emergency",
+      "in_network": true,
+      "note": "Emergency services covered in-network.",
+      "source": "Anthem PPO Plus Provider Directory 2024"
+    }
+  ],
+
+  "cost_notes": {
+    "maternity": "Prenatal visits $20 copay; delivery $250 copay per admission after deductible. UCSF delivery covered.",
+    "specialty_referral": "No referral required. See any in-network specialist directly.",
+    "out_of_network": "Out-of-network covered at 60% after separate OON deductible ($1,600 individual)."
+  }
+}

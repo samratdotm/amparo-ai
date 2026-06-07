@@ -1,0 +1,98 @@
+{
+  "plan_id": "hdhp_2024",
+  "plan_type": "HDHP",
+  "plan_name": "Cigna HDHP HSA",
+  "premium_monthly_individual": 420,
+  "premium_monthly_family": 980,
+  "deductible_individual": 2800,
+  "deductible_family": 5600,
+  "oop_max_individual": 7000,
+  "oop_max_family": 14000,
+  "hsa_eligible": true,
+  "employer_hsa_contribution_annual": 1000,
+  "source": "Cigna HDHP HSA SBC 2024, page 2",
+
+  "formulary": [
+    {
+      "drug_name": "Humira",
+      "generic_name": "adalimumab",
+      "drug_class": "specialty biologic",
+      "covered": true,
+      "tier": 4,
+      "member_cost_per_month": 200,
+      "annual_cost_if_uncovered": null,
+      "note": "Tier 4 specialty. Prior authorization required. $200/fill after deductible is met. Counts toward OOP maximum. HSA funds can be used.",
+      "source": "Cigna HDHP Formulary 2024, page 14"
+    },
+    {
+      "drug_name": "Prenatal vitamins",
+      "generic_name": "folic acid / iron",
+      "drug_class": "OTC preventive",
+      "covered": true,
+      "tier": 1,
+      "member_cost_per_month": 0,
+      "annual_cost_if_uncovered": null,
+      "note": "Covered at $0 pre-deductible as ACA preventive. Does not require deductible to be met.",
+      "source": "Cigna HDHP Formulary 2024, page 6"
+    },
+    {
+      "drug_name": "Metformin",
+      "generic_name": "metformin",
+      "drug_class": "oral antidiabetic",
+      "covered": true,
+      "tier": 1,
+      "member_cost_per_month": 10,
+      "annual_cost_if_uncovered": null,
+      "note": "Cost applies after deductible.",
+      "source": "Cigna HDHP Formulary 2024, page 8"
+    },
+    {
+      "drug_name": "Lisinopril",
+      "generic_name": "lisinopril",
+      "drug_class": "ACE inhibitor",
+      "covered": true,
+      "tier": 1,
+      "member_cost_per_month": 10,
+      "annual_cost_if_uncovered": null,
+      "note": "Cost applies after deductible.",
+      "source": "Cigna HDHP Formulary 2024, page 8"
+    }
+  ],
+
+  "network": [
+    {
+      "provider_name": "UCSF Medical Center",
+      "specialty": "OB-GYN",
+      "in_network": true,
+      "note": "UCSF is in-network. Prenatal and delivery services covered after deductible.",
+      "source": "Cigna HDHP Provider Directory 2024"
+    },
+    {
+      "provider_name": "Sutter Health OB-GYN",
+      "specialty": "OB-GYN",
+      "in_network": true,
+      "note": null,
+      "source": "Cigna HDHP Provider Directory 2024"
+    },
+    {
+      "provider_name": "UCSF Benioff Children's Hospital",
+      "specialty": "Pediatrics / NICU",
+      "in_network": true,
+      "note": null,
+      "source": "Cigna HDHP Provider Directory 2024"
+    },
+    {
+      "provider_name": "San Francisco General Hospital",
+      "specialty": "Emergency",
+      "in_network": true,
+      "note": null,
+      "source": "Cigna HDHP Provider Directory 2024"
+    }
+  ],
+
+  "cost_notes": {
+    "maternity": "Prenatal preventive visits at $0 pre-deductible. Delivery and non-preventive prenatal care subject to deductible then 20% coinsurance.",
+    "hsa_advantage": "HSA contributions (employer $1,000/yr + employee up to $8,300/yr family limit 2024) grow tax-free and can pay deductible/OOP costs.",
+    "high_deductible_warning": "All non-preventive care subject to $5,600 family deductible before cost-sharing kicks in. High upfront cash exposure in year 1."
+  }
+}

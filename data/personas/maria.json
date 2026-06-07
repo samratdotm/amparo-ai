@@ -1,0 +1,95 @@
+{
+  "persona_id": "maria",
+  "name": "Maria",
+  "language": "en",
+  "family_size": 2,
+  "coverage_tier": "family",
+
+  "drugs": [
+    {
+      "drug_name": "Humira",
+      "generic_name": "adalimumab",
+      "condition": "rheumatoid arthritis",
+      "frequency": "biweekly injection",
+      "monthly_fills": 1,
+      "critical": true,
+      "note": "Cannot substitute — prior authorizations already in place with current plan."
+    },
+    {
+      "drug_name": "Prenatal vitamins",
+      "generic_name": "folic acid / iron",
+      "condition": "pregnancy",
+      "frequency": "daily",
+      "monthly_fills": 1,
+      "critical": false,
+      "note": null
+    }
+  ],
+
+  "providers": [
+    {
+      "provider_name": "UCSF Medical Center",
+      "specialty": "OB-GYN",
+      "reason": "Established patient, high-risk pregnancy care team in place.",
+      "critical": true,
+      "note": "Maria is 18 weeks pregnant. Switching OBs mid-pregnancy is medically disruptive."
+    }
+  ],
+
+  "life_events": ["pregnancy"],
+  "hsa_interest": false,
+  "budget_notes": "Cost-conscious but Humira non-negotiable. Willing to pay more premium if it saves total cost.",
+
+  "demo_ask": "I'm pregnant, about 18 weeks, and I take Humira for my RA — I get it every other week. My OB is at UCSF. I'm trying to figure out which of our four plans is actually going to cost me the least. The HMO looks cheapest but I'm not sure.",
+
+  "golden_answers": {
+    "hmo_2024": {
+      "humira_covered": false,
+      "ucsf_ob_in_network": false,
+      "annual_premium": 9360,
+      "annual_humira_cost": 38000,
+      "annual_oop_capped": 8000,
+      "annual_total_estimated": 55360,
+      "hard_constraints_failed": ["Humira not covered", "UCSF OB out-of-network"],
+      "trap_flag": true,
+      "trap_explanation": "Humira ($38,000/yr uncovered) is NOT capped by the $8,000 OOP max — it sits entirely outside the OOP calculation."
+    },
+    "ppo_2024": {
+      "humira_covered": true,
+      "ucsf_ob_in_network": true,
+      "annual_premium": 16560,
+      "annual_humira_cost": 1800,
+      "annual_oop_capped": 6800,
+      "annual_total_estimated": 23360,
+      "hard_constraints_failed": [],
+      "trap_flag": false,
+      "trap_explanation": null
+    },
+    "hdhp_2024": {
+      "humira_covered": true,
+      "ucsf_ob_in_network": true,
+      "annual_premium": 11760,
+      "annual_humira_cost": 2400,
+      "annual_oop_capped": 14000,
+      "annual_total_estimated": 27160,
+      "employer_hsa_offset": 1000,
+      "annual_total_net_of_hsa": 26160,
+      "hard_constraints_failed": ["High deductible ($5,600 family) — large upfront cash exposure during pregnancy"],
+      "trap_flag": false,
+      "trap_explanation": "Lower premium but $5,600 deductible means significant out-of-pocket early in the year during prenatal care."
+    },
+    "epo_2024": {
+      "humira_covered": true,
+      "ucsf_ob_in_network": false,
+      "annual_premium": 13680,
+      "annual_humira_cost": 2100,
+      "annual_oop_capped": 8900,
+      "annual_total_estimated": 24680,
+      "hard_constraints_failed": ["UCSF OB out-of-network — EPO pays $0 out-of-network"],
+      "trap_flag": false,
+      "trap_explanation": "Humira is covered, but UCSF is not in the EPO network. Delivering at UCSF would be entirely uncovered. Also requires Humira step therapy, potentially delaying access."
+    },
+    "recommendation": "ppo_2024",
+    "recommendation_reason": "Only plan that covers both Humira and UCSF OB. Total estimated annual cost ~$23,360 vs HMO's $55,360 trap."
+  }
+}
