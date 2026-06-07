@@ -460,9 +460,26 @@ async def my_agent(ctx: JobContext):
         ),
     )
 
-    # Greet the user once connected. Triggered here (not in Agent.on_enter) per
-    # the documented LiveKit pattern so the greeting runs against a connected
-    # room and on_enter stays deterministic for the test suite.
+    # If pre-dispatched to an empty room (SIP call not yet arrived), wait for
+    # the first remote participant before greeting. This lets us pre-stage the
+    # agent in amparo-demo so the caller hears audio instantly with no polling
+    # latency. Timeout after 10 minutes to avoid orphaned sessions.
+    if not ctx.room.remote_participants:
+        logger.info("no participants yet — waiting for caller to join")
+        caller_arrived = asyncio.Event()
+
+        def _on_participant_connected(_p):
+            caller_arrived.set()
+
+        ctx.room.on("participant_connected", _on_participant_connected)
+        try:
+            await asyncio.wait_for(caller_arrived.wait(), timeout=600)
+        except asyncio.TimeoutError:
+            logger.info("no caller arrived in 10 min — exiting")
+            return
+
+    # Greet the user. Triggered here (not in Agent.on_enter) per the documented
+    # LiveKit pattern so the greeting runs against a connected room.
     await session.generate_reply(
         instructions=(
             "Greet the user warmly in one sentence. Introduce yourself as "

@@ -166,7 +166,7 @@ All three P0 test cases passed with real Moss data (not fallback).
 
 ## Phone number — DONE (Jun 7 2026)
 - **Number:** `+1 (415) 417-6002` — purchased via `lk number purchase`
-- **Dispatch rule:** `SDR_GiLDu6QcuMYQ` — catch-all (`SipTrunks: <any>`) → room `amparo-demo`, agent `agent-py`
+- **Dispatch rule:** `SDR_arLc4mGRggJP` — catch-all (`SipTrunks: <any>`) → room `amparo-demo`, agent `agent-py`
 - Any call to the number creates room `amparo-demo` and dispatches `agent-py` automatically
 - Live-tested: full call pipeline worked end-to-end (STT → extract_constraints → compare_plans → MiniMax TTS)
 - **Browser panel** must join room `amparo-demo` as a subscriber-only observer to display `plan_comparison` data
@@ -245,3 +245,39 @@ Agent says "CCHP Bronze looks cheapest at $990/month — but UCSF is out-of-netw
 ## Commands
 `pnpm setup` · `lk app env -w` · build the Moss index · `pnpm dev`  (confirm against starter README).
 - Agent dev loop: `cd agent-py && uv run python src/agent.py download-files` (first run only), then `uv run python src/agent.py console` (local terminal test) or `uv run python src/agent.py dev` (with frontend).
+
+## SIP Dispatch — Hard-Won Gotchas (Jun 7 2026)
+
+### Root problem: `agentDispatches` field is not settable via CLI or SDK
+The LiveKit SIP dispatch rule has an `agentDispatches` proto field that links the rule to a specific agent worker. Without it, the SIP call creates the room but no agent job is fired — the agent sits idle.
+
+**Why it can't be set:**
+- `lk sip dispatch create` — no `--agent-name` flag
+- `lk sip dispatch create <json-file>` — proto rejects `agentDispatches` as unknown field
+- Python SDK `CreateSIPDispatchRuleRequest` (v1.1.8) — field missing from proto
+- Dashboard JSON editor — rejects `agentDispatches` as "not allowed"
+
+**The rule `SDR_arLc4mGRggJP` had `Agents: agent-py`** (set by a prior session through an unknown path — possibly an older SDK/dashboard version). This was the only working rule. When deleted and recreated, the field cannot be set again.
+
+### Working setup for demo
+1. Create a dispatch rule with NO agent field (room routing only):
+   ```bash
+   lk sip dispatch create --direct amparo-demo
+   ```
+2. Run `scripts/watch_and_dispatch.sh` in a second terminal — it polls `lk room list` every 1s, and the moment `amparo-demo` appears it runs `lk dispatch create --room amparo-demo --agent-name agent-py`
+3. Keep the agent terminal (`uv run python src/agent.py dev`) running separately
+
+**Do NOT combine a rule with `Agents: agent-py` AND the watch script** — both dispatch simultaneously, two agents join the room, they talk to each other.
+
+### No-logs + no-audio despite panel updating
+If the panel updates (Moss queries fire) but the agent terminal shows no logs and the caller hears silence:
+- **Root cause**: another agent process is handling the call (background process from a prior session, or teammate's agent)
+- **Fix**: `pkill -f "agent.py"` → restart clean → confirm single `registered worker` log
+
+### No audio (TTS silent) despite agent logs appearing
+- Check MiniMax balance at `platform.minimax.io` (balance must be > 0 in Voucher)
+- MiniMax adapter is in `src/minimax_tts.py` — overrides `base_url` to `api.minimax.io` (not `api.minimax.chat`)
+- If MiniMax fails, switch TTS in `agent.py` to `inference.TTS()` (OpenAI TTS via LiveKit Inference) as a fallback
+
+### Stale room blocking dispatch (fixed in code)
+`agent.py` now auto-deletes `amparo-demo` after every call using `participant_disconnected` room event + `lkapi.LiveKitAPI.room.delete_room()`. Without this, LiveKit keeps the empty room for ~5 min and the next SIP call joins the existing room without triggering a new agent dispatch.
