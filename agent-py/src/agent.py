@@ -208,7 +208,8 @@ class Assistant(Agent):
             return
         try:
             plans = payload.get("plans", [])
-            trap_plan = next((p for p in plans if p.get("trap_flag")), None)
+            trap_plans = [p for p in plans if p.get("trap_flag")]
+            trap_plan = min(trap_plans, key=lambda p: p.get("annual_premium", float("inf"))) if trap_plans else None
             message = {
                 "type": "plan_comparison",
                 "data": {

@@ -161,8 +161,8 @@ export default function PlanComparisonPanel() {
           <div>
             <div className="font-semibold text-red-300 text-sm">Cheap-Plan Trap Detected</div>
             <div className="text-xs text-red-400 mt-0.5">
-              {PLAN_LABELS[comparison.trap_plan_id ?? ""] ?? comparison.trap_plan_id} has significant uncovered costs
-              NOT capped by the OOP maximum — hidden network exclusions or drug gaps could cost tens of thousands more than the premium suggests.
+              <span className="font-semibold">{PLAN_LABELS[comparison.trap_plan_id ?? ""] ?? comparison.trap_plan_id}</span> has the lowest premium
+              but excludes key providers — out-of-network costs are NOT capped by the OOP maximum and could add $25,000+ to your annual bill.
             </div>
           </div>
         </div>
