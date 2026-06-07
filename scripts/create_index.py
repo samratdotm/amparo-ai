@@ -16,141 +16,92 @@ Usage:
     python scripts/create_index.py
 """
 
+import asyncio
 import json
+import os
 import sys
+import uuid
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+# Load credentials — check agent-py/.env.local then project root .env.local
+_ROOT = Path(__file__).parent.parent
+for _env_path in [_ROOT / "agent-py" / ".env.local", _ROOT / ".env.local"]:
+    if _env_path.exists():
+        load_dotenv(_env_path)
+        break
+
 try:
-    from moss import MossClient, QueryOptions  # type: ignore
+    from moss import DocumentInfo, MossClient, QueryOptions  # type: ignore
 except ImportError:
-    print("ERROR: 'moss' package not found. Run `pip install moss` or `pnpm setup` first.")
+    print("ERROR: 'moss' package not found. Run `pip install moss` first.")
     sys.exit(1)
 
-DATA_DIR = Path(__file__).parent.parent / "data" / "plans"
+DATA_DIR = _ROOT / "data" / "plans"
+KNOWLEDGE_INDEX = os.getenv("MOSS_INDEX_NAME", "knowledge")
+MEMORY_INDEX = os.getenv("MOSS_MEMORY_INDEX_NAME", "memory")
 
-# Maps JSON plan_id → Moss plan_id expected by compare_plans_engine.PLAN_IDS.
-# Ordering: cheapest-premium first so bronze is the trap plan.
+# Maps JSON plan_id → Moss plan_id expected by compare_plans_engine.PLAN_IDS
 PLAN_ID_MAP: dict[str, str] = {
     "hmo_2024": "bronze-2024",    # lowest premium, Humira uncovered — THE TRAP
     "ppo_2024": "silver-2024",    # Humira covered + UCSF in-network — best for Maria
     "hdhp_2024": "gold-2024",     # HSA-eligible, Humira covered, high deductible
-    "epo_2024": "platinum-2024",  # Humira covered, but UCSF out-of-network
+    "epo_2024": "platinum-2024",  # Humira covered, UCSF out-of-network
 }
 
-# Fallback list price for specialty biologic used when not specified in JSON.
 DEFAULT_SPECIALTY_LIST_PRICE = 50_000.0
 
 
-def load_plans() -> list[dict]:
-    plans = []
-    for path in sorted(DATA_DIR.glob("*.json")):
-        with open(path) as f:
-            plans.append(json.load(f))
-    if not plans:
-        print(f"ERROR: No plan JSON files found in {DATA_DIR}")
-        sys.exit(1)
-    print(f"Loaded {len(plans)} plans: {[p['plan_id'] for p in plans]}")
-    return plans
+def _doc(text: str, metadata: dict) -> "DocumentInfo":
+    return DocumentInfo(id=str(uuid.uuid4()), text=text, metadata=metadata)
 
 
-def index_benefit_facts(client: "MossClient", plan: dict, moss_id: str) -> int:
-    """
-    Emit 4 benefit docs per plan with field names matching BENEFIT_FIELDS in
-    compare_plans_engine.py: "premium", "deductible", "oop_max", "hsa_eligible".
-
-    Family figures are used for premium/deductible/oop_max since the demo scenario
-    (Maria, family_size=2) needs family-tier numbers. Individual figures are also
-    indexed with explicit "individual" in the text so year-round Q&A still works.
-    """
+def benefit_docs(plan: dict, moss_id: str) -> list:
     plan_name = plan["plan_name"]
     source = plan["source"]
-    count = 0
+    docs = []
 
-    # --- premium (family — used by the engine for Maria's comparison) ---
     family_premium = plan.get("premium_monthly_family", plan.get("premium_monthly_individual", 0))
-    client.add_document(
-        text=f"{plan_name} monthly premium family is {family_premium} dollars",
-        metadata={
-            "plan": moss_id,
-            "type": "benefit",
-            "field": "premium",
-            "value": str(family_premium),
-            "plan_name": plan_name,
-            "source": source,
-        },
-    )
-    count += 1
+    docs.append(_doc(
+        f"{plan_name} monthly premium family is {family_premium} dollars",
+        {"plan": moss_id, "type": "benefit", "field": "premium",
+         "value": str(family_premium), "plan_name": plan_name, "source": source},
+    ))
 
-    # --- deductible (family) ---
     family_ded = plan.get("deductible_family", plan.get("deductible_individual", 0))
-    client.add_document(
-        text=f"{plan_name} deductible family is {family_ded} dollars",
-        metadata={
-            "plan": moss_id,
-            "type": "benefit",
-            "field": "deductible",
-            "value": str(family_ded),
-            "plan_name": plan_name,
-            "source": source,
-        },
-    )
-    count += 1
+    docs.append(_doc(
+        f"{plan_name} deductible family is {family_ded} dollars",
+        {"plan": moss_id, "type": "benefit", "field": "deductible",
+         "value": str(family_ded), "plan_name": plan_name, "source": source},
+    ))
 
-    # --- oop_max (family) ---
     family_oop = plan.get("oop_max_family", plan.get("oop_max_individual", 0))
-    client.add_document(
-        text=f"{plan_name} out-of-pocket maximum family is {family_oop} dollars",
-        metadata={
-            "plan": moss_id,
-            "type": "benefit",
-            "field": "oop_max",
-            "value": str(family_oop),
-            "plan_name": plan_name,
-            "source": source,
-        },
-    )
-    count += 1
+    docs.append(_doc(
+        f"{plan_name} out-of-pocket maximum family is {family_oop} dollars",
+        {"plan": moss_id, "type": "benefit", "field": "oop_max",
+         "value": str(family_oop), "plan_name": plan_name, "source": source},
+    ))
 
-    # --- hsa_eligible ---
     hsa = plan.get("hsa_eligible", False)
-    client.add_document(
-        text=f"{plan_name} HSA eligible is {str(hsa).lower()}",
-        metadata={
-            "plan": moss_id,
-            "type": "benefit",
-            "field": "hsa_eligible",
-            "value": str(hsa).lower(),   # "true" / "false"
-            "plan_name": plan_name,
-            "source": source,
-        },
-    )
-    count += 1
-
-    return count
+    docs.append(_doc(
+        f"{plan_name} HSA eligible is {str(hsa).lower()}",
+        {"plan": moss_id, "type": "benefit", "field": "hsa_eligible",
+         "value": str(hsa).lower(), "plan_name": plan_name, "source": source},
+    ))
+    return docs
 
 
-def index_formulary(client: "MossClient", plan: dict, moss_id: str) -> int:
-    """
-    Emit one doc per drug with field names matching _fetch_plan_data:
-      covered        → "true" / "false"  (string, NOT bool — engine calls .lower())
-      copay_per_fill → monthly member cost (flat copay path in DrugCoverage)
-      list_price_per_year → annual retail price (used for uncovered cost + coinsurance base)
-      fills_per_year → 12 (default; engine uses this with copay_per_fill)
-    """
+def formulary_docs(plan: dict, moss_id: str) -> list:
     plan_name = plan["plan_name"]
-    count = 0
+    docs = []
 
     for drug in plan.get("formulary", []):
         drug_name = drug["drug_name"]
         generic = drug["generic_name"]
         drug_class = drug["drug_class"]
         covered: bool = drug["covered"]
-
-        # list_price_per_year: use annual_cost_if_uncovered when available,
-        # else fall back to DEFAULT so the trap math stays accurate.
-        list_price = float(
-            drug.get("annual_cost_if_uncovered") or DEFAULT_SPECIALTY_LIST_PRICE
-        )
+        list_price = float(drug.get("annual_cost_if_uncovered") or DEFAULT_SPECIALTY_LIST_PRICE)
 
         if covered:
             copay = drug.get("member_cost_per_month")
@@ -164,39 +115,29 @@ def index_formulary(client: "MossClient", plan: dict, moss_id: str) -> int:
                 f"Full annual cost {list_price:.0f} dollars, not subject to OOP maximum."
             )
 
-        metadata: dict = {
+        meta: dict = {
             "plan": moss_id,
             "type": "drug",
             "drug_name": drug_name.lower(),
             "generic_name": generic.lower(),
             "drug_class": drug_class,
-            # String "true"/"false" — engine does meta.get("covered","false").lower()=="true"
             "covered": "true" if covered else "false",
             "list_price_per_year": str(list_price),
             "fills_per_year": "12",
             "source": drug["source"],
         }
-
         if covered and drug.get("member_cost_per_month") is not None:
-            metadata["copay_per_fill"] = str(drug["member_cost_per_month"])
-
+            meta["copay_per_fill"] = str(drug["member_cost_per_month"])
         if drug.get("note"):
-            metadata["note"] = drug["note"]
+            meta["note"] = drug["note"]
 
-        client.add_document(text=text, metadata=metadata)
-        count += 1
-
-    return count
+        docs.append(_doc(text, meta))
+    return docs
 
 
-def index_network(client: "MossClient", plan: dict, moss_id: str) -> int:
-    """
-    Emit one doc per provider with field names matching _fetch_plan_data:
-      in_network         → "true" / "false"  (string, NOT bool)
-      out_of_network_cost → "0" (not tracked in JSON; engine uses it for uncapped OON cost)
-    """
+def network_docs(plan: dict, moss_id: str) -> list:
     plan_name = plan["plan_name"]
-    count = 0
+    docs = []
 
     for provider in plan.get("network", []):
         name = provider["provider_name"]
@@ -208,49 +149,87 @@ def index_network(client: "MossClient", plan: dict, moss_id: str) -> int:
         if not in_network:
             text += ". No out-of-network coverage except emergencies."
 
-        metadata: dict = {
+        meta: dict = {
             "plan": moss_id,
             "type": "provider",
             "provider_name": name.lower(),
             "specialty": specialty,
-            # String "true"/"false" — engine does meta.get("in_network","true").lower()=="true"
             "in_network": "true" if in_network else "false",
             "out_of_network_cost": "0",
             "source": provider["source"],
         }
         if provider.get("note"):
-            metadata["note"] = provider["note"]
+            meta["note"] = provider["note"]
 
-        client.add_document(text=text, metadata=metadata)
-        count += 1
-
-    return count
+        docs.append(_doc(text, meta))
+    return docs
 
 
-def main() -> None:
-    print("Building Moss fact-level index...")
-    client = MossClient()
-    plans = load_plans()
+async def main() -> None:
+    project_id = os.getenv("MOSS_PROJECT_ID")
+    project_key = os.getenv("MOSS_PROJECT_KEY")
+    if not project_id or not project_key:
+        print("ERROR: MOSS_PROJECT_ID and MOSS_PROJECT_KEY must be set in .env.local")
+        sys.exit(1)
 
-    total_docs = 0
-    for plan in plans:
+    client = MossClient(project_id, project_key)
+
+    plan_paths = sorted(DATA_DIR.glob("*.json"))
+    if not plan_paths:
+        print(f"ERROR: No plan JSON files found in {DATA_DIR}")
+        sys.exit(1)
+
+    all_docs: list = []
+    for path in plan_paths:
+        with open(path) as f:
+            plan = json.load(f)
+
         json_id = plan["plan_id"]
         moss_id = PLAN_ID_MAP.get(json_id, json_id)
 
-        b = index_benefit_facts(client, plan, moss_id)
-        f = index_formulary(client, plan, moss_id)
-        n = index_network(client, plan, moss_id)
-        plan_total = b + f + n
-        total_docs += plan_total
-        print(f"  {json_id} → {moss_id}: {b} benefit + {f} formulary + {n} network = {plan_total} docs")
+        b = benefit_docs(plan, moss_id)
+        fd = formulary_docs(plan, moss_id)
+        n = network_docs(plan, moss_id)
+        print(f"  {json_id} -> {moss_id}: {len(b)} benefit + {len(fd)} formulary + {len(n)} network")
+        all_docs.extend(b + fd + n)
 
-    print(f"\nIndexing {total_docs} documents...")
-    client.build_index()
-    print(f"Index built. {total_docs} docs across {len(plans)} plans.")
-    print("\nExpected Moss plan IDs for compare_plans_engine:")
-    for j, m in PLAN_ID_MAP.items():
-        print(f"  {m}  (from {j})")
+    print(f"\nCreating Moss index '{KNOWLEDGE_INDEX}' with {len(all_docs)} documents...")
+    result = await client.create_index(KNOWLEDGE_INDEX, all_docs)
+    print(f"Index created: {result}")
+
+    print("Loading index into memory...")
+    await client.load_index(KNOWLEDGE_INDEX)
+    print("Knowledge index loaded.")
+
+    # Create the memory index (per-user facts — must exist even when empty)
+    print(f"\nCreating Moss memory index '{MEMORY_INDEX}'...")
+    seed_doc = DocumentInfo(
+        id=str(uuid.uuid4()),
+        text="Amparo AI per-user memory store initialized",
+        metadata={"type": "system", "note": "seed"},
+    )
+    await client.create_index(MEMORY_INDEX, [seed_doc])
+    await client.load_index(MEMORY_INDEX)
+    print(f"Memory index loaded.")
+
+    # Smoke test — Humira on bronze must be covered=false
+    print("\nSmoke test — Humira coverage on bronze-2024...")
+    r = await client.query(
+        KNOWLEDGE_INDEX,
+        "is Humira covered",
+        QueryOptions(top_k=1, alpha=0.6,
+                     filter={"field": "plan", "condition": {"$eq": "bronze-2024"}}),
+    )
+    docs_out = getattr(r, "docs", [])
+    if docs_out:
+        meta = getattr(docs_out[0], "metadata", {})
+        covered = meta.get("covered", "?")
+        latency = getattr(r, "time_taken_ms", "?")
+        status = "PASS" if covered == "false" else "FAIL"
+        print(f"  covered={covered!r}  latency={latency}ms  [{status}]")
+    else:
+        print("  No results returned.")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
