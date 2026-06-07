@@ -16,6 +16,18 @@ TRAP_THRESHOLD = 5_000.0  # uncovered costs above this flag as a trap
 
 
 @dataclass
+class Citation:
+    """Bbox-level citation from Unsiloed — links a fact to its exact location in the source PDF."""
+    pdf_url: str        # e.g. "/pdfs/hmo_2024.pdf"
+    page: int           # 1-indexed page number
+    left: float         # normalized 0-1
+    top: float
+    width: float
+    height: float
+    source_text: str    # human-readable source label
+
+
+@dataclass
 class DrugCoverage:
     name: str
     covered: bool
@@ -26,6 +38,7 @@ class DrugCoverage:
     fills_per_year: int = 12
     list_price_per_year: float = 0.0  # used when uncovered (or as coinsurance base)
     source: str = ""
+    citation: Citation | None = None
 
 
 @dataclass
@@ -34,6 +47,7 @@ class ProviderCoverage:
     in_network: bool
     out_of_network_cost: float = 0.0  # estimated annual OON cost if not in-network
     source: str = ""
+    citation: Citation | None = None
 
 
 @dataclass
@@ -62,6 +76,7 @@ class CostResult:
     uncovered_drugs: list[str]
     out_of_network_providers: list[str]
     sources: list[str]
+    citations: list[Citation] = field(default_factory=list)
 
 
 def _drug_covered_annual_cost(drug: DrugCoverage) -> float:
@@ -88,6 +103,7 @@ def compute_annual_cost(
     uncovered_drugs: list[str] = []
     oon_providers: list[str] = []
     sources = list(plan.sources)
+    citations: list[Citation] = []
 
     for drug_name in drug_names:
         entry = plan.formulary.get(drug_name)
@@ -97,10 +113,14 @@ def compute_annual_cost(
                 uncovered_costs += entry.list_price_per_year
                 if entry.source:
                     sources.append(entry.source)
+                if entry.citation:
+                    citations.append(entry.citation)
         else:
             covered_oop += _drug_covered_annual_cost(entry)
             if entry.source:
                 sources.append(entry.source)
+            if entry.citation:
+                citations.append(entry.citation)
 
     for provider_name in provider_names:
         entry = plan.network.get(provider_name)
@@ -110,9 +130,13 @@ def compute_annual_cost(
                 uncovered_costs += entry.out_of_network_cost
                 if entry.source:
                     sources.append(entry.source)
+                if entry.citation:
+                    citations.append(entry.citation)
         else:
             if entry.source:
                 sources.append(entry.source)
+            if entry.citation:
+                citations.append(entry.citation)
 
     capped_covered_oop = min(covered_oop, plan.oop_max)
     annual_premium = plan.monthly_premium * 12
@@ -130,6 +154,7 @@ def compute_annual_cost(
         uncovered_drugs=uncovered_drugs,
         out_of_network_providers=oon_providers,
         sources=list(dict.fromkeys(sources)),  # deduplicate, preserve order
+        citations=citations,
     )
 
 

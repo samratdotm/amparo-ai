@@ -8,6 +8,16 @@ import {
   ConnectionState,
 } from "livekit-client";
 
+export interface Citation {
+  pdf_url: string;
+  page: number;
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  source_text: string;
+}
+
 export interface CostResult {
   plan_id: string;
   plan_name: string;
@@ -20,6 +30,7 @@ export interface CostResult {
   uncovered_drugs: string[];
   out_of_network_providers: string[];
   sources: string[];
+  citations: Citation[];
 }
 
 export interface PlanComparisonData {
