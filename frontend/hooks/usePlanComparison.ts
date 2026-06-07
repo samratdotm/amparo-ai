@@ -51,8 +51,31 @@ export function usePlanComparison(livekitUrl: string) {
 
   useEffect(() => {
     let cancelled = false;
+    let retryTimer: ReturnType<typeof setTimeout> | null = null;
 
     async function connect() {
+      if (cancelled) return;
+
+      // Check if the room exists before attempting to connect.
+      // This prevents the browser from creating amparo-demo prematurely,
+      // which would block the SIP dispatch from triggering the agent.
+      try {
+        const statusRes = await fetch("/api/room-status");
+        if (statusRes.ok) {
+          const { exists } = await statusRes.json();
+          if (!exists) {
+            setStatus("disconnected");
+            retryTimer = setTimeout(connect, 3000);
+            return;
+          }
+        }
+      } catch {
+        setStatus("disconnected");
+        retryTimer = setTimeout(connect, 3000);
+        return;
+      }
+
+      if (cancelled) return;
       setStatus("connecting");
 
       try {
@@ -66,7 +89,11 @@ export function usePlanComparison(livekitUrl: string) {
 
         room.on(RoomEvent.ConnectionStateChanged, (state) => {
           if (state === ConnectionState.Connected) setStatus("connected");
-          else if (state === ConnectionState.Disconnected) setStatus("disconnected");
+          else if (state === ConnectionState.Disconnected) {
+            setStatus("disconnected");
+            // Reconnect if the call ends and a new one comes in
+            retryTimer = setTimeout(connect, 3000);
+          }
         });
 
         room.on(RoomEvent.DataReceived, (payload: Uint8Array) => {
@@ -83,12 +110,12 @@ export function usePlanComparison(livekitUrl: string) {
           }
         });
 
-        await room.connect(livekitUrl, token, {
-          autoSubscribe: true,
-        });
-      } catch (err) {
+        await room.connect(livekitUrl, token, { autoSubscribe: true });
+      } catch (err: unknown) {
+        if (cancelled) return;
         console.error("LiveKit connect error:", err);
-        if (!cancelled) setStatus("error");
+        setStatus("disconnected");
+        retryTimer = setTimeout(connect, 3000);
       }
     }
 
@@ -96,6 +123,7 @@ export function usePlanComparison(livekitUrl: string) {
 
     return () => {
       cancelled = true;
+      if (retryTimer) clearTimeout(retryTimer);
       roomRef.current?.disconnect();
       roomRef.current = null;
     };

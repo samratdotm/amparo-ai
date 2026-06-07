@@ -19,9 +19,11 @@ export async function GET() {
     ttl: "4h",
   });
 
-  // Subscriber-only: can receive data messages, cannot publish audio/video
+  // Subscriber-only observer: cannot create the room (prevents stale-room dispatch issue).
+  // The SIP call creates amparo-demo; the panel joins after.
   at.addGrant({
     roomJoin: true,
+    roomCreate: false,
     room: ROOM,
     canSubscribe: true,
     canPublish: false,
