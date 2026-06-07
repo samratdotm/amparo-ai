@@ -1,0 +1,4767 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "10baf4fe-9c6c-4393-9249-f91df757df47",
+      "chunk_length": 0,
+      "embed": "",
+      "segments": [
+        {
+          "bbox": {
+            "height": 1484.5830078125,
+            "left": 46.45123291015625,
+            "top": 2.660797357559204,
+            "width": 1094.591064453125
+          },
+          "confidence": 0.8461580276489258,
+          "content": "6/7/26, 5:40 AM Silver 70 Off Exchange Trio HMO Page\nContact us Log in/Register\nHome Individual & Family plans Select Coverage Recommended plans Plan details\n70 Off\nSilver Exchange Trio\nHMO\nPlan cost summary\nMonthly premium\n$1163.34\nCalendar year deductible\nper individual / per family\n$5,200 $10,400\nCalendar year pharmacy deductible\n$50 per individual / $100 per family\nCalendar year out-of-pocket maximum\nper individual / per family\n$9,800 $19,600\nNo cost preventative care Return to plan selection Preventive Care\n$0\nWell Baby Care\n$0\nPrenatal Office Visits\n$0\nPediatric Dental Benefits: Preventive\n$0\nPediatric Vision Benefits: Exams\n$0\nNo cost extras\n24/7 Nurse Hotline\nNo additional cost\nShield Concierge\nNo additional cost\nHealth and Wellness Discounts weight loss and more)\n(gym, programs,\nNo additional cost\nRetail Prescription drugs\nRetail Prescription Drugs - Generic Drugs\n$19\nRetail Prescription Drugs - Preferred Brand Drugs Cost depends on the service Cost is the same as if the service was performed\nperformed.\nelsewhere.\nAcupuncture (from an American Specialty Health Plans network acupuncturist)\n$50\nChiropractic (from an American Specialty Health Plans network chiropractor)\nNot covered\nLab and X-ray diagnostics\nLaboratory Tests\n$50\nX-rays\n$95\nImaging (CT / PET MRI) from an outpatient radiology center\nscan,\n$325\nUrgent and emergency\nUrgent care\n$50\nEmergency Room Services\n$400\nAmbulance\n$255 Maternity care\nMaternity - Prenatal office visits\n$0\nMaternity - Other professional services\n30%\nMaternity - hospital stay\nBefore deductible:\nFull cost\nAfter deductible:\n30%\nHospital and outpatient\nOutpatient Surgery Services\n30%\nHospital stays\nBefore deductible:\nFull cost\nAfter deductible:\n30%\nDental and Vision\nPediatric Dental Benefits: Preventive\n$0 20%\nPediatric Dental Benefits: Medically Necessary Orthodontics\n50%\nPediatric Vision Benefits: Exams\n$0\nPediatric Vision Benefits: Eye Glasses\n1 pair per year\nLegal disclosures\nSummary of benefits\nSummary of benefits and coverage",
+          "html": "<table>\n  <tbody>\n    <tr>\n      <th colspan=\"2\">Plan cost summary</th>\n    </tr>\n    <tr>\n      <td>Monthly premium</td>\n      <td>$1163.34</td>\n    </tr>\n    <tr>\n      <td>Calendar year deductible</td>\n      <td>$5,200 per individual / $10,400 per family</td>\n    </tr>\n    <tr>\n      <td>Calendar year pharmacy deductible</td>\n      <td>$50 per individual / $100 per family</td>\n    </tr>\n    <tr>\n      <td>Calendar year out-of-pocket maximum</td>\n      <td>$9,800 per individual / $19,600 per family</td>\n    </tr>\n    <tr>\n      <td colspan=\"2\">Cost depends on the service performed. Cost is the same as if the service was performed elsewhere.</td>\n    </tr>\n    <tr>\n      <td>Acupuncture (from an American Specialty Health Plans network acupuncturist)</td>\n      <td>$50</td>\n    </tr>\n    <tr>\n      <td>Chiropractic (from an American Specialty Health Plans network chiropractor)</td>\n      <td>Not covered</td>\n    </tr>\n    <tr>\n      <th colspan=\"2\">Lab and X-ray diagnostics</th>\n    </tr>\n    <tr>\n      <td>Laboratory Tests</td>\n      <td>$50</td>\n    </tr>\n    <tr>\n      <td>X-rays</td>\n      <td>$95</td>\n    </tr>\n    <tr>\n      <td>Imaging (CT / PET scan, MRI) from an outpatient radiology center</td>\n      <td>$325</td>\n    </tr>\n    <tr>\n      <th colspan=\"2\">Urgent and emergency</th>\n    </tr>\n    <tr>\n      <td>Urgent care</td>\n      <td>$50</td>\n    </tr>\n    <tr>\n      <td>Emergency Room Services</td>\n      <td>$400</td>\n    </tr>\n    <tr>\n      <td>Ambulance</td>\n      <td>$255</td>\n    </tr>\n    <tr>\n      <td>Preventive Care</td>\n      <td>$0</td>\n    </tr>\n    <tr>\n      <td>Well Baby Care</td>\n      <td>$0</td>\n    </tr>\n    <tr>\n      <td>Prenatal Office Visits</td>\n      <td>$0</td>\n    </tr>\n    <tr>\n      <td>Pediatric Dental Benefits: Preventive</td>\n      <td>$0</td>\n    </tr>\n    <tr>\n      <td>Pediatric Vision Benefits: Exams</td>\n      <td>$0</td>\n    </tr>\n    <tr>\n      <th colspan=\"2\">No cost extras</th>\n    </tr>\n    <tr>\n      <td>24/7 Nurse Hotline</td>\n      <td>No additional cost</td>\n    </tr>\n    <tr>\n      <td>Shield Concierge</td>\n      <td>No additional cost</td>\n    </tr>\n    <tr>\n      <td>Health and Wellness Discounts (gym, weight loss programs, and more)</td>\n      <td>No additional cost</td>\n    </tr>\n    <tr>\n      <th colspan=\"2\">Retail Prescription drugs</th>\n    </tr>\n    <tr>\n      <td>Retail Prescription Drugs - Generic Drugs</td>\n      <td>$10</td>\n    </tr>\n    <tr>\n      <th colspan=\"2\">Maternity care</th>\n    </tr>\n    <tr>\n      <td>Maternity - Prenatal office visits</td>\n      <td>$0</td>\n    </tr>\n    <tr>\n      <td>Maternity - Other professional services</td>\n      <td>30%</td>\n    </tr>\n    <tr>\n      <td>Maternity - hospital stay</td>\n      <td>Before deductible:<br>Full cost<br><br>After deductible:<br>30%</td>\n    </tr>\n    <tr>\n      <th colspan=\"2\">Hospital and outpatient</th>\n    </tr>\n    <tr>\n      <td>Outpatient Surgery Services</td>\n      <td>30%</td>\n    </tr>\n    <tr>\n      <td>Hospital stays</td>\n      <td>Before deductible:<br>Full cost<br><br>After deductible:<br>30%</td>\n    </tr>\n    <tr>\n      <th colspan=\"2\">Dental and Vision</th>\n    </tr>\n    <tr>\n      <td>Pediatric Dental Benefits: Preventive</td>\n      <td>20%</td>\n    </tr>\n    <tr>\n      <td>Pediatric Dental Benefits: Medically Necessary Orthodontics</td>\n      <td>50%</td>\n    </tr>\n    <tr>\n      <td>Pediatric Vision Benefits: Exams</td>\n      <td>$0</td>\n    </tr>\n    <tr>\n      <td>Pediatric Vision Benefits: Eye Glasses</td>\n      <td>1 pair per year</td>\n    </tr>\n  </tbody>\n</table>",
+          "markdown": "<th colspan=\"2\">Plan cost summary \n    \n\n    \n      | Monthly premium \n      | $1163.34 \n    \n\n    \n      | Calendar year deductible \n      | $5,200 per individual / $10,400 per family \n    \n\n    \n      | Calendar year pharmacy deductible \n      | $50 per individual / $100 per family \n    \n\n    \n      | Calendar year out-of-pocket maximum \n      | $9,800 per individual / $19,600 per family \n    \n\n    \n      <td colspan=\"2\">Cost depends on the service performed. Cost is the same as if the service was performed elsewhere. \n    \n\n    \n      | Acupuncture (from an American Specialty Health Plans network acupuncturist) \n      | $50 \n    \n\n    \n      | Chiropractic (from an American Specialty Health Plans network chiropractor) \n      | Not covered \n    \n\n    \n      <th colspan=\"2\">Lab and X-ray diagnostics \n    \n\n    \n      | Laboratory Tests \n      | $50 \n    \n\n    \n      | X-rays \n      | $95 \n    \n\n    \n      | Imaging (CT / PET scan, MRI) from an outpatient radiology center \n      | $325 \n    \n\n    \n      <th colspan=\"2\">Urgent and emergency \n    \n\n    \n      | Urgent care \n      | $50 \n    \n\n    \n      | Emergency Room Services \n      | $400 \n    \n\n    \n      | Ambulance \n      | $255 \n    \n\n    \n      | Preventive Care \n      | $0 \n    \n\n    \n      | Well Baby Care \n      | $0 \n    \n\n    \n      | Prenatal Office Visits \n      | $0 \n    \n\n    \n      | Pediatric Dental Benefits: Preventive \n      | $0 \n    \n\n    \n      | Pediatric Vision Benefits: Exams \n      | $0 \n    \n\n    \n      <th colspan=\"2\">No cost extras \n    \n\n    \n      | 24/7 Nurse Hotline \n      | No additional cost \n    \n\n    \n      | Shield Concierge \n      | No additional cost \n    \n\n    \n      | Health and Wellness Discounts (gym, weight loss programs, and more) \n      | No additional cost \n    \n\n    \n      <th colspan=\"2\">Retail Prescription drugs \n    \n\n    \n      | Retail Prescription Drugs - Generic Drugs \n      | $10 \n    \n\n    \n      <th colspan=\"2\">Maternity care \n    \n\n    \n      | Maternity - Prenatal office visits \n      | $0 \n    \n\n    \n      | Maternity - Other professional services \n      | 30% \n    \n\n    \n      | Maternity - hospital stay \n      | Before deductible:<br>Full cost<br><br>After deductible:<br>30% \n    \n\n    \n      <th colspan=\"2\">Hospital and outpatient \n    \n\n    \n      | Outpatient Surgery Services \n      | 30% \n    \n\n    \n      | Hospital stays \n      | Before deductible:<br>Full cost<br><br>After deductible:<br>30% \n    \n\n    \n      <th colspan=\"2\">Dental and Vision \n    \n\n    \n      | Pediatric Dental Benefits: Preventive \n      | 20% \n    \n\n    \n      | Pediatric Dental Benefits: Medically Necessary Orthodontics \n      | 50% \n    \n\n    \n      | Pediatric Vision Benefits: Exams \n      | $0 \n    \n\n    \n      | Pediatric Vision Benefits: Eye Glasses \n      | 1 pair per year",
+          "merged_page_bboxes": [
+            {
+              "bbox": {
+                "height": 1484.5830078125,
+                "left": 46.45123291015625,
+                "top": 2.660797357559204,
+                "width": 1094.591064453125
+              },
+              "page_height": 1584.0,
+              "page_number": 1,
+              "page_width": 1224.0
+            },
+            {
+              "bbox": {
+                "height": 1394.46337890625,
+                "left": 99.42254638671875,
+                "top": 57.53660583496094,
+                "width": 1048.51513671875
+              },
+              "page_height": 1584.0,
+              "page_number": 2,
+              "page_width": 1224.0
+            },
+            {
+              "bbox": {
+                "height": 1331.1083984375,
+                "left": 94.27924346923828,
+                "top": 59.24312973022461,
+                "width": 1052.400634765625
+              },
+              "page_height": 1584.0,
+              "page_number": 4,
+              "page_width": 1224.0
+            },
+            {
+              "bbox": {
+                "height": 1336.406005859375,
+                "left": 101.30366516113281,
+                "top": 72.60355377197266,
+                "width": 1049.8624267578125
+              },
+              "page_height": 1584.0,
+              "page_number": 5,
+              "page_width": 1224.0
+            },
+            {
+              "bbox": {
+                "height": 571.350341796875,
+                "left": 100.9958724975586,
+                "top": 56.43770217895508,
+                "width": 1028.9422607421875
+              },
+              "page_height": 1584.0,
+              "page_number": 6,
+              "page_width": 1224.0
+            }
+          ],
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 700.7105712890625,
+                "top": 90.78024291992188,
+                "width": 76.451416015625
+              },
+              "confidence": null,
+              "text": "Contact"
+            },
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 783.974365234375,
+                "top": 90.99020385742188,
+                "width": 19.14678955078125
+              },
+              "confidence": null,
+              "text": "us"
+            },
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 913.4249877929688,
+                "top": 90.78024291992188,
+                "width": 33.7816162109375
+              },
+              "confidence": null,
+              "text": "Log"
+            },
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 954.4918212890625,
+                "top": 90.78024291992188,
+                "width": 107.24786376953125
+              },
+              "confidence": null,
+              "text": "in/Register"
+            },
+            {
+              "bbox": {
+                "height": 9.3404541015625,
+                "left": 58.92076873779297,
+                "top": 323.9987487792969,
+                "width": 52.72113800048828
+              },
+              "confidence": null,
+              "text": "Home"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 149.97544860839844,
+                "top": 324.1936950683594,
+                "width": 84.93186950683594
+              },
+              "confidence": null,
+              "text": "Individual"
+            },
+            {
+              "bbox": {
+                "height": 13.3184814453125,
+                "left": 241.93875122070312,
+                "top": 320.2156677246094,
+                "width": 12.128997802734375
+              },
+              "confidence": null,
+              "text": "&"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 260.4151611328125,
+                "top": 324.1936950683594,
+                "width": 58.76171875
+              },
+              "confidence": null,
+              "text": "Family"
+            },
+            {
+              "bbox": {
+                "height": 9.3404541015625,
+                "left": 325.6018981933594,
+                "top": 323.9987487792969,
+                "width": 46.8450927734375
+              },
+              "confidence": null,
+              "text": "plans"
+            },
+            {
+              "bbox": {
+                "height": 9.3404541015625,
+                "left": 410.254150390625,
+                "top": 323.9987487792969,
+                "width": 53.002655029296875
+              },
+              "confidence": null,
+              "text": "Select"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 469.0950927734375,
+                "top": 324.1936950683594,
+                "width": 86.36297607421875
+              },
+              "confidence": null,
+              "text": "Coverage"
+            },
+            {
+              "bbox": {
+                "height": 9.3404541015625,
+                "left": 593.8114013671875,
+                "top": 323.9987487792969,
+                "width": 135.39892578125
+              },
+              "confidence": null,
+              "text": "Recommended"
+            },
+            {
+              "bbox": {
+                "height": 9.3404541015625,
+                "left": 736.9505615234375,
+                "top": 323.9987487792969,
+                "width": 46.8450927734375
+              },
+              "confidence": null,
+              "text": "plans"
+            },
+            {
+              "bbox": {
+                "height": 9.3404541015625,
+                "left": 821.9371948242188,
+                "top": 323.9987487792969,
+                "width": 37.5543212890625
+              },
+              "confidence": null,
+              "text": "Plan"
+            },
+            {
+              "bbox": {
+                "height": 9.3404541015625,
+                "left": 865.8619384765625,
+                "top": 323.9987487792969,
+                "width": 58.4102783203125
+              },
+              "confidence": null,
+              "text": "details"
+            },
+            {
+              "bbox": {
+                "height": 39.39599609375,
+                "left": 69.44608306884766,
+                "top": 509.9432067871094,
+                "width": 195.37969970703125
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 55.7760009765625,
+                "left": 285.5491943359375,
+                "top": 493.5632019042969,
+                "width": 85.0968017578125
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 56.531982421875,
+                "left": 396.3444519042969,
+                "top": 492.8072204589844,
+                "width": 120.67294311523438
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 39.39599609375,
+                "left": 540.96435546875,
+                "top": 509.9432067871094,
+                "width": 364.9599609375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 40.2359619140625,
+                "left": 926.0607299804688,
+                "top": 509.1032409667969,
+                "width": 137.83642578125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 55.7760009765625,
+                "left": 472.83154296875,
+                "top": 589.5631713867188,
+                "width": 190.81292724609375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 74.33908081054688,
+                "top": 893.4901733398438,
+                "width": 76.94760131835938
+              },
+              "confidence": null,
+              "text": "Monthly"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 157.7594451904297,
+                "top": 893.4901733398438,
+                "width": 83.11775207519531
+              },
+              "confidence": null,
+              "text": "premium"
+            },
+            {
+              "bbox": {
+                "height": 2.9520263671875,
+                "left": 74.54907989501953,
+                "top": 948.3871459960938,
+                "width": 97.48612213134766
+              },
+              "confidence": null,
+              "text": "$1163.34"
+            },
+            {
+              "bbox": {
+                "height": 10.05902099609375,
+                "left": 73.62507629394531,
+                "top": 1010.2801513671875,
+                "width": 86.65412902832031
+              },
+              "confidence": null,
+              "text": "Calendar"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 165.84666442871094,
+                "top": 1010.4901733398438,
+                "width": 42.61564636230469
+              },
+              "confidence": null,
+              "text": "year"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 214.49176025390625,
+                "top": 1010.4901733398438,
+                "width": 99.25537109375
+              },
+              "confidence": null,
+              "text": "deductible"
+            },
+            {
+              "bbox": {
+                "height": 2.3759765625,
+                "left": 74.54907989501953,
+                "top": 1065.9632568359375,
+                "width": 74.90287017822266
+              },
+              "confidence": null,
+              "text": "$5,200"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 158.74163818359375,
+                "top": 1055.4752197265625,
+                "width": 34.04588317871094
+              },
+              "confidence": null,
+              "text": "per"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 200.7806396484375,
+                "top": 1055.6912841796875,
+                "width": 99.80850219726562
+              },
+              "confidence": null,
+              "text": "individual"
+            },
+            {
+              "bbox": {
+                "height": 21.88800048828125,
+                "left": 308.41595458984375,
+                "top": 1050.6751708984375,
+                "width": 7.32000732421875
+              },
+              "confidence": null,
+              "text": "/"
+            },
+            {
+              "bbox": {
+                "height": 2.3759765625,
+                "left": 323.220947265625,
+                "top": 1065.9632568359375,
+                "width": 86.45758056640625
+              },
+              "confidence": null,
+              "text": "$10,400"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 418.96820068359375,
+                "top": 1055.4752197265625,
+                "width": 34.045867919921875
+              },
+              "confidence": null,
+              "text": "per"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 460.0711975097656,
+                "top": 1055.6912841796875,
+                "width": 63.729278564453125
+              },
+              "confidence": null,
+              "text": "family"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 73.62507629394531,
+                "top": 1127.2802734375,
+                "width": 86.65412902832031
+              },
+              "confidence": null,
+              "text": "Calendar"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 165.84666442871094,
+                "top": 1127.490234375,
+                "width": 42.61564636230469
+              },
+              "confidence": null,
+              "text": "year"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 215.03778076171875,
+                "top": 1127.490234375,
+                "width": 95.9227294921875
+              },
+              "confidence": null,
+              "text": "pharmacy"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 316.88726806640625,
+                "top": 1127.490234375,
+                "width": 99.25537109375
+              },
+              "confidence": null,
+              "text": "deductible"
+            },
+            {
+              "bbox": {
+                "height": 17.3280029296875,
+                "left": 74.54907989501953,
+                "top": 1168.419189453125,
+                "width": 40.871620178222656
+              },
+              "confidence": null,
+              "text": "$50"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 124.71038818359375,
+                "top": 1172.4752197265625,
+                "width": 34.04588317871094
+              },
+              "confidence": null,
+              "text": "per"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 166.7493896484375,
+                "top": 1172.6912841796875,
+                "width": 99.80850219726562
+              },
+              "confidence": null,
+              "text": "individual"
+            },
+            {
+              "bbox": {
+                "height": 21.88800048828125,
+                "left": 274.38470458984375,
+                "top": 1167.6751708984375,
+                "width": 7.32000732421875
+              },
+              "confidence": null,
+              "text": "/"
+            },
+            {
+              "bbox": {
+                "height": 16.920013427734375,
+                "left": 289.189697265625,
+                "top": 1168.419189453125,
+                "width": 51.81695556640625
+              },
+              "confidence": null,
+              "text": "$100"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 350.29632568359375,
+                "top": 1172.4752197265625,
+                "width": 34.045867919921875
+              },
+              "confidence": null,
+              "text": "per"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 391.3993225097656,
+                "top": 1172.6912841796875,
+                "width": 63.729278564453125
+              },
+              "confidence": null,
+              "text": "family"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 73.62507629394531,
+                "top": 1244.2802734375,
+                "width": 86.65412902832031
+              },
+              "confidence": null,
+              "text": "Calendar"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 165.84666442871094,
+                "top": 1244.490234375,
+                "width": 42.61564636230469
+              },
+              "confidence": null,
+              "text": "year"
+            },
+            {
+              "bbox": {
+                "height": 2.20501708984375,
+                "left": 214.47076416015625,
+                "top": 1247.4932861328125,
+                "width": 134.10830688476562
+              },
+              "confidence": null,
+              "text": "out-of-pocket"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 355.08563232421875,
+                "top": 1244.490234375,
+                "width": 93.32037353515625
+              },
+              "confidence": null,
+              "text": "maximum"
+            },
+            {
+              "bbox": {
+                "height": 2.66400146484375,
+                "left": 74.54907989501953,
+                "top": 1299.9632568359375,
+                "width": 75.72318267822266
+              },
+              "confidence": null,
+              "text": "$9,800"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 159.56195068359375,
+                "top": 1289.4752197265625,
+                "width": 34.04588317871094
+              },
+              "confidence": null,
+              "text": "per"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 201.6009521484375,
+                "top": 1289.6912841796875,
+                "width": 99.80850219726562
+              },
+              "confidence": null,
+              "text": "individual"
+            },
+            {
+              "bbox": {
+                "height": 21.88800048828125,
+                "left": 309.23626708984375,
+                "top": 1284.6751708984375,
+                "width": 7.32000732421875
+              },
+              "confidence": null,
+              "text": "/"
+            },
+            {
+              "bbox": {
+                "height": 2.376007080078125,
+                "left": 324.041259765625,
+                "top": 1299.9632568359375,
+                "width": 86.22320556640625
+              },
+              "confidence": null,
+              "text": "$19,600"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 419.55413818359375,
+                "top": 1289.4752197265625,
+                "width": 34.045867919921875
+              },
+              "confidence": null,
+              "text": "per"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 460.6571350097656,
+                "top": 1289.6912841796875,
+                "width": 63.729278564453125
+              },
+              "confidence": null,
+              "text": "family"
+            },
+            {
+              "bbox": {
+                "height": 11.4959716796875,
+                "left": 68.54907989501953,
+                "top": 819.8432006835938,
+                "width": 46.220726013183594
+              },
+              "confidence": null,
+              "text": "Plan"
+            },
+            {
+              "bbox": {
+                "height": 11.7359619140625,
+                "left": 122.61030578613281,
+                "top": 819.8432006835938,
+                "width": 44.16448974609375
+              },
+              "confidence": null,
+              "text": "cost"
+            },
+            {
+              "bbox": {
+                "height": 11.2559814453125,
+                "left": 173.5868682861328,
+                "top": 820.0831909179688,
+                "width": 101.78904724121094
+              },
+              "confidence": null,
+              "text": "summary"
+            },
+            {
+              "bbox": {
+                "height": 11.496002197265625,
+                "left": 68.54907989501953,
+                "top": 1448.34326171875,
+                "width": 29.72193145751953
+              },
+              "confidence": null,
+              "text": "No"
+            },
+            {
+              "bbox": {
+                "height": 11.736000061035156,
+                "left": 105.59468078613281,
+                "top": 1448.34326171875,
+                "width": 44.16448974609375
+              },
+              "confidence": null,
+              "text": "cost"
+            },
+            {
+              "bbox": {
+                "height": 11.255996704101562,
+                "left": 157.1952362060547,
+                "top": 1448.583251953125,
+                "width": 138.70912170410156
+              },
+              "confidence": null,
+              "text": "preventative"
+            },
+            {
+              "bbox": {
+                "height": 11.496002197265625,
+                "left": 302.62200927734375,
+                "top": 1448.34326171875,
+                "width": 46.7550048828125
+              },
+              "confidence": null,
+              "text": "care"
+            },
+            {
+              "bbox": {
+                "height": 12.662994384765625,
+                "left": 443.87628173828125,
+                "top": 1441.17626953125,
+                "width": 81.0302734375
+              },
+              "confidence": null,
+              "text": "Return"
+            },
+            {
+              "bbox": {
+                "height": 13.202995300292969,
+                "left": 533.4481811523438,
+                "top": 1440.90625,
+                "width": 24.662353515625
+              },
+              "confidence": null,
+              "text": "to"
+            },
+            {
+              "bbox": {
+                "height": 12.932998657226562,
+                "left": 567.231689453125,
+                "top": 1440.90625,
+                "width": 51.27325439453125
+              },
+              "confidence": null,
+              "text": "plan"
+            },
+            {
+              "bbox": {
+                "height": 12.932998657226562,
+                "left": 627.5055541992188,
+                "top": 1440.90625,
+                "width": 106.5439453125
+              },
+              "confidence": null,
+              "text": "selection"
+            },
+            {
+              "bbox": {
+                "height": 1.64697265625,
+                "left": 2.092426300048828,
+                "top": 40.692230224609375,
+                "width": 44.23886489868164
+              },
+              "confidence": null,
+              "text": "6/7/26,"
+            },
+            {
+              "bbox": {
+                "height": 7.4512939453125,
+                "left": 50.92040252685547,
+                "top": 34.887908935546875,
+                "width": 27.292198181152344
+              },
+              "confidence": null,
+              "text": "5:40"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 82.19908142089844,
+                "top": 31.593963623046875,
+                "width": 25.106979370117188
+              },
+              "confidence": null,
+              "text": "AM"
+            },
+            {
+              "bbox": {
+                "height": 7.371337890625,
+                "left": 520.1890869140625,
+                "top": 34.967864990234375,
+                "width": 37.571044921875
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 10.8731689453125,
+                "left": 562.0296020507812,
+                "top": 31.593963623046875,
+                "width": 15.04656982421875
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 10.9691162109375,
+                "left": 582.1769409179688,
+                "top": 31.370086669921875,
+                "width": 22.235595703125
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 7.2913818359375,
+                "left": 607.7865600585938,
+                "top": 35.047821044921875,
+                "width": 62.4974365234375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 674.5895385742188,
+                "top": 34.903900146484375,
+                "width": 26.27178955078125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 705.5943603515625,
+                "top": 31.593963623046875,
+                "width": 36.46234130859375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 746.9043579101562,
+                "top": 34.903900146484375,
+                "width": 30.4609375
+              },
+              "confidence": null,
+              "text": "Page"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 1,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "e787c4d3-1b35-446a-a6cc-28b9487e6215_merged",
+          "segment_type": "Table"
+        }
+      ]
+    },
+    {
+      "chunk_id": "a711b2b8-b79e-46d8-b1ff-0eed1cbe6266",
+      "chunk_length": 1,
+      "embed": "1/7",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.5745849609375,
+            "left": 1154.6722412109375,
+            "top": 1535.73828125,
+            "width": 21.715087890625
+          },
+          "confidence": 0.9948300123214722,
+          "content": "1/7",
+          "html": "1/7",
+          "image": null,
+          "markdown": "1/7",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.745277404785156,
+                "left": 2.6182861328125,
+                "top": 3.0164794921875,
+                "width": 17.8734130859375
+              },
+              "confidence": null,
+              "text": "1/7"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 1,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "9cb03483-0bc4-4ed8-bcea-aaf674784026",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "52d211b0-ee2a-4667-84bd-d3d2b0431038",
+      "chunk_length": 1,
+      "embed": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.313232421875,
+            "left": 45.868038177490234,
+            "top": 1536.2208251953125,
+            "width": 444.1612854003906
+          },
+          "confidence": 0.990929126739502,
+          "content": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "html": "<a href=\"https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details\">https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details</a>",
+          "image": null,
+          "markdown": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.5030593872070312,
+                "left": 2.2758712768554688,
+                "top": 11.68017578125,
+                "width": 438.7035217285156
+              },
+              "confidence": null,
+              "text": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 1,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "f95d48a0-ab5f-46fd-9be8-701ad76da35a",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "10a89be1-db46-4adc-a13f-54496cb8055c",
+      "chunk_length": 7,
+      "embed": "Silver 70 Off Exchange Trio HMO Page",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.985244750976562,
+            "left": 565.004638671875,
+            "top": 30.357227325439453,
+            "width": 262.236328125
+          },
+          "confidence": 0.985883891582489,
+          "content": "Silver 70 Off Exchange Trio HMO Page",
+          "html": "Silver 70 Off Exchange Trio HMO Page",
+          "image": null,
+          "markdown": "Silver 70 Off Exchange Trio HMO Page",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 7.371337890625,
+                "left": 1.63568115234375,
+                "top": 7.271434783935547,
+                "width": 37.571044921875
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 10.8731689453125,
+                "left": 43.4761962890625,
+                "top": 3.897533416748047,
+                "width": 15.04656982421875
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 10.9691162109375,
+                "left": 63.62353515625,
+                "top": 3.673656463623047,
+                "width": 22.235595703125
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 7.2913818359375,
+                "left": 89.233154296875,
+                "top": 7.351390838623047,
+                "width": 62.4974365234375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 156.0361328125,
+                "top": 7.207469940185547,
+                "width": 26.27178955078125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 187.04095458984375,
+                "top": 3.897533416748047,
+                "width": 36.46234130859375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 228.3509521484375,
+                "top": 7.207469940185547,
+                "width": 30.4609375
+              },
+              "confidence": null,
+              "text": "Page"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 2,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "feb6a110-be89-4110-8ebd-046851d1c2e0",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "b51f3115-1b61-4b5c-ab13-0ea56c597faa",
+      "chunk_length": 3,
+      "embed": "5:40 AM\n6/7/26,",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.78722381591797,
+            "left": 46.77802276611328,
+            "top": 30.89153289794922,
+            "width": 109.82112884521484
+          },
+          "confidence": 0.9538261294364929,
+          "content": "5:40 AM\n6/7/26,",
+          "html": "5:40 AM<br />\n6/7/26,",
+          "image": null,
+          "markdown": "5:40 AM\n6/7/26,",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.64697265625,
+                "left": 1.7656364440917969,
+                "top": 12.461494445800781,
+                "width": 44.23886489868164
+              },
+              "confidence": null,
+              "text": "6/7/26,"
+            },
+            {
+              "bbox": {
+                "height": 7.4512939453125,
+                "left": 50.59361267089844,
+                "top": 6.657173156738281,
+                "width": 27.292198181152344
+              },
+              "confidence": null,
+              "text": "5:40"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 81.8722915649414,
+                "top": 3.3632278442382812,
+                "width": 25.106979370117188
+              },
+              "confidence": null,
+              "text": "AM"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 2,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "d14507f1-0119-481c-9efa-f02f8e2ba9a5",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "00bf8776-3ce5-4c20-8478-419b048e4ce0",
+      "chunk_length": 1,
+      "embed": "2/7",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.841064453125,
+            "left": 1154.4405517578125,
+            "top": 1535.50439453125,
+            "width": 22.7572021484375
+          },
+          "confidence": 0.9948714971542358,
+          "content": "2/7",
+          "html": "2/7",
+          "image": null,
+          "markdown": "2/7",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.745277404785156,
+                "left": 1.5548095703125,
+                "top": 3.2503662109375,
+                "width": 19.1685791015625
+              },
+              "confidence": null,
+              "text": "2/7"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 2,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "b31583ff-000d-408f-a282-40bf798be43a",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "7a70f468-1485-40e8-b2a0-8c8a9390e3a3",
+      "chunk_length": 1,
+      "embed": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.75341796875,
+            "left": 46.315673828125,
+            "top": 1535.700927734375,
+            "width": 443.60589599609375
+          },
+          "confidence": 0.9954515695571899,
+          "content": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "html": "<a href=\"https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details\">https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details</a>",
+          "image": null,
+          "markdown": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.5030593872070312,
+                "left": 1.8282356262207031,
+                "top": 12.2000732421875,
+                "width": 438.7035217285156
+              },
+              "confidence": null,
+              "text": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 2,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "1237d43a-c1ac-4b93-bbc4-a57bb590ea0a",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "9125da5f-2e96-466a-a2f9-9a0e6f061dfa",
+      "chunk_length": 7,
+      "embed": "Silver 70 Off Exchange Trio HMO Page",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.679418563842773,
+            "left": 564.5303344726562,
+            "top": 30.4448184967041,
+            "width": 263.7034912109375
+          },
+          "confidence": 0.992954671382904,
+          "content": "Silver 70 Off Exchange Trio HMO Page",
+          "html": "Silver 70 Off Exchange Trio HMO Page",
+          "image": null,
+          "markdown": "Silver 70 Off Exchange Trio HMO Page",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 7.371337890625,
+                "left": 2.1099853515625,
+                "top": 7.183843612670898,
+                "width": 37.571044921875
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 10.8731689453125,
+                "left": 43.95050048828125,
+                "top": 3.8099422454833984,
+                "width": 15.04656982421875
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 10.9691162109375,
+                "left": 64.09783935546875,
+                "top": 3.5860652923583984,
+                "width": 22.235595703125
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 7.2913818359375,
+                "left": 89.70745849609375,
+                "top": 7.263799667358398,
+                "width": 62.4974365234375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 156.51043701171875,
+                "top": 7.119878768920898,
+                "width": 26.27178955078125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 187.5152587890625,
+                "top": 3.8099422454833984,
+                "width": 36.46234130859375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 228.82525634765625,
+                "top": 7.119878768920898,
+                "width": 30.4609375
+              },
+              "confidence": null,
+              "text": "Page"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "13252559-025d-40ca-b992-b03b46400c0b",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "014c6dad-cb31-4904-a573-83e81fbe45d1",
+      "chunk_length": 3,
+      "embed": "5:40 AM\n6/7/26,",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.024566650390625,
+            "left": 46.36845397949219,
+            "top": 30.70673370361328,
+            "width": 110.7159423828125
+          },
+          "confidence": 0.9823558330535889,
+          "content": "5:40 AM\n6/7/26,",
+          "html": "5:40 AM<br />\n6/7/26,",
+          "image": null,
+          "markdown": "5:40 AM\n6/7/26,",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.64697265625,
+                "left": 2.1752052307128906,
+                "top": 12.646293640136719,
+                "width": 44.23886489868164
+              },
+              "confidence": null,
+              "text": "6/7/26,"
+            },
+            {
+              "bbox": {
+                "height": 7.4512939453125,
+                "left": 51.00318145751953,
+                "top": 6.841972351074219,
+                "width": 27.292198181152344
+              },
+              "confidence": null,
+              "text": "5:40"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 82.2818603515625,
+                "top": 3.5480270385742188,
+                "width": 25.106979370117188
+              },
+              "confidence": null,
+              "text": "AM"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "9ad28eb8-e23d-40c7-ae0d-8f2953292c63",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "cf1fd68f-2859-47b7-8533-5e1d00a1a798",
+      "chunk_length": 9,
+      "embed": "Before pharmacy deductible:\nFull cost\nAfter pharmacy deductible:\n$60",
+      "segments": [
+        {
+          "bbox": {
+            "height": 66.33303833007812,
+            "left": 118.13395690917969,
+            "top": 59.34246826171875,
+            "width": 321.64910888671875
+          },
+          "confidence": 0.8574198484420776,
+          "content": "Before pharmacy deductible:\nFull cost",
+          "html": "Before pharmacy deductible:<br />\nFull cost",
+          "image": null,
+          "markdown": "Before pharmacy deductible:\nFull cost",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 3.322357177734375,
+                "top": 10.29351806640625,
+                "width": 68.58561706542969
+              },
+              "confidence": null,
+              "text": "Before"
+            },
+            {
+              "bbox": {
+                "height": 12.64794921875,
+                "left": 80.87141418457031,
+                "top": 10.50958251953125,
+                "width": 106.004150390625
+              },
+              "confidence": null,
+              "text": "pharmacy"
+            },
+            {
+              "bbox": {
+                "height": 12.0,
+                "left": 194.72731018066406,
+                "top": 11.15753173828125,
+                "width": 119.18768310546875
+              },
+              "confidence": null,
+              "text": "deductible:"
+            },
+            {
+              "bbox": {
+                "height": 12.64794921875,
+                "left": 3.322357177734375,
+                "top": 46.50958251953125,
+                "width": 34.32234191894531
+              },
+              "confidence": null,
+              "text": "Full"
+            },
+            {
+              "bbox": {
+                "height": 12.9599609375,
+                "left": 46.719512939453125,
+                "top": 46.29351806640625,
+                "width": 44.98443603515625
+              },
+              "confidence": null,
+              "text": "cost"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "b6efb1db-7417-46b2-a39a-db44fe3dcdee",
+          "segment_type": "Text"
+        },
+        {
+          "bbox": {
+            "height": 66.44059753417969,
+            "left": 118.58831787109375,
+            "top": 167.09304809570312,
+            "width": 301.78448486328125
+          },
+          "confidence": 0.8164631724357605,
+          "content": "After pharmacy deductible:\n$60",
+          "html": "After pharmacy deductible:<br />\n$60",
+          "image": null,
+          "markdown": "After pharmacy deductible:\n$60",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 1.5239944458007812,
+                "top": 10.542938232421875,
+                "width": 52.610816955566406
+              },
+              "confidence": null,
+              "text": "After"
+            },
+            {
+              "bbox": {
+                "height": 12.64794921875,
+                "left": 62.46392822265625,
+                "top": 10.759002685546875,
+                "width": 106.004150390625
+              },
+              "confidence": null,
+              "text": "pharmacy"
+            },
+            {
+              "bbox": {
+                "height": 12.0,
+                "left": 176.31982421875,
+                "top": 11.406951904296875,
+                "width": 119.18768310546875
+              },
+              "confidence": null,
+              "text": "deductible:"
+            },
+            {
+              "bbox": {
+                "height": 17.7359619140625,
+                "left": 2.4119949340820312,
+                "top": 42.078948974609375,
+                "width": 41.316932678222656
+              },
+              "confidence": null,
+              "text": "$60"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "3e87473f-f90f-412d-baee-11c282e97e89",
+          "segment_type": "Text"
+        }
+      ]
+    },
+    {
+      "chunk_id": "bbbb25c8-af45-4bb8-8dee-e2dcada52053",
+      "chunk_length": 17,
+      "embed": "## Retail Prescription Drugs - Non-Preferred Brand Drugs\nBefore pharmacy deductible:\nFull cost\nAfter pharmacy deductible:\n$90",
+      "segments": [
+        {
+          "bbox": {
+            "height": 25.101318359375,
+            "left": 117.76594543457031,
+            "top": 277.02752685546875,
+            "width": 529.952392578125
+          },
+          "confidence": 0.8634817004203796,
+          "content": "Retail Prescription Drugs - Non-Preferred Brand Drugs",
+          "html": "<h2>Retail Prescription Drugs - Non-Preferred Brand Drugs</h2>",
+          "image": null,
+          "markdown": "## Retail Prescription Drugs - Non-Preferred Brand Drugs",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 3.0243682861328125,
+                "top": 8.41351318359375,
+                "width": 53.96138000488281
+              },
+              "confidence": null,
+              "text": "Retail"
+            },
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 64.71186828613281,
+                "top": 8.41351318359375,
+                "width": 112.364013671875
+              },
+              "confidence": null,
+              "text": "Prescription"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 184.7133331298828,
+                "top": 8.62347412109375,
+                "width": 54.733306884765625
+              },
+              "confidence": null,
+              "text": "Drugs"
+            },
+            {
+              "bbox": {
+                "height": 2.2049560546875,
+                "left": 246.17616271972656,
+                "top": 11.62652587890625,
+                "width": 7.118988037109375
+              },
+              "confidence": null,
+              "text": "-"
+            },
+            {
+              "bbox": {
+                "height": 2.2049560546875,
+                "left": 260.85882568359375,
+                "top": 11.62652587890625,
+                "width": 138.12533569335938
+              },
+              "confidence": null,
+              "text": "Non-Preferred"
+            },
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 406.72064208984375,
+                "top": 8.41351318359375,
+                "width": 56.0120849609375
+              },
+              "confidence": null,
+              "text": "Brand"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 470.46917724609375,
+                "top": 8.62347412109375,
+                "width": 54.73333740234375
+              },
+              "confidence": null,
+              "text": "Drugs"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "2911e0c7-2d9f-412b-aa0c-0d8c0de120f6",
+          "segment_type": "SectionHeader"
+        },
+        {
+          "bbox": {
+            "height": 67.69741821289062,
+            "left": 118.24849700927734,
+            "top": 319.6822509765625,
+            "width": 320.68255615234375
+          },
+          "confidence": 0.8127527236938477,
+          "content": "Before pharmacy deductible:\nFull cost",
+          "html": "Before pharmacy deductible:<br />\nFull cost",
+          "image": null,
+          "markdown": "Before pharmacy deductible:\nFull cost",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 3.2078170776367188,
+                "top": 10.9537353515625,
+                "width": 68.58561706542969
+              },
+              "confidence": null,
+              "text": "Before"
+            },
+            {
+              "bbox": {
+                "height": 12.64794921875,
+                "left": 80.75687408447266,
+                "top": 11.1697998046875,
+                "width": 106.004150390625
+              },
+              "confidence": null,
+              "text": "pharmacy"
+            },
+            {
+              "bbox": {
+                "height": 12.0,
+                "left": 194.61276245117188,
+                "top": 11.8177490234375,
+                "width": 119.18768310546875
+              },
+              "confidence": null,
+              "text": "deductible:"
+            },
+            {
+              "bbox": {
+                "height": 12.64794921875,
+                "left": 3.2078170776367188,
+                "top": 47.1697998046875,
+                "width": 34.32234191894531
+              },
+              "confidence": null,
+              "text": "Full"
+            },
+            {
+              "bbox": {
+                "height": 12.9599609375,
+                "left": 46.60497283935547,
+                "top": 46.9537353515625,
+                "width": 44.98443603515625
+              },
+              "confidence": null,
+              "text": "cost"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "9e5ba5a6-87fb-4ab6-bdc1-0f0a4749ce3b",
+          "segment_type": "Text"
+        },
+        {
+          "bbox": {
+            "height": 64.777099609375,
+            "left": 116.48861694335938,
+            "top": 429.0556640625,
+            "width": 305.3360900878906
+          },
+          "confidence": 0.9224637746810913,
+          "content": "After pharmacy deductible:\n$90",
+          "html": "After pharmacy deductible:<br />\n$90",
+          "image": null,
+          "markdown": "After pharmacy deductible:\n$90",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 3.6236953735351562,
+                "top": 9.580322265625,
+                "width": 52.610816955566406
+              },
+              "confidence": null,
+              "text": "After"
+            },
+            {
+              "bbox": {
+                "height": 12.64794921875,
+                "left": 64.56362915039062,
+                "top": 9.79638671875,
+                "width": 106.004150390625
+              },
+              "confidence": null,
+              "text": "pharmacy"
+            },
+            {
+              "bbox": {
+                "height": 12.0,
+                "left": 178.41952514648438,
+                "top": 10.4443359375,
+                "width": 119.18768310546875
+              },
+              "confidence": null,
+              "text": "deductible:"
+            },
+            {
+              "bbox": {
+                "height": 17.7359619140625,
+                "left": 4.511695861816406,
+                "top": 41.1163330078125,
+                "width": 41.316932678222656
+              },
+              "confidence": null,
+              "text": "$90"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "9494da13-0efc-4f3e-9a3c-728c70b32705",
+          "segment_type": "Text"
+        }
+      ]
+    },
+    {
+      "chunk_id": "4b9cf9a0-a96b-4561-a729-2a87cafd6de4",
+      "chunk_length": 24,
+      "embed": "## Retail Prescription Drugs -Specialty Drugs\nBefore pharmacy deductible:\nFull cost\nAfter pharmacy deductible:\n20% up to $250 per prescription\nPhysician and medical services",
+      "segments": [
+        {
+          "bbox": {
+            "height": 26.3607177734375,
+            "left": 117.97005462646484,
+            "top": 537.3524780273438,
+            "width": 408.4848937988281
+          },
+          "confidence": 0.9096376895904541,
+          "content": "Retail Prescription Drugs -Specialty Drugs",
+          "html": "<h2>Retail Prescription Drugs -Specialty Drugs</h2>",
+          "image": null,
+          "markdown": "## Retail Prescription Drugs -Specialty Drugs",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 2.8202590942382812,
+                "top": 9.08856201171875,
+                "width": 53.96138000488281
+              },
+              "confidence": null,
+              "text": "Retail"
+            },
+            {
+              "bbox": {
+                "height": 10.0589599609375,
+                "left": 64.50775909423828,
+                "top": 9.08856201171875,
+                "width": 112.364013671875
+              },
+              "confidence": null,
+              "text": "Prescription"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 184.50921630859375,
+                "top": 9.29852294921875,
+                "width": 54.733306884765625
+              },
+              "confidence": null,
+              "text": "Drugs"
+            },
+            {
+              "bbox": {
+                "height": 2.2049560546875,
+                "left": 245.9720458984375,
+                "top": 12.30157470703125,
+                "width": 96.04971313476562
+              },
+              "confidence": null,
+              "text": "-Specialty"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 348.72552490234375,
+                "top": 9.29852294921875,
+                "width": 54.733306884765625
+              },
+              "confidence": null,
+              "text": "Drugs"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "6579cd76-30dc-4ae9-aabb-38e089325a04",
+          "segment_type": "SectionHeader"
+        },
+        {
+          "bbox": {
+            "height": 66.75372314453125,
+            "left": 118.25849914550781,
+            "top": 581.3728637695312,
+            "width": 320.19366455078125
+          },
+          "confidence": 0.7020068168640137,
+          "content": "Before pharmacy deductible:\nFull cost",
+          "html": "Before pharmacy deductible:<br />\nFull cost",
+          "image": null,
+          "markdown": "Before pharmacy deductible:\nFull cost",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 3.19781494140625,
+                "top": 10.26312255859375,
+                "width": 68.58561706542969
+              },
+              "confidence": null,
+              "text": "Before"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 80.74687194824219,
+                "top": 10.4791259765625,
+                "width": 106.004150390625
+              },
+              "confidence": null,
+              "text": "pharmacy"
+            },
+            {
+              "bbox": {
+                "height": 12.0,
+                "left": 194.60276794433594,
+                "top": 11.12713623046875,
+                "width": 119.18768310546875
+              },
+              "confidence": null,
+              "text": "deductible:"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 3.19781494140625,
+                "top": 46.4791259765625,
+                "width": 34.32234191894531
+              },
+              "confidence": null,
+              "text": "Full"
+            },
+            {
+              "bbox": {
+                "height": 12.96002197265625,
+                "left": 46.594970703125,
+                "top": 46.26312255859375,
+                "width": 44.98443603515625
+              },
+              "confidence": null,
+              "text": "cost"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "43f04c11-a8a5-4ee1-a599-092005a79ff3",
+          "segment_type": "Text"
+        },
+        {
+          "bbox": {
+            "height": 66.2867431640625,
+            "left": 117.59222412109375,
+            "top": 689.3598022460938,
+            "width": 362.22930908203125
+          },
+          "confidence": 0.8560621738433838,
+          "content": "After pharmacy deductible:\n20% up to $250 per prescription",
+          "html": "After pharmacy deductible:<br />\n20% up to $250 per prescription",
+          "image": null,
+          "markdown": "After pharmacy deductible:\n20% up to $250 per prescription",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 2.5200881958007812,
+                "top": 10.27618408203125,
+                "width": 52.610816955566406
+              },
+              "confidence": null,
+              "text": "After"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 63.46002197265625,
+                "top": 10.4921875,
+                "width": 106.004150390625
+              },
+              "confidence": null,
+              "text": "pharmacy"
+            },
+            {
+              "bbox": {
+                "height": 12.0,
+                "left": 177.31591796875,
+                "top": 11.14019775390625,
+                "width": 119.18768310546875
+              },
+              "confidence": null,
+              "text": "deductible:"
+            },
+            {
+              "bbox": {
+                "height": 17.135986328125,
+                "left": 3.4800872802734375,
+                "top": 42.00421142578125,
+                "width": 47.55206298828125
+              },
+              "confidence": null,
+              "text": "20%"
+            },
+            {
+              "bbox": {
+                "height": 12.88800048828125,
+                "left": 60.18768310546875,
+                "top": 46.4921875,
+                "width": 25.127151489257812
+              },
+              "confidence": null,
+              "text": "up"
+            },
+            {
+              "bbox": {
+                "height": 12.96002197265625,
+                "left": 93.10377502441406,
+                "top": 46.27618408203125,
+                "width": 20.314224243164062
+              },
+              "confidence": null,
+              "text": "to"
+            },
+            {
+              "bbox": {
+                "height": 16.91998291015625,
+                "left": 122.1541748046875,
+                "top": 42.22021484375,
+                "width": 54.88726806640625
+              },
+              "confidence": null,
+              "text": "$250"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 186.33111572265625,
+                "top": 46.27618408203125,
+                "width": 34.045867919921875
+              },
+              "confidence": null,
+              "text": "per"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 228.70611572265625,
+                "top": 46.27618408203125,
+                "width": 126.875244140625
+              },
+              "confidence": null,
+              "text": "prescription"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "578d2155-75b5-4a52-92bf-fbedf63156ec",
+          "segment_type": "Text"
+        },
+        {
+          "bbox": {
+            "height": 29.03094482421875,
+            "left": 113.0619125366211,
+            "top": 884.5558471679688,
+            "width": 339.8488464355469
+          },
+          "confidence": 0.7708773612976074,
+          "content": "Physician and medical services",
+          "html": "Physician and medical services",
+          "image": null,
+          "markdown": "Physician and medical services",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 11.2559814453125,
+                "left": 1.9384002685546875,
+                "top": 10.18817138671875,
+                "width": 100.8535385131836
+              },
+              "confidence": null,
+              "text": "Physician"
+            },
+            {
+              "bbox": {
+                "height": 11.4959716796875,
+                "left": 110.63243865966797,
+                "top": 9.94818115234375,
+                "width": 40.02290344238281
+              },
+              "confidence": null,
+              "text": "and"
+            },
+            {
+              "bbox": {
+                "height": 11.4959716796875,
+                "left": 159.23297119140625,
+                "top": 9.94818115234375,
+                "width": 82.99276733398438
+              },
+              "confidence": null,
+              "text": "medical"
+            },
+            {
+              "bbox": {
+                "height": 11.2559814453125,
+                "left": 250.16757202148438,
+                "top": 10.18817138671875,
+                "width": 85.04971313476562
+              },
+              "confidence": null,
+              "text": "services"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "f487eaa8-51f6-46ff-9509-f3cc16a5afa7",
+          "segment_type": "Text"
+        }
+      ]
+    },
+    {
+      "chunk_id": "c602455e-6705-44fb-b1d0-9a967c046ff3",
+      "chunk_length": 13,
+      "embed": "## Office Visit - Primary Care (internal family pediatrics)\nmedicine, practice, OB/GYN,\n$50",
+      "segments": [
+        {
+          "bbox": {
+            "height": 26.59283447265625,
+            "left": 117.82904815673828,
+            "top": 958.630615234375,
+            "width": 798.3796997070312
+          },
+          "confidence": 0.7840144634246826,
+          "content": "Office Visit - Primary Care (internal family pediatrics)\nmedicine, practice, OB/GYN,",
+          "html": "<h2>Office Visit - Primary Care (internal family pediatrics)<br />\nmedicine, practice, OB/GYN,</h2>",
+          "image": null,
+          "markdown": "## Office Visit - Primary Care (internal family pediatrics)\nmedicine, practice, OB/GYN,",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.05902099609375,
+                "left": 2.2472610473632812,
+                "top": 9.31036376953125,
+                "width": 57.233367919921875
+              },
+              "confidence": null,
+              "text": "Office"
+            },
+            {
+              "bbox": {
+                "height": 10.05902099609375,
+                "left": 64.83358001708984,
+                "top": 9.31036376953125,
+                "width": 41.80419921875
+              },
+              "confidence": null,
+              "text": "Visit"
+            },
+            {
+              "bbox": {
+                "height": 2.20501708984375,
+                "left": 112.97632598876953,
+                "top": 12.52337646484375,
+                "width": 7.1190032958984375
+              },
+              "confidence": null,
+              "text": "-"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 127.65901947021484,
+                "top": 9.5203857421875,
+                "width": 75.43002319335938
+              },
+              "confidence": null,
+              "text": "Primary"
+            },
+            {
+              "bbox": {
+                "height": 10.05902099609375,
+                "left": 209.07882690429688,
+                "top": 9.31036376953125,
+                "width": 44.754364013671875
+              },
+              "confidence": null,
+              "text": "Care"
+            },
+            {
+              "bbox": {
+                "height": 10.05902099609375,
+                "left": 259.75311279296875,
+                "top": 9.31036376953125,
+                "width": 78.6392822265625
+              },
+              "confidence": null,
+              "text": "(internal"
+            },
+            {
+              "bbox": {
+                "height": 2.60400390625,
+                "left": 345.88751220703125,
+                "top": 16.765380859375,
+                "width": 88.74810791015625
+              },
+              "confidence": null,
+              "text": "medicine,"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 441.0235595703125,
+                "top": 9.5203857421875,
+                "width": 59.89019775390625
+              },
+              "confidence": null,
+              "text": "family"
+            },
+            {
+              "bbox": {
+                "height": 2.60400390625,
+                "left": 507.38653564453125,
+                "top": 16.765380859375,
+                "width": 80.72955322265625
+              },
+              "confidence": null,
+              "text": "practice,"
+            },
+            {
+              "bbox": {
+                "height": 2.60400390625,
+                "left": 594.8820190429688,
+                "top": 16.765380859375,
+                "width": 90.84100341796875
+              },
+              "confidence": null,
+              "text": "OB/GYN,"
+            },
+            {
+              "bbox": {
+                "height": 10.05902099609375,
+                "left": 692.9719848632812,
+                "top": 9.31036376953125,
+                "width": 99.4393310546875
+              },
+              "confidence": null,
+              "text": "pediatrics)"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "d7372d2f-6442-40c7-929d-12b5d888c9f2",
+          "segment_type": "SectionHeader"
+        },
+        {
+          "bbox": {
+            "height": 26.70355224609375,
+            "left": 122.3798828125,
+            "top": 1004.6831665039062,
+            "width": 40.507781982421875
+          },
+          "confidence": 0.29817426204681396,
+          "content": "$50",
+          "html": "$50",
+          "image": null,
+          "markdown": "$50",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 17.3280029296875,
+                "left": -1.3795700073242188,
+                "top": 4.3968505859375,
+                "width": 40.871620178222656
+              },
+              "confidence": null,
+              "text": "$50"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "7892ff6d-5673-46d1-b37e-db87cded02c5",
+          "segment_type": "Text"
+        }
+      ]
+    },
+    {
+      "chunk_id": "4608aa47-78bf-44c7-a6ee-55575df397f1",
+      "chunk_length": 7,
+      "embed": "## Office Visit - Specialist Care\n$90",
+      "segments": [
+        {
+          "bbox": {
+            "height": 26.7386474609375,
+            "left": 118.65834045410156,
+            "top": 1075.4227294921875,
+            "width": 269.78765869140625
+          },
+          "confidence": 0.7689664363861084,
+          "content": "Office Visit - Specialist Care",
+          "html": "<h2>Office Visit - Specialist Care</h2>",
+          "image": null,
+          "markdown": "## Office Visit - Specialist Care",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 1.41796875,
+                "top": 9.518310546875,
+                "width": 57.233367919921875
+              },
+              "confidence": null,
+              "text": "Office"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 64.00428771972656,
+                "top": 9.518310546875,
+                "width": 41.80419921875
+              },
+              "confidence": null,
+              "text": "Visit"
+            },
+            {
+              "bbox": {
+                "height": 2.20501708984375,
+                "left": 112.14703369140625,
+                "top": 12.7313232421875,
+                "width": 7.1190032958984375
+              },
+              "confidence": null,
+              "text": "-"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 126.17872619628906,
+                "top": 9.518310546875,
+                "width": 90.1873779296875
+              },
+              "confidence": null,
+              "text": "Specialist"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 222.38966369628906,
+                "top": 9.518310546875,
+                "width": 44.754364013671875
+              },
+              "confidence": null,
+              "text": "Care"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "0cdd2184-e17c-458f-bc5e-8e4ade1eacb5",
+          "segment_type": "SectionHeader"
+        },
+        {
+          "bbox": {
+            "height": 30.82568359375,
+            "left": 119.42454528808594,
+            "top": 1119.2850341796875,
+            "width": 46.03485107421875
+          },
+          "confidence": 0.9614572525024414,
+          "content": "$90",
+          "html": "$90",
+          "image": null,
+          "markdown": "$90",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 17.735992431640625,
+                "left": 1.5757675170898438,
+                "top": 6.386962890625,
+                "width": 41.316932678222656
+              },
+              "confidence": null,
+              "text": "$90"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "865bb68a-db47-4f7a-8944-4dfb2357d766",
+          "segment_type": "Text"
+        }
+      ]
+    },
+    {
+      "chunk_id": "4e869932-bf3a-4448-b993-ef5a8a51ce3b",
+      "chunk_length": 46,
+      "embed": "## Teladoc (Medical and Mental Health)\n$0\nProvides 24/7 access to a national network of doctors and mental health professionals who\ncan be consulted on a variety of medical and mental health and may prescribe\nissues,\ncertain medications via phone or online video\nconsultations.\nRetail clinics",
+      "segments": [
+        {
+          "bbox": {
+            "height": 27.43505859375,
+            "left": 116.88191223144531,
+            "top": 1192.1094970703125,
+            "width": 358.8157958984375
+          },
+          "confidence": 0.7963079214096069,
+          "content": "Teladoc (Medical and Mental Health)",
+          "html": "<h2>Teladoc (Medical and Mental Health)</h2>",
+          "image": null,
+          "markdown": "## Teladoc (Medical and Mental Health)",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 2.690399169921875,
+                "top": 9.83154296875,
+                "width": 74.494873046875
+              },
+              "confidence": null,
+              "text": "Teladoc"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 83.50250244140625,
+                "top": 9.83154296875,
+                "width": 79.52110290527344
+              },
+              "confidence": null,
+              "text": "(Medical"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 169.9727020263672,
+                "top": 9.83154296875,
+                "width": 35.020050048828125
+              },
+              "confidence": null,
+              "text": "and"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 212.7292022705078,
+                "top": 9.83154296875,
+                "width": 64.56393432617188
+              },
+              "confidence": null,
+              "text": "Mental"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 285.01922607421875,
+                "top": 9.83154296875,
+                "width": 68.69271850585938
+              },
+              "confidence": null,
+              "text": "Health)"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "054d1692-0599-493e-b4a4-74166cf3dbb0",
+          "segment_type": "SectionHeader"
+        },
+        {
+          "bbox": {
+            "height": 32.2977294921875,
+            "left": 119.49031066894531,
+            "top": 1236.2052001953125,
+            "width": 31.426345825195312
+          },
+          "confidence": 0.9546847343444824,
+          "content": "$0",
+          "html": "$0",
+          "image": null,
+          "markdown": "$0",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 17.735992431640625,
+                "left": 1.5100021362304688,
+                "top": 6.466796875,
+                "width": 26.504432678222656
+              },
+              "confidence": null,
+              "text": "$0"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "3e3d2eef-3af2-400d-a43d-a97f369e4535",
+          "segment_type": "Text"
+        },
+        {
+          "bbox": {
+            "height": 163.78076171875,
+            "left": 117.39369201660156,
+            "top": 1273.21923828125,
+            "width": 994.766357421875
+          },
+          "confidence": 0.972446620464325,
+          "content": "Provides 24/7 access to a national network of doctors and mental health professionals who\ncan be consulted on a variety of medical and mental health and may prescribe\nissues,\ncertain medications via phone or online video\nconsultations.\nRetail clinics",
+          "html": "Provides 24/7 access to a national network of doctors and mental health professionals who<br />\ncan be consulted on a variety of medical and mental health and may prescribe<br />\nissues,<br />\ncertain medications via phone or online video<br />\nconsultations.<br />\nRetail clinics",
+          "image": null,
+          "markdown": "Provides 24/7 access to a national network of doctors and mental health professionals who\ncan be consulted on a variety of medical and mental health and may prescribe\nissues,\ncertain medications via phone or online video\nconsultations.\nRetail clinics",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 4.0626220703125,
+                "top": 10.1328125,
+                "width": 91.02346801757812
+              },
+              "confidence": null,
+              "text": "Provides"
+            },
+            {
+              "bbox": {
+                "height": 16.920013427734375,
+                "left": 103.90908813476562,
+                "top": 5.8607177734375,
+                "width": 46.06837463378906
+              },
+              "confidence": null,
+              "text": "24/7"
+            },
+            {
+              "bbox": {
+                "height": 13.10400390625,
+                "left": 158.2460174560547,
+                "top": 9.916748046875,
+                "width": 73.972900390625
+              },
+              "confidence": null,
+              "text": "access"
+            },
+            {
+              "bbox": {
+                "height": 12.96002197265625,
+                "left": 239.9859161376953,
+                "top": 9.916748046875,
+                "width": 20.314208984375
+              },
+              "confidence": null,
+              "text": "to"
+            },
+            {
+              "bbox": {
+                "height": 13.10400390625,
+                "left": 268.48431396484375,
+                "top": 9.916748046875,
+                "width": 10.2960205078125
+              },
+              "confidence": null,
+              "text": "a"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 288.3070068359375,
+                "top": 9.916748046875,
+                "width": 82.19906616210938
+              },
+              "confidence": null,
+              "text": "national"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 380.2288818359375,
+                "top": 10.1328125,
+                "width": 85.714599609375
+              },
+              "confidence": null,
+              "text": "network"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 473.48321533203125,
+                "top": 9.916748046875,
+                "width": 20.23895263671875
+              },
+              "confidence": null,
+              "text": "of"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 501.69024658203125,
+                "top": 9.916748046875,
+                "width": 81.4583740234375
+              },
+              "confidence": null,
+              "text": "doctors"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 591.3475952148438,
+                "top": 9.916748046875,
+                "width": 37.92462158203125
+              },
+              "confidence": null,
+              "text": "and"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 638.9788818359375,
+                "top": 9.916748046875,
+                "width": 70.3748779296875
+              },
+              "confidence": null,
+              "text": "mental"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 719.1725463867188,
+                "top": 9.916748046875,
+                "width": 63.88751220703125
+              },
+              "confidence": null,
+              "text": "health"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 792.5296630859375,
+                "top": 9.916748046875,
+                "width": 141.583740234375
+              },
+              "confidence": null,
+              "text": "professionals"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 941.9764404296875,
+                "top": 10.1328125,
+                "width": 43.91357421875
+              },
+              "confidence": null,
+              "text": "who"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 3.17462158203125,
+                "top": 45.916748046875,
+                "width": 36.72637939453125
+              },
+              "confidence": null,
+              "text": "can"
+            },
+            {
+              "bbox": {
+                "height": 13.104019165039062,
+                "left": 49.46940612792969,
+                "top": 45.916748046875,
+                "width": 24.7374267578125
+              },
+              "confidence": null,
+              "text": "be"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 82.52227783203125,
+                "top": 46.1328125,
+                "width": 104.24989318847656
+              },
+              "confidence": null,
+              "text": "consulted"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 195.8308563232422,
+                "top": 45.916748046875,
+                "width": 24.70294189453125
+              },
+              "confidence": null,
+              "text": "on"
+            },
+            {
+              "bbox": {
+                "height": 13.104019165039062,
+                "left": 229.2382049560547,
+                "top": 45.916748046875,
+                "width": 10.2960205078125
+              },
+              "confidence": null,
+              "text": "a"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 247.95689392089844,
+                "top": 46.1328125,
+                "width": 71.916748046875
+              },
+              "confidence": null,
+              "text": "variety"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 327.72540283203125,
+                "top": 45.916748046875,
+                "width": 20.23895263671875
+              },
+              "confidence": null,
+              "text": "of"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 356.5804443359375,
+                "top": 45.916748046875,
+                "width": 81.2850341796875
+              },
+              "confidence": null,
+              "text": "medical"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 446.82025146484375,
+                "top": 45.916748046875,
+                "width": 37.92462158203125
+              },
+              "confidence": null,
+              "text": "and"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 494.4515380859375,
+                "top": 45.916748046875,
+                "width": 70.3748779296875
+              },
+              "confidence": null,
+              "text": "mental"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 574.6452026367188,
+                "top": 45.916748046875,
+                "width": 63.88751220703125
+              },
+              "confidence": null,
+              "text": "health"
+            },
+            {
+              "bbox": {
+                "height": 2.376007080078125,
+                "left": 647.6663208007812,
+                "top": 56.40478515625,
+                "width": 71.4771728515625
+              },
+              "confidence": null,
+              "text": "issues,"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 728.4569702148438,
+                "top": 45.916748046875,
+                "width": 37.92462158203125
+              },
+              "confidence": null,
+              "text": "and"
+            },
+            {
+              "bbox": {
+                "height": 12.64801025390625,
+                "left": 776.0882568359375,
+                "top": 46.1328125,
+                "width": 43.062744140625
+              },
+              "confidence": null,
+              "text": "may"
+            },
+            {
+              "bbox": {
+                "height": 12.864013671875,
+                "left": 827.6507568359375,
+                "top": 45.916748046875,
+                "width": 99.76318359375
+              },
+              "confidence": null,
+              "text": "prescribe"
+            },
+            {
+              "bbox": {
+                "height": 12.863998413085938,
+                "left": 3.17462158203125,
+                "top": 81.916748046875,
+                "width": 72.58575439453125
+              },
+              "confidence": null,
+              "text": "certain"
+            },
+            {
+              "bbox": {
+                "height": 12.863998413085938,
+                "left": 85.23277282714844,
+                "top": 81.916748046875,
+                "width": 129.49005126953125
+              },
+              "confidence": null,
+              "text": "medications"
+            },
+            {
+              "bbox": {
+                "height": 12.647994995117188,
+                "left": 222.58580017089844,
+                "top": 82.1328125,
+                "width": 28.63201904296875
+              },
+              "confidence": null,
+              "text": "via"
+            },
+            {
+              "bbox": {
+                "height": 12.863998413085938,
+                "left": 260.7445068359375,
+                "top": 81.916748046875,
+                "width": 65.63812255859375
+              },
+              "confidence": null,
+              "text": "phone"
+            },
+            {
+              "bbox": {
+                "height": 12.863998413085938,
+                "left": 334.69805908203125,
+                "top": 81.916748046875,
+                "width": 20.982940673828125
+              },
+              "confidence": null,
+              "text": "or"
+            },
+            {
+              "bbox": {
+                "height": 12.863998413085938,
+                "left": 363.36212158203125,
+                "top": 81.916748046875,
+                "width": 63.0517578125
+              },
+              "confidence": null,
+              "text": "online"
+            },
+            {
+              "bbox": {
+                "height": 12.647994995117188,
+                "left": 434.2733154296875,
+                "top": 82.1328125,
+                "width": 57.65960693359375
+              },
+              "confidence": null,
+              "text": "video"
+            },
+            {
+              "bbox": {
+                "height": 2.951995849609375,
+                "left": 500.23712158203125,
+                "top": 91.8287353515625,
+                "width": 149.35174560546875
+              },
+              "confidence": null,
+              "text": "consultations."
+            },
+            {
+              "bbox": {
+                "height": 10.059005737304688,
+                "left": 3.3966217041015625,
+                "top": 153.7218017578125,
+                "width": 53.96138000488281
+              },
+              "confidence": null,
+              "text": "Retail"
+            },
+            {
+              "bbox": {
+                "height": 10.059005737304688,
+                "left": 64.30711364746094,
+                "top": 153.7218017578125,
+                "width": 55.32574462890625
+              },
+              "confidence": null,
+              "text": "clinics"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "db5d99f7-3e52-4b2b-b52a-ef3570257345",
+          "segment_type": "Text"
+        }
+      ]
+    },
+    {
+      "chunk_id": "a443e7f2-9f39-4e3a-8cef-e2cc422a1898",
+      "chunk_length": 1,
+      "embed": "3/7",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.3280029296875,
+            "left": 1154.7996826171875,
+            "top": 1535.5457763671875,
+            "width": 22.534912109375
+          },
+          "confidence": 0.9942920207977295,
+          "content": "3/7",
+          "html": "3/7",
+          "image": null,
+          "markdown": "3/7",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.841217041015625,
+                "left": 1.403564453125,
+                "top": 3.208984375,
+                "width": 18.960693359375
+              },
+              "confidence": null,
+              "text": "3/7"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "4698347f-c22d-48d4-8654-c646693aad7d",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "01370cb8-8def-46a0-bdd3-1e9c0503a833",
+      "chunk_length": 1,
+      "embed": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.7432861328125,
+            "left": 45.86220169067383,
+            "top": 1535.6285400390625,
+            "width": 444.65924072265625
+          },
+          "confidence": 0.9952442049980164,
+          "content": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "html": "<a href=\"https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details\">https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details</a>",
+          "image": null,
+          "markdown": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.5030593872070312,
+                "left": 2.281707763671875,
+                "top": 12.2724609375,
+                "width": 438.7035217285156
+              },
+              "confidence": null,
+              "text": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 3,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "d1012ad8-75b5-4fe2-bca3-373f250b79be",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "9730d1bf-d065-40fc-82ba-3b01c2483767",
+      "chunk_length": 7,
+      "embed": "Silver 70 Off Exchange Trio HMO Page",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.625268936157227,
+            "left": 564.9170532226562,
+            "top": 30.386262893676758,
+            "width": 263.99365234375
+          },
+          "confidence": 0.9918577075004578,
+          "content": "Silver 70 Off Exchange Trio HMO Page",
+          "html": "Silver 70 Off Exchange Trio HMO Page",
+          "image": null,
+          "markdown": "Silver 70 Off Exchange Trio HMO Page",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 7.371337890625,
+                "left": 1.7232666015625,
+                "top": 7.242399215698242,
+                "width": 37.571044921875
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 10.8731689453125,
+                "left": 43.56378173828125,
+                "top": 3.868497848510742,
+                "width": 15.04656982421875
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 10.9691162109375,
+                "left": 63.71112060546875,
+                "top": 3.644620895385742,
+                "width": 22.235595703125
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 7.2913818359375,
+                "left": 89.32073974609375,
+                "top": 7.322355270385742,
+                "width": 62.4974365234375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 156.12371826171875,
+                "top": 7.178434371948242,
+                "width": 26.27178955078125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 187.1285400390625,
+                "top": 3.868497848510742,
+                "width": 36.46234130859375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 228.43853759765625,
+                "top": 7.178434371948242,
+                "width": 30.4609375
+              },
+              "confidence": null,
+              "text": "Page"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 4,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "34c26a71-b725-4edc-9d2e-a9049651c422",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "5dba4d96-7165-4c72-86c5-00986feb4286",
+      "chunk_length": 3,
+      "embed": "5:40 AM\n6/7/26,",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.175291061401367,
+            "left": 46.46908187866211,
+            "top": 30.525300979614258,
+            "width": 110.83798217773438
+          },
+          "confidence": 0.989262580871582,
+          "content": "5:40 AM\n6/7/26,",
+          "html": "5:40 AM<br />\n6/7/26,",
+          "image": null,
+          "markdown": "5:40 AM\n6/7/26,",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.64697265625,
+                "left": 2.0745773315429688,
+                "top": 12.827726364135742,
+                "width": 44.23886489868164
+              },
+              "confidence": null,
+              "text": "6/7/26,"
+            },
+            {
+              "bbox": {
+                "height": 7.4512939453125,
+                "left": 50.90255355834961,
+                "top": 7.023405075073242,
+                "width": 27.292198181152344
+              },
+              "confidence": null,
+              "text": "5:40"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 82.18122863769531,
+                "top": 3.729459762573242,
+                "width": 25.106979370117188
+              },
+              "confidence": null,
+              "text": "AM"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 4,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "8f98eb31-1f27-457a-b191-1f5e3833da93",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "9f9a5e6a-4c75-44e8-8d37-37ae213a3f4e",
+      "chunk_length": 1,
+      "embed": "4/7",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.697998046875,
+            "left": 1154.4547119140625,
+            "top": 1535.4371337890625,
+            "width": 23.606689453125
+          },
+          "confidence": 0.9923509359359741,
+          "content": "4/7",
+          "html": "4/7",
+          "image": null,
+          "markdown": "4/7",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.745277404785156,
+                "left": 1.23681640625,
+                "top": 3.317626953125,
+                "width": 19.472412109375
+              },
+              "confidence": null,
+              "text": "4/7"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 4,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "1130b48a-6b90-4793-be70-6e3d7b76728b",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "ccda9bda-2c16-409e-a68d-9640777a60ec",
+      "chunk_length": 1,
+      "embed": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.689697265625,
+            "left": 46.12367630004883,
+            "top": 1535.773681640625,
+            "width": 444.4833068847656
+          },
+          "confidence": 0.9966570138931274,
+          "content": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "html": "<a href=\"https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details\">https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details</a>",
+          "image": null,
+          "markdown": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.5030593872070312,
+                "left": 2.020233154296875,
+                "top": 12.1273193359375,
+                "width": 438.7035217285156
+              },
+              "confidence": null,
+              "text": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 4,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "5a500604-54cc-4931-a780-e6ec63be3639",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "8743263c-9c9b-45bc-b158-68270e504d9e",
+      "chunk_length": 7,
+      "embed": "Silver 70 Off Exchange Trio HMO Page",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.953622817993164,
+            "left": 564.5949096679688,
+            "top": 30.913698196411133,
+            "width": 263.32635498046875
+          },
+          "confidence": 0.9938294291496277,
+          "content": "Silver 70 Off Exchange Trio HMO Page",
+          "html": "Silver 70 Off Exchange Trio HMO Page",
+          "image": null,
+          "markdown": "Silver 70 Off Exchange Trio HMO Page",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 7.371337890625,
+                "left": 2.04541015625,
+                "top": 6.714963912963867,
+                "width": 37.571044921875
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 10.8731689453125,
+                "left": 43.88592529296875,
+                "top": 3.341062545776367,
+                "width": 15.04656982421875
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 10.9691162109375,
+                "left": 64.03326416015625,
+                "top": 3.117185592651367,
+                "width": 22.235595703125
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 7.2913818359375,
+                "left": 89.64288330078125,
+                "top": 6.794919967651367,
+                "width": 62.4974365234375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 156.44586181640625,
+                "top": 6.650999069213867,
+                "width": 26.27178955078125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 187.45068359375,
+                "top": 3.341062545776367,
+                "width": 36.46234130859375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 228.76068115234375,
+                "top": 6.650999069213867,
+                "width": 30.4609375
+              },
+              "confidence": null,
+              "text": "Page"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 5,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "edd32f1e-f94e-4d6b-af5c-0a6e2366dc8e",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "5fc47ee0-b402-4256-ae2e-889ae3f3457f",
+      "chunk_length": 3,
+      "embed": "5:40 AM\n6/7/26,",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.275367736816406,
+            "left": 46.520999908447266,
+            "top": 31.154788970947266,
+            "width": 110.60198974609375
+          },
+          "confidence": 0.9908000826835632,
+          "content": "5:40 AM\n6/7/26,",
+          "html": "5:40 AM<br />\n6/7/26,",
+          "image": null,
+          "markdown": "5:40 AM\n6/7/26,",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.64697265625,
+                "left": 2.0226593017578125,
+                "top": 12.198238372802734,
+                "width": 44.23886489868164
+              },
+              "confidence": null,
+              "text": "6/7/26,"
+            },
+            {
+              "bbox": {
+                "height": 7.4512939453125,
+                "left": 50.85063552856445,
+                "top": 6.393917083740234,
+                "width": 27.292198181152344
+              },
+              "confidence": null,
+              "text": "5:40"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 82.12931823730469,
+                "top": 3.0999717712402344,
+                "width": 25.106979370117188
+              },
+              "confidence": null,
+              "text": "AM"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 5,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "a467bf61-68ea-404f-9160-5cd3f3f7896e",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "9496f5ce-40e6-4e2c-890a-dd48650229c0",
+      "chunk_length": 1,
+      "embed": "5/7",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.1556396484375,
+            "left": 1154.55615234375,
+            "top": 1535.6961669921875,
+            "width": 22.6009521484375
+          },
+          "confidence": 0.9941248893737793,
+          "content": "5/7",
+          "html": "5/7",
+          "image": null,
+          "markdown": "5/7",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.87319564819336,
+                "left": 1.47119140625,
+                "top": 3.05859375,
+                "width": 19.1365966796875
+              },
+              "confidence": null,
+              "text": "5/7"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 5,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "7d2714ac-10d9-469a-bc89-d91776148248",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "79af4f98-41dc-436d-916b-a340db64f04c",
+      "chunk_length": 6,
+      "embed": "Pediatric Dental Benefits: Restorative Procedures\nhttps://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+      "segments": [
+        {
+          "bbox": {
+            "height": 80.221435546875,
+            "left": 45.92035675048828,
+            "top": 1474.9410400390625,
+            "width": 546.465576171875
+          },
+          "confidence": 0.995832622051239,
+          "content": "Pediatric Dental Benefits: Restorative Procedures\nhttps://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "html": "Pediatric Dental Benefits: Restorative Procedures<br />\n<a href=\"https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details\">https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details</a>",
+          "image": null,
+          "markdown": "Pediatric Dental Benefits: Restorative Procedures\nhttps://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.5030593872070312,
+                "left": 2.223552703857422,
+                "top": 72.9599609375,
+                "width": 438.7035217285156
+              },
+              "confidence": null,
+              "text": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details"
+            },
+            {
+              "bbox": {
+                "height": 10.058998107910156,
+                "left": 74.86995697021484,
+                "top": 0.0,
+                "width": 84.29981994628906
+              },
+              "confidence": null,
+              "text": "Pediatric"
+            },
+            {
+              "bbox": {
+                "height": 10.058998107910156,
+                "left": 166.22201538085938,
+                "top": 0.0,
+                "width": 61.610809326171875
+              },
+              "confidence": null,
+              "text": "Dental"
+            },
+            {
+              "bbox": {
+                "height": 10.058998107910156,
+                "left": 235.55892944335938,
+                "top": 0.0,
+                "width": 81.3759765625
+              },
+              "confidence": null,
+              "text": "Benefits:"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 324.5013122558594,
+                "top": 0.2099609375,
+                "width": 109.99349975585938
+              },
+              "confidence": null,
+              "text": "Restorative"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 441.1497497558594,
+                "top": 0.2099609375,
+                "width": 105.31582641601562
+              },
+              "confidence": null,
+              "text": "Procedures"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 5,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "5e2b6ace-04a9-48e1-a75a-414909f22197",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "c3d63bc0-c35e-4826-b798-70d0dfef4d8a",
+      "chunk_length": 7,
+      "embed": "Silver 70 Off Exchange Trio HMO Page",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.35226058959961,
+            "left": 564.8975830078125,
+            "top": 31.359832763671875,
+            "width": 262.0406494140625
+          },
+          "confidence": 0.9816779494285583,
+          "content": "Silver 70 Off Exchange Trio HMO Page",
+          "html": "Silver 70 Off Exchange Trio HMO Page",
+          "image": null,
+          "markdown": "Silver 70 Off Exchange Trio HMO Page",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 7.371337890625,
+                "left": 1.74273681640625,
+                "top": 6.268829345703125,
+                "width": 37.571044921875
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 10.8731689453125,
+                "left": 43.583251953125,
+                "top": 2.894927978515625,
+                "width": 15.04656982421875
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 10.9691162109375,
+                "left": 63.7305908203125,
+                "top": 2.671051025390625,
+                "width": 22.235595703125
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 7.2913818359375,
+                "left": 89.3402099609375,
+                "top": 6.348785400390625,
+                "width": 62.4974365234375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 156.1431884765625,
+                "top": 6.204864501953125,
+                "width": 26.27178955078125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 187.14801025390625,
+                "top": 2.894927978515625,
+                "width": 36.46234130859375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 228.4580078125,
+                "top": 6.204864501953125,
+                "width": 30.4609375
+              },
+              "confidence": null,
+              "text": "Page"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 6,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "877c38c4-4af3-488a-9d07-1702e0f8b8d9",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "4ed2c8e1-2401-4696-b549-82824ef97331",
+      "chunk_length": 3,
+      "embed": "5:40 AM\n6/7/26,",
+      "segments": [
+        {
+          "bbox": {
+            "height": 17.895553588867188,
+            "left": 46.497013092041016,
+            "top": 31.49250030517578,
+            "width": 110.19599914550781
+          },
+          "confidence": 0.9332844614982605,
+          "content": "5:40 AM\n6/7/26,",
+          "html": "5:40 AM<br />\n6/7/26,",
+          "image": null,
+          "markdown": "5:40 AM\n6/7/26,",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.64697265625,
+                "left": 2.0466461181640625,
+                "top": 11.860527038574219,
+                "width": 44.23886489868164
+              },
+              "confidence": null,
+              "text": "6/7/26,"
+            },
+            {
+              "bbox": {
+                "height": 7.4512939453125,
+                "left": 50.8746223449707,
+                "top": 6.056205749511719,
+                "width": 27.292198181152344
+              },
+              "confidence": null,
+              "text": "5:40"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 82.15330505371094,
+                "top": 2.7622604370117188,
+                "width": 25.106979370117188
+              },
+              "confidence": null,
+              "text": "AM"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 6,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "f3a258c4-8f87-4175-add8-a9003ce065b3",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "d2732885-95ce-44e0-97c2-d9dbc8bdb0c6",
+      "chunk_length": 65,
+      "embed": "\nHealth coverage for more Californians\nMEMBER SUPPORT\nOUR COMPANY\nLEGAL NOTICES\n\u00a9 California Physicians' Service DBA Blue Shield of California\n1999-2025.\nAll rights California Physicians\u2019 Service DBA Blue Shield of California is an independent\nreserved.\nmember of the Blue Shield Health insurance products are offered by Blue Shield of\nAssociation.\nCalifornia Life & Health Insurance Health plans are offered by Blue Shield of\nCompany. California.",
+      "segments": [
+        {
+          "bbox": {
+            "height": 249.9091796875,
+            "left": 138.13580322265625,
+            "top": 853.717529296875,
+            "width": 960.4334106445312
+          },
+          "confidence": 0.5997656583786011,
+          "content": "Health coverage for more Californians\nMEMBER SUPPORT\nOUR COMPANY\nLEGAL NOTICES",
+          "html": "Health coverage for more Californians<br />\nMEMBER SUPPORT<br />\nOUR COMPANY<br />\nLEGAL NOTICES",
+          "image": null,
+          "markdown": "Health coverage for more Californians\nMEMBER SUPPORT\nOUR COMPANY\nLEGAL NOTICES",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 17.2440185546875,
+                "left": 4.8201904296875,
+                "top": 9.5384521484375,
+                "width": 106.62919616699219
+              },
+              "confidence": null,
+              "text": "Health"
+            },
+            {
+              "bbox": {
+                "height": 16.88397216796875,
+                "left": 124.20211791992188,
+                "top": 9.89849853515625,
+                "width": 153.30880737304688
+              },
+              "confidence": null,
+              "text": "coverage"
+            },
+            {
+              "bbox": {
+                "height": 17.2440185546875,
+                "left": 287.71453857421875,
+                "top": 9.5384521484375,
+                "width": 45.787353515625
+              },
+              "confidence": null,
+              "text": "for"
+            },
+            {
+              "bbox": {
+                "height": 17.2440185546875,
+                "left": 345.5770568847656,
+                "top": 9.5384521484375,
+                "width": 84.14285278320312
+              },
+              "confidence": null,
+              "text": "more"
+            },
+            {
+              "bbox": {
+                "height": 17.2440185546875,
+                "left": 440.823486328125,
+                "top": 9.5384521484375,
+                "width": 197.48095703125
+              },
+              "confidence": null,
+              "text": "Californians"
+            },
+            {
+              "bbox": {
+                "height": 13.9439697265625,
+                "left": 3.3802032470703125,
+                "top": 95.3385009765625,
+                "width": 101.66819763183594
+              },
+              "confidence": null,
+              "text": "MEMBER"
+            },
+            {
+              "bbox": {
+                "height": 13.9439697265625,
+                "left": 116.16226196289062,
+                "top": 95.3385009765625,
+                "width": 110.04486083984375
+              },
+              "confidence": null,
+              "text": "SUPPORT"
+            },
+            {
+              "bbox": {
+                "height": 13.9439697265625,
+                "left": 2.3932037353515625,
+                "top": 161.3385009765625,
+                "width": 49.86515808105469
+              },
+              "confidence": null,
+              "text": "OUR"
+            },
+            {
+              "bbox": {
+                "height": 13.9439697265625,
+                "left": 63.28822326660156,
+                "top": 161.3385009765625,
+                "width": 119.61692810058594
+              },
+              "confidence": null,
+              "text": "COMPANY"
+            },
+            {
+              "bbox": {
+                "height": 13.944000244140625,
+                "left": 3.3802032470703125,
+                "top": 227.3385009765625,
+                "width": 73.8109130859375
+              },
+              "confidence": null,
+              "text": "LEGAL"
+            },
+            {
+              "bbox": {
+                "height": 13.944000244140625,
+                "left": 89.03694152832031,
+                "top": 227.3385009765625,
+                "width": 100.91816711425781
+              },
+              "confidence": null,
+              "text": "NOTICES"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 6,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "3621bd14-4a76-4862-9da5-a71b97573f94",
+          "segment_type": "Text"
+        },
+        {
+          "bbox": {
+            "height": 220.267822265625,
+            "left": 138.57118225097656,
+            "top": 1195.92724609375,
+            "width": 882.4358520507812
+          },
+          "confidence": 0.7256514430046082,
+          "content": "\u00a9 California Physicians' Service DBA Blue Shield of California\n1999-2025.\nAll rights California Physicians\u2019 Service DBA Blue Shield of California is an independent\nreserved.\nmember of the Blue Shield Health insurance products are offered by Blue Shield of\nAssociation.\nCalifornia Life & Health Insurance Health plans are offered by Blue Shield of\nCompany. California.",
+          "html": "\u00a9 California Physicians' Service DBA Blue Shield of California<br />\n1999-2025.<br />\nAll rights California Physicians\u2019 Service DBA Blue Shield of California is an independent<br />\nreserved.<br />\nmember of the Blue Shield Health insurance products are offered by Blue Shield of<br />\nAssociation.<br />\nCalifornia Life &amp; Health Insurance Health plans are offered by Blue Shield of<br />\nCompany. California.",
+          "image": null,
+          "markdown": "\u00a9 California Physicians' Service DBA Blue Shield of California\n1999-2025.\nAll rights California Physicians\u2019 Service DBA Blue Shield of California is an independent\nreserved.\nmember of the Blue Shield Health insurance products are offered by Blue Shield of\nAssociation.\nCalifornia Life & Health Insurance Health plans are offered by Blue Shield of\nCompany. California.",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 14.342987060546875,
+                "left": 4.9368133544921875,
+                "top": 103.939697265625,
+                "width": 14.952011108398438
+              },
+              "confidence": null,
+              "text": "\u00a9"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 26.88067626953125,
+                "top": 108.0137939453125,
+                "width": 92.48628234863281
+              },
+              "confidence": null,
+              "text": "California"
+            },
+            {
+              "bbox": {
+                "height": 0.06298828125,
+                "left": 128.01756286621094,
+                "top": 108.2237548828125,
+                "width": 102.80978393554688
+              },
+              "confidence": null,
+              "text": "Physicians'"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 238.1336212158203,
+                "top": 108.2237548828125,
+                "width": 67.67715454101562
+              },
+              "confidence": null,
+              "text": "Service"
+            },
+            {
+              "bbox": {
+                "height": 13.944000244140625,
+                "left": 313.27490234375,
+                "top": 104.1287841796875,
+                "width": 41.760467529296875
+              },
+              "confidence": null,
+              "text": "DBA"
+            },
+            {
+              "bbox": {
+                "height": 9.8489990234375,
+                "left": 362.1552734375,
+                "top": 108.2237548828125,
+                "width": 40.524169921875
+              },
+              "confidence": null,
+              "text": "Blue"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 409.24053955078125,
+                "top": 108.0137939453125,
+                "width": 56.19580078125
+              },
+              "confidence": null,
+              "text": "Shield"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 472.99493408203125,
+                "top": 108.0137939453125,
+                "width": 19.108154296875
+              },
+              "confidence": null,
+              "text": "of"
+            },
+            {
+              "bbox": {
+                "height": 10.058990478515625,
+                "left": 497.85284423828125,
+                "top": 108.0137939453125,
+                "width": 92.486328125
+              },
+              "confidence": null,
+              "text": "California"
+            },
+            {
+              "bbox": {
+                "height": 3.233978271484375,
+                "left": 597.3937377929688,
+                "top": 116.1827392578125,
+                "width": 104.81939697265625
+              },
+              "confidence": null,
+              "text": "1999-2025."
+            },
+            {
+              "bbox": {
+                "height": 12.947998046875,
+                "left": 4.0653228759765625,
+                "top": 147.124755859375,
+                "width": 20.4739990234375
+              },
+              "confidence": null,
+              "text": "All"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 32.29225158691406,
+                "top": 150.7322998046875,
+                "width": 49.2254638671875
+              },
+              "confidence": null,
+              "text": "rights"
+            },
+            {
+              "bbox": {
+                "height": 1.7550048828125,
+                "left": 88.46900939941406,
+                "top": 158.3177490234375,
+                "width": 79.54681396484375
+              },
+              "confidence": null,
+              "text": "reserved."
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 174.6523895263672,
+                "top": 150.7322998046875,
+                "width": 85.880126953125
+              },
+              "confidence": null,
+              "text": "California"
+            },
+            {
+              "bbox": {
+                "height": 0.0780029296875,
+                "left": 268.56524658203125,
+                "top": 150.92724609375,
+                "width": 96.42169189453125
+              },
+              "confidence": null,
+              "text": "Physicians\u2019"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 371.09197998046875,
+                "top": 150.92724609375,
+                "width": 62.84307861328125
+              },
+              "confidence": null,
+              "text": "Service"
+            },
+            {
+              "bbox": {
+                "height": 12.947998046875,
+                "left": 440.86602783203125,
+                "top": 147.124755859375,
+                "width": 38.777587890625
+              },
+              "confidence": null,
+              "text": "DBA"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 486.25494384765625,
+                "top": 150.92724609375,
+                "width": 37.62957763671875
+              },
+              "confidence": null,
+              "text": "Blue"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 529.9769897460938,
+                "top": 150.7322998046875,
+                "width": 52.1817626953125
+              },
+              "confidence": null,
+              "text": "Shield"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 589.1774291992188,
+                "top": 150.7322998046875,
+                "width": 17.74334716796875
+              },
+              "confidence": null,
+              "text": "of"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 612.2598266601562,
+                "top": 150.7322998046875,
+                "width": 85.880126953125
+              },
+              "confidence": null,
+              "text": "California"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 705.6851806640625,
+                "top": 150.7322998046875,
+                "width": 11.34405517578125
+              },
+              "confidence": null,
+              "text": "is"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 723.2785034179688,
+                "top": 150.7322998046875,
+                "width": 21.2568359375
+              },
+              "confidence": null,
+              "text": "an"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 751.9691162109375,
+                "top": 150.7322998046875,
+                "width": 113.70343017578125
+              },
+              "confidence": null,
+              "text": "independent"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 5.5083160400390625,
+                "top": 180.7322998046875,
+                "width": 75.26786804199219
+              },
+              "confidence": null,
+              "text": "member"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 86.59541320800781,
+                "top": 180.7322998046875,
+                "width": 17.743316650390625
+              },
+              "confidence": null,
+              "text": "of"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 109.13177490234375,
+                "top": 180.7322998046875,
+                "width": 28.742233276367188
+              },
+              "confidence": null,
+              "text": "the"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 144.8049774169922,
+                "top": 180.92724609375,
+                "width": 37.62957763671875
+              },
+              "confidence": null,
+              "text": "Blue"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 188.5270233154297,
+                "top": 180.7322998046875,
+                "width": 52.1817626953125
+              },
+              "confidence": null,
+              "text": "Shield"
+            },
+            {
+              "bbox": {
+                "height": 1.7550048828125,
+                "left": 247.00599670410156,
+                "top": 188.3177490234375,
+                "width": 106.05035400390625
+              },
+              "confidence": null,
+              "text": "Association."
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 360.60943603515625,
+                "top": 180.7322998046875,
+                "width": 57.7574462890625
+              },
+              "confidence": null,
+              "text": "Health"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 425.8011474609375,
+                "top": 180.92724609375,
+                "width": 85.6483154296875
+              },
+              "confidence": null,
+              "text": "insurance"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 518.0879516601562,
+                "top": 180.92724609375,
+                "width": 77.4471435546875
+              },
+              "confidence": null,
+              "text": "products"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 601.7843627929688,
+                "top": 180.7322998046875,
+                "width": 28.91217041015625
+              },
+              "confidence": null,
+              "text": "are"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 636.6134643554688,
+                "top": 180.7322998046875,
+                "width": 64.0496826171875
+              },
+              "confidence": null,
+              "text": "offered"
+            },
+            {
+              "bbox": {
+                "height": 9.34051513671875,
+                "left": 708.4033813476562,
+                "top": 180.92724609375,
+                "width": 20.32080078125
+              },
+              "confidence": null,
+              "text": "by"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 735.4417114257812,
+                "top": 180.92724609375,
+                "width": 37.62957763671875
+              },
+              "confidence": null,
+              "text": "Blue"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 779.1637573242188,
+                "top": 180.7322998046875,
+                "width": 52.1817626953125
+              },
+              "confidence": null,
+              "text": "Shield"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 838.3641967773438,
+                "top": 180.7322998046875,
+                "width": 17.74334716796875
+              },
+              "confidence": null,
+              "text": "of"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 4.8843231201171875,
+                "top": 210.7322998046875,
+                "width": 85.880126953125
+              },
+              "confidence": null,
+              "text": "California"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 98.79714965820312,
+                "top": 210.7322998046875,
+                "width": 31.583450317382812
+              },
+              "confidence": null,
+              "text": "Life"
+            },
+            {
+              "bbox": {
+                "height": 13.318511962890625,
+                "left": 136.2975616455078,
+                "top": 206.94921875,
+                "width": 12.128997802734375
+              },
+              "confidence": null,
+              "text": "&"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 154.7739715576172,
+                "top": 210.7322998046875,
+                "width": 57.757476806640625
+              },
+              "confidence": null,
+              "text": "Health"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 220.4531707763672,
+                "top": 210.92724609375,
+                "width": 85.82733154296875
+              },
+              "confidence": null,
+              "text": "Insurance"
+            },
+            {
+              "bbox": {
+                "height": 1.7550048828125,
+                "left": 312.29498291015625,
+                "top": 218.3177490234375,
+                "width": 90.28265380859375
+              },
+              "confidence": null,
+              "text": "Company."
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 410.13067626953125,
+                "top": 210.7322998046875,
+                "width": 57.7574462890625
+              },
+              "confidence": null,
+              "text": "Health"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 475.51739501953125,
+                "top": 210.7322998046875,
+                "width": 46.8450927734375
+              },
+              "confidence": null,
+              "text": "plans"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 528.6117553710938,
+                "top": 210.7322998046875,
+                "width": 28.91217041015625
+              },
+              "confidence": null,
+              "text": "are"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 563.4408569335938,
+                "top": 210.7322998046875,
+                "width": 64.0496826171875
+              },
+              "confidence": null,
+              "text": "offered"
+            },
+            {
+              "bbox": {
+                "height": 9.34051513671875,
+                "left": 635.2307739257812,
+                "top": 210.92724609375,
+                "width": 20.32080078125
+              },
+              "confidence": null,
+              "text": "by"
+            },
+            {
+              "bbox": {
+                "height": 9.1455078125,
+                "left": 662.2691040039062,
+                "top": 210.92724609375,
+                "width": 37.62957763671875
+              },
+              "confidence": null,
+              "text": "Blue"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 705.9911499023438,
+                "top": 210.7322998046875,
+                "width": 52.1817626953125
+              },
+              "confidence": null,
+              "text": "Shield"
+            },
+            {
+              "bbox": {
+                "height": 9.340499877929688,
+                "left": 765.1915893554688,
+                "top": 210.7322998046875,
+                "width": 17.74334716796875
+              },
+              "confidence": null,
+              "text": "of"
+            },
+            {
+              "bbox": {
+                "height": 1.7550048828125,
+                "left": 788.2739868164062,
+                "top": 218.3177490234375,
+                "width": 90.42547607421875
+              },
+              "confidence": null,
+              "text": "California."
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 6,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "31581186-d1f5-4def-a3ee-88e4732ba671",
+          "segment_type": "Text"
+        }
+      ]
+    },
+    {
+      "chunk_id": "0feca09e-7d2a-4b11-8497-4496b10ba45b",
+      "chunk_length": 1,
+      "embed": "6/7",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.8642578125,
+            "left": 1154.3355712890625,
+            "top": 1535.9959716796875,
+            "width": 22.3033447265625
+          },
+          "confidence": 0.9933252334594727,
+          "content": "6/7",
+          "html": "6/7",
+          "image": null,
+          "markdown": "6/7",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.87319564819336,
+                "left": 1.7237548828125,
+                "top": 2.7587890625,
+                "width": 19.1046142578125
+              },
+              "confidence": null,
+              "text": "6/7"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 6,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "7da2467f-8123-4fef-8d6d-f52ff9a7491b",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "9c1670a5-c109-423b-860e-c0c885c1fc90",
+      "chunk_length": 1,
+      "embed": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.982666015625,
+            "left": 45.973445892333984,
+            "top": 1536.111083984375,
+            "width": 443.9670715332031
+          },
+          "confidence": 0.9964691996574402,
+          "content": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "html": "<a href=\"https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details\">https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details</a>",
+          "image": null,
+          "markdown": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.5030593872070312,
+                "left": 2.1704635620117188,
+                "top": 11.7899169921875,
+                "width": 438.7035217285156
+              },
+              "confidence": null,
+              "text": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 6,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "563c24e5-5f73-4c36-bc91-8f995ce1d180",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "5f84baf0-bfb6-49fa-aede-4cebcd6b1b90",
+      "chunk_length": 7,
+      "embed": "Silver 70 Off Exchange Trio HMO Page",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.976886749267578,
+            "left": 565.0844116210938,
+            "top": 31.04235076904297,
+            "width": 260.201416015625
+          },
+          "confidence": 0.9919899702072144,
+          "content": "Silver 70 Off Exchange Trio HMO Page",
+          "html": "Silver 70 Off Exchange Trio HMO Page",
+          "image": null,
+          "markdown": "Silver 70 Off Exchange Trio HMO Page",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 7.371337890625,
+                "left": 1.555908203125,
+                "top": 6.586311340332031,
+                "width": 37.571044921875
+              },
+              "confidence": null,
+              "text": "Silver"
+            },
+            {
+              "bbox": {
+                "height": 10.8731689453125,
+                "left": 43.39642333984375,
+                "top": 3.2124099731445312,
+                "width": 15.04656982421875
+              },
+              "confidence": null,
+              "text": "70"
+            },
+            {
+              "bbox": {
+                "height": 10.9691162109375,
+                "left": 63.54376220703125,
+                "top": 2.9885330200195312,
+                "width": 22.235595703125
+              },
+              "confidence": null,
+              "text": "Off"
+            },
+            {
+              "bbox": {
+                "height": 7.2913818359375,
+                "left": 89.15338134765625,
+                "top": 6.666267395019531,
+                "width": 62.4974365234375
+              },
+              "confidence": null,
+              "text": "Exchange"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 155.95635986328125,
+                "top": 6.522346496582031,
+                "width": 26.27178955078125
+              },
+              "confidence": null,
+              "text": "Trio"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 186.961181640625,
+                "top": 3.2124099731445312,
+                "width": 36.46234130859375
+              },
+              "confidence": null,
+              "text": "HMO"
+            },
+            {
+              "bbox": {
+                "height": 7.435302734375,
+                "left": 228.27117919921875,
+                "top": 6.522346496582031,
+                "width": 30.4609375
+              },
+              "confidence": null,
+              "text": "Page"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 7,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "cc6bab61-e8ca-40a6-9e69-96e63f6a8bdc",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "c5d1381a-b03b-4292-ab06-9019a183af77",
+      "chunk_length": 3,
+      "embed": "5:40 AM\n6/7/26,",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.193157196044922,
+            "left": 46.554969787597656,
+            "top": 31.475914001464844,
+            "width": 110.13365936279297
+          },
+          "confidence": 0.9896073341369629,
+          "content": "5:40 AM\n6/7/26,",
+          "html": "5:40 AM<br />\n6/7/26,",
+          "image": null,
+          "markdown": "5:40 AM\n6/7/26,",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.64697265625,
+                "left": 1.9886894226074219,
+                "top": 11.877113342285156,
+                "width": 44.23886489868164
+              },
+              "confidence": null,
+              "text": "6/7/26,"
+            },
+            {
+              "bbox": {
+                "height": 7.4512939453125,
+                "left": 50.81666564941406,
+                "top": 6.072792053222656,
+                "width": 27.292198181152344
+              },
+              "confidence": null,
+              "text": "5:40"
+            },
+            {
+              "bbox": {
+                "height": 10.7452392578125,
+                "left": 82.09534454345703,
+                "top": 2.7788467407226562,
+                "width": 25.106979370117188
+              },
+              "confidence": null,
+              "text": "AM"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 7,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "3defedb3-552a-4bf9-8e7c-07cc27b3ccf4",
+          "segment_type": "PageHeader"
+        }
+      ]
+    },
+    {
+      "chunk_id": "9d61336c-b97b-45be-a906-792775a5e02b",
+      "chunk_length": 1,
+      "embed": "7/7",
+      "segments": [
+        {
+          "bbox": {
+            "height": 19.2227783203125,
+            "left": 1154.9735107421875,
+            "top": 1535.945556640625,
+            "width": 21.7462158203125
+          },
+          "confidence": 0.9967995882034302,
+          "content": "7/7",
+          "html": "7/7",
+          "image": null,
+          "markdown": "7/7",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 10.87319564819336,
+                "left": 0.8619384765625,
+                "top": 2.8092041015625,
+                "width": 19.3284912109375
+              },
+              "confidence": null,
+              "text": "7/7"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 7,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "3765a326-9559-44a9-b497-0d167907b616",
+          "segment_type": "PageFooter"
+        }
+      ]
+    },
+    {
+      "chunk_id": "31df0072-93ee-4042-ab07-2e63e3cec936",
+      "chunk_length": 1,
+      "embed": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+      "segments": [
+        {
+          "bbox": {
+            "height": 18.8870849609375,
+            "left": 46.624916076660156,
+            "top": 1536.26123046875,
+            "width": 442.6206359863281
+          },
+          "confidence": 0.9972995519638062,
+          "content": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "html": "<a href=\"https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details\">https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details</a>",
+          "image": null,
+          "markdown": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details",
+          "ocr": [
+            {
+              "bbox": {
+                "height": 1.5030593872070312,
+                "left": 1.5189933776855469,
+                "top": 11.6397705078125,
+                "width": 438.7035217285156
+              },
+              "confidence": null,
+              "text": "https://www.blueshieldca.com/buyblue/unauth/shopping/plan-details"
+            }
+          ],
+          "page_height": 1584.0,
+          "page_number": 7,
+          "page_width": 1224.0,
+          "references": null,
+          "segment_id": "48fe7ea8-9b39-485c-af67-2f45612e3337",
+          "segment_type": "PageFooter"
+        }
+      ]
+    }
+  ],
+  "configuration": {
+    "agentic_ocr": null,
+    "chunk_processing": {
+      "ignore_headers_and_footers": false,
+      "target_length": 512,
+      "tokenizer": {
+        "Enum": "Word"
+      }
+    },
+    "detect_checkboxes": false,
+    "detect_pii": false,
+    "enhance_reading_order": false,
+    "error_handling": "Continue",
+    "expires_in": null,
+    "extract_charts": false,
+    "extract_colors": false,
+    "extract_links": false,
+    "extract_strikethrough": false,
+    "high_resolution": true,
+    "input_file_url": null,
+    "layout_analysis": "smart_layout_detection",
+    "merge_batch_size": 20,
+    "merge_tables": true,
+    "ocr_engine": "UnsiloedHawk",
+    "ocr_strategy": "auto_detection",
+    "output_fields": {
+      "bbox": true,
+      "chart_data": true,
+      "confidence": true,
+      "content": true,
+      "embed": true,
+      "html": true,
+      "image": true,
+      "markdown": true,
+      "ocr": true
+    },
+    "page_numbers": null,
+    "page_range": null,
+    "pii_block_severity": "any",
+    "pii_engine": "standard",
+    "segment_analysis": {
+      "Caption": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      },
+      "Footnote": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      },
+      "Formula": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "VLM",
+        "model_id": "default-model",
+        "use_table_ocr": false,
+        "vlm": null
+      },
+      "ListItem": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      },
+      "Page": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "VLM",
+        "markdown": "VLM",
+        "model_id": null,
+        "use_table_ocr": false,
+        "vlm": null
+      },
+      "PageFooter": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      },
+      "PageHeader": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      },
+      "Picture": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "VLM",
+        "model_id": "default-model",
+        "vlm": null
+      },
+      "SectionHeader": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      },
+      "Table": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "VLM",
+        "markdown": "Auto",
+        "model_id": "default-table-model",
+        "use_table_ocr": false,
+        "vlm": null
+      },
+      "Text": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      },
+      "Title": {
+        "content_source": "OCR",
+        "crop_image": "All",
+        "embed_sources": [
+          "Markdown"
+        ],
+        "extended_context": false,
+        "html": "Auto",
+        "markdown": "Auto",
+        "vlm": null
+      }
+    },
+    "segment_filter": "Table,Text,SectionHeader,Title",
+    "segment_type_naming": "Unsiloed",
+    "validate_segments": [
+      "Table",
+      "Picture"
+    ],
+    "xml_citation": false
+  },
+  "created_at": "2026-06-07T13:21:12.263574Z",
+  "credit_used": 7,
+  "file_name": "trio_2024.pdf",
+  "file_type": "application/pdf",
+  "file_url": null,
+  "finished_at": "2026-06-07T13:22:41.390865Z",
+  "job_id": "ab9719f4-a6ce-46aa-b50a-ccab018116a2",
+  "merge_tables": true,
+  "message": "Task succeeded",
+  "metadata": {},
+  "page_count": 7,
+  "pdf_url": null,
+  "started_at": "2026-06-07T13:21:12.354133Z",
+  "status": "Succeeded",
+  "total_chunks": 34
+}

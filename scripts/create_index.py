@@ -39,60 +39,96 @@ except ImportError:
     sys.exit(1)
 
 DATA_DIR = _ROOT / "data" / "plans"
+CITATIONS_DIR = _ROOT / "data" / "citations"
 KNOWLEDGE_INDEX = os.getenv("MOSS_INDEX_NAME", "knowledge")
 MEMORY_INDEX = os.getenv("MOSS_MEMORY_INDEX_NAME", "memory")
 
 # Maps JSON plan_id → Moss plan_id expected by compare_plans_engine.PLAN_IDS
 PLAN_ID_MAP: dict[str, str] = {
-    "hmo_2024": "bronze-2024",    # lowest premium, Humira uncovered — THE TRAP
-    "ppo_2024": "silver-2024",    # Humira covered + UCSF in-network — best for Maria
-    "hdhp_2024": "gold-2024",     # HSA-eligible, Humira covered, high deductible
-    "epo_2024": "platinum-2024",  # Humira covered, UCSF out-of-network
+    "cchp_2024": "cchp-2024",    # cheapest premium, UCSF excluded — THE CHEAP PLAN TRAP
+    "trio_2024": "trio-2024",    # narrow Trio network, UCSF excluded
+    "kaiser_2024": "kaiser-2024", # 5-star closed system, UCSF 100% excluded — QUALITY TRAP
+    "ppo_2024": "ppo-2024",      # highest premium, UCSF in-network — TRUE WINNER
 }
 
 DEFAULT_SPECIALTY_LIST_PRICE = 84_000.0
+
+
+def _load_citations(plan_id: str) -> dict:
+    """Load Unsiloed bbox citations for a plan, keyed by fact key. Returns {} if not found."""
+    path = CITATIONS_DIR / f"{plan_id}_citations.json"
+    if not path.exists():
+        return {}
+    with open(path) as f:
+        data = json.load(f)
+    return data.get("facts", {})
+
+
+def _inject_citation(meta: dict, citations: dict, fact_key: str, plan_id: str) -> dict:
+    """Add pdf_url + bbox_* fields to metadata if citation exists for this fact."""
+    cit = citations.get(fact_key)
+    if cit:
+        meta["pdf_url"] = f"/pdfs/{plan_id}.pdf"
+        meta["bbox_page"] = str(cit["page"])
+        meta["bbox_left"] = str(round(cit["left"], 4))
+        meta["bbox_top"] = str(round(cit["top"], 4))
+        meta["bbox_width"] = str(round(cit["width"], 4))
+        meta["bbox_height"] = str(round(cit["height"], 4))
+    return meta
 
 
 def _doc(text: str, metadata: dict) -> "DocumentInfo":
     return DocumentInfo(id=str(uuid.uuid4()), text=text, metadata=metadata)
 
 
-def benefit_docs(plan: dict, moss_id: str) -> list:
+def benefit_docs(plan: dict, moss_id: str, citations: dict, plan_id: str) -> list:
     plan_name = plan["plan_name"]
     source = plan["source"]
     docs = []
 
-    family_premium = plan.get("premium_monthly_family", plan.get("premium_monthly_individual", 0))
+    premium = plan.get("premium_monthly_individual") or plan.get("premium_monthly_family", 0)
     docs.append(_doc(
-        f"{plan_name} monthly premium family is {family_premium} dollars",
-        {"plan": moss_id, "type": "benefit", "field": "premium",
-         "value": str(family_premium), "plan_name": plan_name, "source": source},
+        f"{plan_name} monthly premium individual is {premium} dollars",
+        _inject_citation(
+            {"plan": moss_id, "type": "benefit", "field": "premium",
+             "value": str(premium), "plan_name": plan_name, "source": source},
+            citations, "benefit:premium", plan_id,
+        ),
     ))
 
-    family_ded = plan.get("deductible_family", plan.get("deductible_individual", 0))
+    deductible = plan.get("deductible_individual") or plan.get("deductible_family", 0)
     docs.append(_doc(
-        f"{plan_name} deductible family is {family_ded} dollars",
-        {"plan": moss_id, "type": "benefit", "field": "deductible",
-         "value": str(family_ded), "plan_name": plan_name, "source": source},
+        f"{plan_name} deductible individual is {deductible} dollars",
+        _inject_citation(
+            {"plan": moss_id, "type": "benefit", "field": "deductible",
+             "value": str(deductible), "plan_name": plan_name, "source": source},
+            citations, "benefit:deductible", plan_id,
+        ),
     ))
 
-    family_oop = plan.get("oop_max_family", plan.get("oop_max_individual", 0))
+    oop_max = plan.get("oop_max_individual") or plan.get("oop_max_family", 0)
     docs.append(_doc(
-        f"{plan_name} out-of-pocket maximum family is {family_oop} dollars",
-        {"plan": moss_id, "type": "benefit", "field": "oop_max",
-         "value": str(family_oop), "plan_name": plan_name, "source": source},
+        f"{plan_name} out-of-pocket maximum individual is {oop_max} dollars",
+        _inject_citation(
+            {"plan": moss_id, "type": "benefit", "field": "oop_max",
+             "value": str(oop_max), "plan_name": plan_name, "source": source},
+            citations, "benefit:oop_max", plan_id,
+        ),
     ))
 
     hsa = plan.get("hsa_eligible", False)
     docs.append(_doc(
         f"{plan_name} HSA eligible is {str(hsa).lower()}",
-        {"plan": moss_id, "type": "benefit", "field": "hsa_eligible",
-         "value": str(hsa).lower(), "plan_name": plan_name, "source": source},
+        _inject_citation(
+            {"plan": moss_id, "type": "benefit", "field": "hsa_eligible",
+             "value": str(hsa).lower(), "plan_name": plan_name, "source": source},
+            citations, "benefit:hsa_eligible", plan_id,
+        ),
     ))
     return docs
 
 
-def formulary_docs(plan: dict, moss_id: str) -> list:
+def formulary_docs(plan: dict, moss_id: str, citations: dict, plan_id: str) -> list:
     plan_name = plan["plan_name"]
     docs = []
 
@@ -131,11 +167,12 @@ def formulary_docs(plan: dict, moss_id: str) -> list:
         if drug.get("note"):
             meta["note"] = drug["note"]
 
+        _inject_citation(meta, citations, f"drug:{drug_name.lower()}", plan_id)
         docs.append(_doc(text, meta))
     return docs
 
 
-def network_docs(plan: dict, moss_id: str) -> list:
+def network_docs(plan: dict, moss_id: str, citations: dict, plan_id: str) -> list:
     plan_name = plan["plan_name"]
     docs = []
 
@@ -149,18 +186,20 @@ def network_docs(plan: dict, moss_id: str) -> list:
         if not in_network:
             text += ". No out-of-network coverage except emergencies."
 
+        oon_cost = provider.get("out_of_network_cost", 0) if not in_network else 0
         meta: dict = {
             "plan": moss_id,
             "type": "provider",
             "provider_name": name.lower(),
             "specialty": specialty,
             "in_network": "true" if in_network else "false",
-            "out_of_network_cost": "0",
+            "out_of_network_cost": str(oon_cost),
             "source": provider["source"],
         }
         if provider.get("note"):
             meta["note"] = provider["note"]
 
+        _inject_citation(meta, citations, f"provider:{name.lower()}", plan_id)
         docs.append(_doc(text, meta))
     return docs
 
@@ -186,10 +225,13 @@ async def main() -> None:
 
         json_id = plan["plan_id"]
         moss_id = PLAN_ID_MAP.get(json_id, json_id)
+        citations = _load_citations(json_id)
+        has_cit = len(citations)
+        print(f"  {json_id} -> {moss_id}: {has_cit} Unsiloed citations loaded")
 
-        b = benefit_docs(plan, moss_id)
-        fd = formulary_docs(plan, moss_id)
-        n = network_docs(plan, moss_id)
+        b = benefit_docs(plan, moss_id, citations, json_id)
+        fd = formulary_docs(plan, moss_id, citations, json_id)
+        n = network_docs(plan, moss_id, citations, json_id)
         print(f"  {json_id} -> {moss_id}: {len(b)} benefit + {len(fd)} formulary + {len(n)} network")
         all_docs.extend(b + fd + n)
 
@@ -227,21 +269,22 @@ async def main() -> None:
         await client.load_index(MEMORY_INDEX)
         print("Memory index loaded.")
 
-    # Smoke test — Humira on bronze must be covered=false
-    print("\nSmoke test — Humira coverage on bronze-2024...")
+    # Smoke test — UCSF on cchp-2024 must be out-of-network (the network trap)
+    print("\nSmoke test — UCSF network status on cchp-2024...")
     r = await client.query(
         KNOWLEDGE_INDEX,
-        "is Humira covered",
+        "UCSF Medical Center network",
         QueryOptions(top_k=1, alpha=0.6,
-                     filter={"field": "plan", "condition": {"$eq": "bronze-2024"}}),
+                     filter={"field": "plan", "condition": {"$eq": "cchp-2024"}}),
     )
     docs_out = getattr(r, "docs", [])
     if docs_out:
         meta = getattr(docs_out[0], "metadata", {})
-        covered = meta.get("covered", "?")
+        in_network = meta.get("in_network", "?")
+        oon_cost = meta.get("out_of_network_cost", "?")
         latency = getattr(r, "time_taken_ms", "?")
-        status = "PASS" if covered == "false" else "FAIL"
-        print(f"  covered={covered!r}  latency={latency}ms  [{status}]")
+        status = "PASS" if in_network == "false" and oon_cost != "0" else "FAIL"
+        print(f"  in_network={in_network!r}  out_of_network_cost={oon_cost!r}  latency={latency}ms  [{status}]")
     else:
         print("  No results returned.")
 

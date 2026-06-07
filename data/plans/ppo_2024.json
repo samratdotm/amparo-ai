@@ -1,15 +1,12 @@
 {
   "plan_id": "ppo_2024",
   "plan_type": "PPO",
-  "plan_name": "Anthem PPO Plus",
-  "premium_monthly_individual": 580,
-  "premium_monthly_family": 1380,
-  "deductible_individual": 800,
-  "deductible_family": 1600,
-  "oop_max_individual": 6000,
-  "oop_max_family": 12000,
-  "hsa_eligible": false,
-  "source": "Anthem PPO Plus SBC 2024, page 2",
+  "plan_name": "Blue Shield Silver 2600 HDHP PPO",
+  "premium_monthly_individual": 1472.88,
+  "deductible_individual": 3400,
+  "oop_max_individual": 7350,
+  "hsa_eligible": true,
+  "source": "Blue Shield Silver 2600 HDHP PPO SBC 2024, page 1",
 
   "formulary": [
     {
@@ -18,43 +15,21 @@
       "drug_class": "specialty biologic",
       "covered": true,
       "tier": 4,
-      "member_cost_per_month": 150,
+      "member_cost_per_month": 250,
       "annual_cost_if_uncovered": null,
-      "note": "Tier 4 specialty. Prior authorization required. $150/fill after deductible. Counts toward OOP maximum.",
-      "source": "Anthem PPO Plus Formulary 2024, page 12"
+      "note": "35% coinsurance after deductible, capped at $250/fill. Prior authorization required. Counts toward OOP maximum.",
+      "source": "Blue Shield 2024 Formulary, specialty tier, page 22"
     },
     {
       "drug_name": "Prenatal vitamins",
       "generic_name": "folic acid / iron",
       "drug_class": "OTC preventive",
       "covered": true,
-      "tier": 1,
+      "tier": 0,
       "member_cost_per_month": 0,
       "annual_cost_if_uncovered": null,
-      "note": "Covered at $0 cost-share as ACA preventive benefit.",
-      "source": "Anthem PPO Plus Formulary 2024, page 6"
-    },
-    {
-      "drug_name": "Metformin",
-      "generic_name": "metformin",
-      "drug_class": "oral antidiabetic",
-      "covered": true,
-      "tier": 1,
-      "member_cost_per_month": 5,
-      "annual_cost_if_uncovered": null,
-      "note": null,
-      "source": "Anthem PPO Plus Formulary 2024, page 8"
-    },
-    {
-      "drug_name": "Lisinopril",
-      "generic_name": "lisinopril",
-      "drug_class": "ACE inhibitor",
-      "covered": true,
-      "tier": 1,
-      "member_cost_per_month": 5,
-      "annual_cost_if_uncovered": null,
-      "note": null,
-      "source": "Anthem PPO Plus Formulary 2024, page 8"
+      "note": "Covered at $0 as ACA preventive benefit.",
+      "source": "Blue Shield 2024 Formulary"
     }
   ],
 
@@ -63,35 +38,40 @@
       "provider_name": "UCSF Medical Center",
       "specialty": "OB-GYN",
       "in_network": true,
-      "note": "UCSF is a Tier 1 preferred provider. Standard in-network cost-sharing applies.",
-      "source": "Anthem PPO Plus Provider Directory 2024"
-    },
-    {
-      "provider_name": "Sutter Health OB-GYN",
-      "specialty": "OB-GYN",
-      "in_network": true,
-      "note": null,
-      "source": "Anthem PPO Plus Provider Directory 2024"
+      "out_of_network_cost": 0,
+      "note": "UCSF Medical Center is a Tier 1 preferred PPO provider. Standard in-network cost-sharing applies for prenatal and delivery.",
+      "source": "Blue Shield PPO 2024 Provider Directory"
     },
     {
       "provider_name": "UCSF Benioff Children's Hospital",
       "specialty": "Pediatrics / NICU",
       "in_network": true,
-      "note": "NICU and newborn care covered in-network.",
-      "source": "Anthem PPO Plus Provider Directory 2024"
+      "out_of_network_cost": 0,
+      "note": "UCSF Benioff Children's — in-network for NICU and newborn care.",
+      "source": "Blue Shield PPO 2024 Provider Directory"
     },
     {
-      "provider_name": "San Francisco General Hospital",
-      "specialty": "Emergency",
+      "provider_name": "Sutter Health",
+      "specialty": "OB-GYN",
       "in_network": true,
-      "note": "Emergency services covered in-network.",
-      "source": "Anthem PPO Plus Provider Directory 2024"
+      "out_of_network_cost": 0,
+      "note": "Sutter Health in-network on Blue Shield PPO.",
+      "source": "Blue Shield PPO 2024 Provider Directory"
+    },
+    {
+      "provider_name": "Stanford Health Care",
+      "specialty": "Hospital",
+      "in_network": true,
+      "out_of_network_cost": 0,
+      "note": "Stanford in-network on Blue Shield PPO.",
+      "source": "Blue Shield PPO 2024 Provider Directory"
     }
   ],
 
   "cost_notes": {
-    "maternity": "Prenatal visits $20 copay; delivery $250 copay per admission after deductible. UCSF delivery covered.",
-    "specialty_referral": "No referral required. See any in-network specialist directly.",
-    "out_of_network": "Out-of-network covered at 60% after separate OON deductible ($1,600 individual)."
+    "maternity": "Prenatal: 35% coinsurance after deductible. Delivery: 35% coinsurance after deductible in-network. UCSF covered in-network.",
+    "specialty_referral": "No referral required — see any in-network specialist directly.",
+    "hsa_note": "HSA-eligible HDHP. Contributions reduce taxable income. Employer often contributes $1,000-2,000/year to HSA.",
+    "out_of_network": "Out-of-network care covered at 40% after separate OON deductible. UCSF and most major SF hospitals are in-network."
   }
 }

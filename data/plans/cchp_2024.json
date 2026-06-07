@@ -1,0 +1,70 @@
+{
+  "plan_id": "cchp_2024",
+  "plan_type": "HMO",
+  "plan_name": "CCHP Balance Bronze 60 HMO",
+  "premium_monthly_individual": 989.76,
+  "deductible_individual": 5800,
+  "oop_max_individual": 9800,
+  "hsa_eligible": true,
+  "source": "CCHP Balance Bronze 60 HMO SBC 2024, page 1",
+
+  "formulary": [
+    {
+      "drug_name": "Humira",
+      "generic_name": "adalimumab",
+      "drug_class": "specialty biologic",
+      "covered": true,
+      "tier": 4,
+      "member_cost_per_month": 500,
+      "annual_cost_if_uncovered": null,
+      "note": "40% coinsurance after $450 pharmacy deductible, capped at $500/fill. Prior authorization required.",
+      "source": "CCHP 2024 Drug Formulary, specialty tier"
+    },
+    {
+      "drug_name": "Prenatal vitamins",
+      "generic_name": "folic acid / iron",
+      "drug_class": "OTC preventive",
+      "covered": true,
+      "tier": 0,
+      "member_cost_per_month": 0,
+      "annual_cost_if_uncovered": null,
+      "note": "Covered at $0 as ACA preventive benefit.",
+      "source": "CCHP 2024 Drug Formulary"
+    }
+  ],
+
+  "network": [
+    {
+      "provider_name": "UCSF Medical Center",
+      "specialty": "OB-GYN",
+      "in_network": false,
+      "out_of_network_cost": 25000,
+      "note": "UCSF is NOT in the CCHP network. No out-of-network coverage except emergencies. Estimated uncovered delivery cost $25,000.",
+      "source": "CCHP 2024 Provider Network Directory"
+    },
+    {
+      "provider_name": "CPMC (Sutter)",
+      "specialty": "OB-GYN",
+      "in_network": true,
+      "out_of_network_cost": 0,
+      "note": "California Pacific Medical Center — primary CCHP network hospital for maternity.",
+      "source": "CCHP 2024 Provider Network Directory"
+    },
+    {
+      "provider_name": "Chinese Hospital SF",
+      "specialty": "Primary Care",
+      "in_network": true,
+      "out_of_network_cost": 0,
+      "note": "In-network primary care facility.",
+      "source": "CCHP 2024 Provider Network Directory"
+    }
+  ],
+
+  "cost_notes": {
+    "maternity": "Prenatal care in-network covered at 40% after deductible. UCSF delivery = $0 coverage — full cost member responsibility.",
+    "specialty_referral": "PCP referral required for specialist visits.",
+    "network_note": "Very narrow SF-focused community HMO. UCSF Medical Center not participating.",
+    "quality_rating": "3-star NCQA quality rating.",
+    "pharmacy_deductible": "$450 individual pharmacy deductible applies before specialty drug coinsurance."
+  }
+}

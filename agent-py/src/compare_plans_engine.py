@@ -22,6 +22,7 @@ from moss import MossClient, QueryOptions
 
 from constraints import Constraints
 from cost_math import (
+    Citation,
     CostResult,
     DrugCoverage,
     PlanData,
@@ -33,7 +34,7 @@ from cost_math import (
 logger = logging.getLogger(__name__)
 
 # Plan IDs — must match the `plan` metadata field in Track C's Moss index
-PLAN_IDS = ["bronze-2024", "silver-2024", "gold-2024", "platinum-2024"]
+PLAN_IDS = ["cchp-2024", "trio-2024", "kaiser-2024", "ppo-2024"]
 
 BENEFIT_FIELDS = ["premium", "deductible", "oop_max", "hsa_eligible"]
 
@@ -46,6 +47,24 @@ _DEFAULT_OOP_MAX = 9_450.0
 
 # Per-query timeout — keeps total retrieval well under 200ms even with 40 queries.
 _QUERY_TIMEOUT = 2.0
+
+
+def _citation_from_meta(meta: dict) -> Citation | None:
+    """Build a Citation from Moss metadata if bbox fields are present."""
+    if "pdf_url" not in meta or "bbox_page" not in meta:
+        return None
+    try:
+        return Citation(
+            pdf_url=meta["pdf_url"],
+            page=int(meta["bbox_page"]),
+            left=float(meta.get("bbox_left", 0)),
+            top=float(meta.get("bbox_top", 0)),
+            width=float(meta.get("bbox_width", 0)),
+            height=float(meta.get("bbox_height", 0)),
+            source_text=meta.get("source", ""),
+        )
+    except (ValueError, TypeError):
+        return None
 
 
 def _plan_filter(plan_id: str) -> dict:
@@ -146,6 +165,7 @@ async def _fetch_plan_data(
 
         covered = meta.get("covered", "false").lower() == "true"
         list_price = _float(meta, "list_price_per_year", _DEFAULT_SPECIALTY_LIST_PRICE)
+        citation = _citation_from_meta(meta)
 
         if covered:
             formulary[drug] = DrugCoverage(
@@ -160,6 +180,7 @@ async def _fetch_plan_data(
                 fills_per_year=int(_float(meta, "fills_per_year", 12)),
                 list_price_per_year=list_price,
                 source=meta.get("source", ""),
+                citation=citation,
             )
         else:
             formulary[drug] = DrugCoverage(
@@ -167,6 +188,7 @@ async def _fetch_plan_data(
                 covered=False,
                 list_price_per_year=list_price,
                 source=meta.get("source", ""),
+                citation=citation,
             )
 
     # --- Providers ---
@@ -179,6 +201,7 @@ async def _fetch_plan_data(
             in_network=in_network,
             out_of_network_cost=_float(meta, "out_of_network_cost", 0.0),
             source=meta.get("source", ""),
+            citation=_citation_from_meta(meta),
         )
 
     plan_name = _first_meta(benefit_results[0]).get("plan_name", plan_id.upper())

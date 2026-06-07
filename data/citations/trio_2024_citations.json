@@ -1,0 +1,31 @@
+{
+  "plan_id": "trio_2024",
+  "moss_id": "trio-2024",
+  "pdf_filename": "trio_2024.pdf",
+  "facts": {
+    "benefit:premium": {
+      "page": 1,
+      "left": 0.038,
+      "top": 0.0017,
+      "width": 0.8943,
+      "height": 0.9372,
+      "source_text": "Blue Shield Silver 70 Off Exchange Trio HMO SBC 2024, page 1"
+    },
+    "benefit:deductible": {
+      "page": 1,
+      "left": 0.038,
+      "top": 0.0017,
+      "width": 0.8943,
+      "height": 0.9372,
+      "source_text": "Blue Shield Silver 70 Off Exchange Trio HMO SBC 2024, page 1"
+    },
+    "benefit:oop_max": {
+      "page": 1,
+      "left": 0.038,
+      "top": 0.0017,
+      "width": 0.8943,
+      "height": 0.9372,
+      "source_text": "Blue Shield Silver 70 Off Exchange Trio HMO SBC 2024, page 1"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "plan_id": "kaiser_2024",
+  "plan_type": "HMO",
+  "plan_name": "Kaiser Permanente Gold 80 HMO",
+  "premium_monthly_individual": 1392.09,
+  "deductible_individual": 0,
+  "oop_max_individual": 9200,
+  "hsa_eligible": false,
+  "source": "Kaiser Permanente Gold 80 HMO SBC 2024, page 1",
+
+  "formulary": [
+    {
+      "drug_name": "Humira",
+      "generic_name": "adalimumab",
+      "drug_class": "specialty biologic",
+      "covered": true,
+      "tier": 4,
+      "member_cost_per_month": 250,
+      "annual_cost_if_uncovered": null,
+      "note": "20% coinsurance, capped at $250/fill. Dispensed through Kaiser specialty pharmacy only. Step therapy: biosimilar first.",
+      "source": "Kaiser Permanente 2024 Drug Formulary, specialty tier"
+    },
+    {
+      "drug_name": "Prenatal vitamins",
+      "generic_name": "folic acid / iron",
+      "drug_class": "OTC preventive",
+      "covered": true,
+      "tier": 0,
+      "member_cost_per_month": 0,
+      "annual_cost_if_uncovered": null,
+      "note": "Covered at $0 as ACA preventive benefit through Kaiser pharmacy.",
+      "source": "Kaiser Permanente 2024 Drug Formulary"
+    }
+  ],
+
+  "network": [
+    {
+      "provider_name": "UCSF Medical Center",
+      "specialty": "OB-GYN",
+      "in_network": false,
+      "out_of_network_cost": 25000,
+      "note": "UCSF is OUTSIDE Kaiser's closed system. Kaiser is a fully integrated closed-panel HMO — only Kaiser facilities and physicians are covered. No out-of-network coverage except emergencies. Estimated uncovered delivery cost $25,000.",
+      "source": "Kaiser Permanente 2024 Provider Directory"
+    },
+    {
+      "provider_name": "Kaiser San Francisco Medical Center",
+      "specialty": "OB-GYN",
+      "in_network": true,
+      "out_of_network_cost": 0,
+      "note": "Kaiser SFMC — primary Kaiser facility for maternity care in SF.",
+      "source": "Kaiser Permanente 2024 Provider Directory"
+    },
+    {
+      "provider_name": "Kaiser Redwood City Medical Center",
+      "specialty": "Hospital",
+      "in_network": true,
+      "out_of_network_cost": 0,
+      "note": "Kaiser Redwood City — in-network Kaiser facility.",
+      "source": "Kaiser Permanente 2024 Provider Directory"
+    }
+  ],
+
+  "cost_notes": {
+    "maternity": "Prenatal: $40/visit. Delivery: $500/admission. All care must be at Kaiser facilities. UCSF delivery = $0 coverage.",
+    "specialty_referral": "All specialty care through Kaiser physicians only — no outside referrals.",
+    "network_note": "Kaiser is a fully closed system. No care outside Kaiser network except true medical emergencies. 5-star NCQA quality rating applies only to Kaiser's own care delivery.",
+    "quality_rating": "5-star NCQA rating — for care within the Kaiser system only.",
+    "step_therapy": "Humira requires step therapy: biosimilar (e.g., Hadlima) must be tried first before brand Humira is authorized."
+  }
+}

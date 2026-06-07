@@ -1,0 +1,68 @@
+{
+  "plan_id": "trio_2024",
+  "plan_type": "HMO",
+  "plan_name": "Blue Shield Silver 70 Trio HMO",
+  "premium_monthly_individual": 1163.34,
+  "deductible_individual": 5200,
+  "oop_max_individual": 9800,
+  "hsa_eligible": false,
+  "source": "Blue Shield Silver 70 Off Exchange Trio HMO SBC 2024, page 1",
+
+  "formulary": [
+    {
+      "drug_name": "Humira",
+      "generic_name": "adalimumab",
+      "drug_class": "specialty biologic",
+      "covered": true,
+      "tier": 4,
+      "member_cost_per_month": 250,
+      "annual_cost_if_uncovered": null,
+      "note": "20% coinsurance after deductible, capped at $250/fill. Prior authorization required. Step therapy may apply.",
+      "source": "Blue Shield 2024 Formulary, specialty tier, page 18"
+    },
+    {
+      "drug_name": "Prenatal vitamins",
+      "generic_name": "folic acid / iron",
+      "drug_class": "OTC preventive",
+      "covered": true,
+      "tier": 0,
+      "member_cost_per_month": 0,
+      "annual_cost_if_uncovered": null,
+      "note": "Covered at $0 as ACA preventive benefit.",
+      "source": "Blue Shield 2024 Formulary"
+    }
+  ],
+
+  "network": [
+    {
+      "provider_name": "UCSF Medical Center",
+      "specialty": "OB-GYN",
+      "in_network": false,
+      "out_of_network_cost": 25000,
+      "note": "UCSF is NOT in the Trio HMO network. Trio is a narrow network plan — no out-of-network coverage except emergencies. Estimated uncovered delivery cost $25,000.",
+      "source": "Blue Shield Trio 2024 Provider Directory"
+    },
+    {
+      "provider_name": "Sutter Health",
+      "specialty": "OB-GYN",
+      "in_network": true,
+      "out_of_network_cost": 0,
+      "note": "Sutter Health facilities are in the Trio network.",
+      "source": "Blue Shield Trio 2024 Provider Directory"
+    },
+    {
+      "provider_name": "CPMC (Sutter)",
+      "specialty": "Hospital",
+      "in_network": true,
+      "out_of_network_cost": 0,
+      "note": "California Pacific Medical Center — in Trio network for maternity.",
+      "source": "Blue Shield Trio 2024 Provider Directory"
+    }
+  ],
+
+  "cost_notes": {
+    "maternity": "Prenatal: $35/visit after deductible. Delivery: 20% coinsurance after deductible in-network. UCSF delivery = $0 coverage.",
+    "specialty_referral": "PCP referral required for specialist visits.",
+    "network_note": "Trio network is significantly narrower than standard Blue Shield PPO. Academic medical centers including UCSF are excluded."
+  }
+}

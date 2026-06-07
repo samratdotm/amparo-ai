@@ -1,0 +1,31 @@
+{
+  "plan_id": "ppo_2024",
+  "moss_id": "ppo-2024",
+  "pdf_filename": "ppo_2024.pdf",
+  "facts": {
+    "benefit:premium": {
+      "page": 1,
+      "left": 0.038,
+      "top": 0.0027,
+      "width": 0.8935,
+      "height": 0.9518,
+      "source_text": "Blue Shield Silver 2600 HDHP PPO SBC 2024, page 1"
+    },
+    "benefit:deductible": {
+      "page": 1,
+      "left": 0.038,
+      "top": 0.0027,
+      "width": 0.8935,
+      "height": 0.9518,
+      "source_text": "Blue Shield Silver 2600 HDHP PPO SBC 2024, page 1"
+    },
+    "benefit:oop_max": {
+      "page": 1,
+      "left": 0.038,
+      "top": 0.0027,
+      "width": 0.8935,
+      "height": 0.9518,
+      "source_text": "Blue Shield Silver 2600 HDHP PPO SBC 2024, page 1"
+    }
+  }
+}

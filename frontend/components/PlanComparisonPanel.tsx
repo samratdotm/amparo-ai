@@ -1,16 +1,40 @@
 "use client";
 
-import { usePlanComparison, CostResult } from "@/hooks/usePlanComparison";
+import { usePlanComparison, CostResult, Citation } from "@/hooks/usePlanComparison";
 
 const PLAN_LABELS: Record<string, string> = {
-  "bronze-2024": "HMO Bronze",
-  "silver-2024": "PPO Silver",
-  "gold-2024": "HDHP Gold",
-  "platinum-2024": "EPO Platinum",
+  "cchp-2024": "CCHP Bronze HMO",
+  "trio-2024": "Blue Shield Trio HMO",
+  "kaiser-2024": "Kaiser Gold HMO",
+  "ppo-2024": "Blue Shield HDHP PPO",
 };
 
 function fmt(n: number) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+}
+
+function CitationChip({ citation }: { citation: Citation }) {
+  const label = citation.source_text || `Page ${citation.page}`;
+  const href = `${citation.pdf_url}#page=${citation.page}`;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={`Open source document — ${label}`}
+      className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded border border-blue-700 bg-blue-950/50 text-blue-300 hover:bg-blue-800/60 hover:text-white transition-colors cursor-pointer mr-1 mb-1"
+    >
+      <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <span className="truncate max-w-[180px]">{label}</span>
+      <svg className="w-2.5 h-2.5 flex-shrink-0 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  );
 }
 
 function StatusDot({ status }: { status: string }) {
@@ -21,7 +45,7 @@ function StatusDot({ status }: { status: string }) {
   return <span className={`inline-block w-2 h-2 rounded-full ${color} mr-2`} />;
 }
 
-function PlanCard({ plan, rank, isTrap }: { plan: CostResult; rank: number; isTrap: boolean }) {
+function PlanCard({ plan, rank, isTrap }: { plan: CostResult; rank: number; isTrap: boolean; }) {
   const label = PLAN_LABELS[plan.plan_id] ?? plan.plan_id;
 
   return (
@@ -68,9 +92,14 @@ function PlanCard({ plan, rank, isTrap }: { plan: CostResult; rank: number; isTr
           Out-of-network: {plan.out_of_network_providers.join(", ")}
         </div>
       )}
-      {plan.sources.length > 0 && (
-        <div className="mt-2 text-xs text-zinc-600 truncate">
-          Source: {plan.sources[0]}
+      {plan.citations && plan.citations.length > 0 && (
+        <div className="mt-3">
+          <div className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Verified sources</div>
+          <div className="flex flex-wrap">
+            {plan.citations.map((cit, i) => (
+              <CitationChip key={i} citation={cit} />
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -132,8 +161,8 @@ export default function PlanComparisonPanel() {
           <div>
             <div className="font-semibold text-red-300 text-sm">Cheap-Plan Trap Detected</div>
             <div className="text-xs text-red-400 mt-0.5">
-              {PLAN_LABELS[comparison.trap_plan_id ?? ""] ?? comparison.trap_plan_id} has uncovered specialty drug costs
-              NOT capped by the OOP maximum — this plan could cost tens of thousands more than it appears.
+              {PLAN_LABELS[comparison.trap_plan_id ?? ""] ?? comparison.trap_plan_id} has significant uncovered costs
+              NOT capped by the OOP maximum — hidden network exclusions or drug gaps could cost tens of thousands more than the premium suggests.
             </div>
           </div>
         </div>

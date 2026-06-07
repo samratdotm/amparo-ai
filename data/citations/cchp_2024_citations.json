@@ -1,0 +1,39 @@
+{
+  "plan_id": "cchp_2024",
+  "moss_id": "cchp-2024",
+  "pdf_filename": "cchp_2024.pdf",
+  "facts": {
+    "benefit:premium": {
+      "page": 1,
+      "left": 0.0179,
+      "top": 0.1398,
+      "width": 0.9589,
+      "height": 0.6884,
+      "source_text": "CCHP Balance Bronze 60 HMO SBC 2024, page 1"
+    },
+    "benefit:deductible": {
+      "page": 2,
+      "left": 0.0282,
+      "top": 0.0846,
+      "width": 0.9375,
+      "height": 0.3311,
+      "source_text": "CCHP Balance Bronze 60 HMO SBC 2024, page 1"
+    },
+    "benefit:oop_max": {
+      "page": 2,
+      "left": 0.0282,
+      "top": 0.0846,
+      "width": 0.9375,
+      "height": 0.3311,
+      "source_text": "CCHP Balance Bronze 60 HMO SBC 2024, page 1"
+    },
+    "benefit:hsa_eligible": {
+      "page": 2,
+      "left": 0.0282,
+      "top": 0.0846,
+      "width": 0.9375,
+      "height": 0.3311,
+      "source_text": "CCHP Balance Bronze 60 HMO SBC 2024, page 1"
+    }
+  }
+}

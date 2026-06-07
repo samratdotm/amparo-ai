@@ -1,0 +1,55 @@
+{
+  "plan_id": "kaiser_2024",
+  "moss_id": "kaiser-2024",
+  "pdf_filename": "kaiser_2024.pdf",
+  "facts": {
+    "benefit:premium": {
+      "page": 1,
+      "left": 0.0178,
+      "top": 0.1576,
+      "width": 0.9569,
+      "height": 0.6554,
+      "source_text": "Kaiser Permanente Gold 80 HMO SBC 2024, page 1"
+    },
+    "benefit:deductible": {
+      "page": 2,
+      "left": 0.0278,
+      "top": 0.0843,
+      "width": 0.9388,
+      "height": 0.3314,
+      "source_text": "Kaiser Permanente Gold 80 HMO SBC 2024, page 1"
+    },
+    "benefit:oop_max": {
+      "page": 2,
+      "left": 0.0278,
+      "top": 0.0843,
+      "width": 0.9388,
+      "height": 0.3314,
+      "source_text": "Kaiser Permanente Gold 80 HMO SBC 2024, page 1"
+    },
+    "benefit:hsa_eligible": {
+      "page": 2,
+      "left": 0.0278,
+      "top": 0.0843,
+      "width": 0.9388,
+      "height": 0.3314,
+      "source_text": "Kaiser Permanente Gold 80 HMO SBC 2024, page 1"
+    },
+    "provider:kaiser san francisco medical center": {
+      "page": 1,
+      "left": 0.0178,
+      "top": 0.1576,
+      "width": 0.9569,
+      "height": 0.6554,
+      "source_text": "Kaiser Permanente 2024 Provider Directory"
+    },
+    "provider:kaiser redwood city medical center": {
+      "page": 1,
+      "left": 0.0178,
+      "top": 0.1576,
+      "width": 0.9569,
+      "height": 0.6554,
+      "source_text": "Kaiser Permanente 2024 Provider Directory"
+    }
+  }
+}
