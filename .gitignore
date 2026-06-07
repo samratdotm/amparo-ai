@@ -1,13 +1,17 @@
 .rocketride/
 
+# Credentials — never commit
+.env.local
+.env
+env.download
+*.env
+
 # Python
 __pycache__/
 *.pyc
+*.pyo
 *.egg-info/
-
-# Credentials
-.env.local
-.env
+.pytest_cache/
 
 # Editor / OS
 .DS_Store

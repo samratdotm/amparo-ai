@@ -12,6 +12,11 @@ credentials. They are skipped automatically when only fake keys are present.
 import os
 
 import pytest
+from dotenv import load_dotenv
+
+# Load real credentials from .env.local first so setdefault below doesn't
+# overwrite them. load_dotenv is a no-op if the file doesn't exist.
+load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env.local"))
 
 os.environ.setdefault("LIVEKIT_API_KEY", "test-key")
 os.environ.setdefault("LIVEKIT_API_SECRET", "test-secret")
