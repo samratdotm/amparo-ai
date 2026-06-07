@@ -1,3 +1,4 @@
+import asyncio
 import contextlib
 import json
 import logging
@@ -471,12 +472,25 @@ async def my_agent(ctx: JobContext):
         )
     )
 
-    # Wait for the session to finish (call ends / all participants leave).
-    await session.wait_for_inactive()
+    # Wait for all remote participants to leave (user hung up) then delete the
+    # room so the next SIP call gets a fresh dispatch. We wait on an asyncio
+    # Event that fires on the participant_disconnected room event — this avoids
+    # the false-positive that session.wait_for_inactive() fires mid-call when
+    # the agent is briefly idle between turns.
+    call_ended = asyncio.Event()
 
-    # Delete the room so the next SIP call gets a fresh dispatch.
-    # Without this, LiveKit keeps the empty room alive for ~5 minutes and
-    # the dispatch rule won't fire a new agent job when the next call arrives.
+    def _on_participant_disconnected(_participant):
+        if not ctx.room.remote_participants:
+            call_ended.set()
+
+    ctx.room.on("participant_disconnected", _on_participant_disconnected)
+
+    # Also set immediately if the room is already empty (edge case).
+    if not ctx.room.remote_participants:
+        call_ended.set()
+
+    await call_ended.wait()
+
     try:
         lk_url = os.getenv("LIVEKIT_URL", "")
         lk_key = os.getenv("LIVEKIT_API_KEY", "")
