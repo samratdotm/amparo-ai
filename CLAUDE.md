@@ -93,14 +93,44 @@ guardrail → curveball → multilingual.
 
 ## Track A — ALL 5 STEPS COMPLETE ✓
 
+## Moss Panel — plan_comparison message — DONE (Jun 7 2026)
+- `_publish_plan_comparison(payload)` added to `agent.py` — fires after every `compare_plans` call
+- Message shape (`type: "plan_comparison"`):
+  - `data.plans`: ranked CostResult list (cheapest first, all fields)
+  - `data.lookup_count`: total Moss queries fired this turn
+  - `data.trap`: bool — True if any plan has uncovered specialty drug costs
+  - `data.trap_plan_id`: plan_id of cheapest trap plan, or null
+  - `data.timestamp`: epoch seconds
+- Frontend consumes this to populate the live comparison table
+- 85 tests passing, 3 skipped
+
+## Curveball Re-grounding — DONE (Jun 7 2026)
+- `Constraints.merge(new)` added to `constraints.py` — unions lists, latches scalars
+  - Lists (drugs, providers, events): unioned, case-insensitive dedup — nothing dropped
+  - `family_size`: updated only if new > 1 (1 = LLM default for "not mentioned this turn")
+  - `hsa_interest`: latches True — once mentioned, always remembered
+  - `budget`: updated only if new is not None
+  - `language`: always takes latest (reflects current turn)
+- `extract_constraints` now merges into `self._constraints` instead of replacing it
+- Docstring updated: "only pass what the user mentioned THIS turn — prior items kept automatically"
+- 13 new merge tests added to `test_extract_constraints.py` — 85 total, 3 skipped
+- **Live verified**: "I take Humira at UCSF" → "what about Stanford?" → Humira + UCSF + Stanford all present in `compare_plans` (28 lookups, trap=True)
+
 ## Multilingual TTS — DONE (Jun 7 2026)
-- Swapped TTS from `cartesia/sonic-3` to `elevenlabs/eleven_multilingual_v2` (29 languages, auto code-switching)
-- MiniMax/Qwen not available on LiveKit Inference — ElevenLabs multilingual is the right swap
+- TTS is **MiniMax `speech-02-turbo`** (40+ languages, auto code-switching) — hackathon sponsor tool
+- Plugin: `livekit-plugins-minimax==1.3.0` installed with `--no-deps` (pins to agents==1.2.9 but is compatible with 1.5.16 at runtime)
+- Credentials: `MINIMAX_API_KEY` + `MINIMAX_GROUP_ID` in `agent-py/.env.local` ($30 hackathon voucher applied)
+- **API endpoint**: `https://api.minimax.io/v1/t2a_v2` (NOT `api.minimax.chat` — wrong endpoint for this account)
+- **Local adapter**: `src/minimax_tts.py` — subclasses upstream plugin with two fixes:
+  1. Single `start_segment()`/`end_segment()` per utterance (agents 1.5.x requirement)
+  2. Proper SSE line buffering (`iter_any()` + byte buffer) so split chunks parse correctly
+  3. Overrides `base_url` to `api.minimax.io`
+- Import: `from minimax_tts import TTS as MinimaxTTS` → `tts=MinimaxTTS()` in `agent.py`
+- ~~ElevenLabs was incorrectly substituted by a prior session~~ — reverted; MiniMax is correct
 - Added language instruction to agent: "Always respond in the same language the user speaks"
 - STT already runs `language="multi"` (Deepgram nova-3) — no STT change needed
-- No dynamic model switching required: LLM outputs Spanish → ElevenLabs speaks Spanish automatically
-- 77 tests passing, 3 skipped (integration evals)
-- To test: `uv run python src/agent.py console` → speak Spanish → agent replies in Spanish
+- No dynamic model switching required: LLM outputs Spanish → MiniMax speaks Spanish automatically
+- **Smoke tested (Jun 7 2026)**: voice heard, STT transcribing, MiniMax streaming sentence by sentence, no errors
 
 ## Smoke test — PASSED (Jun 7 2026)
 Ran `uv run python src/agent.py console` with real LiveKit + Moss credentials.

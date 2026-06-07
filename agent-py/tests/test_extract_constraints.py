@@ -225,3 +225,119 @@ async def test_extract_constraints_maria_scenario(stub_moss) -> None:
     assert data["family_size"] == 2
     assert data["language"] == "es"
     assert assistant._constraints.events == ["pregnancy"]
+
+
+# ---------------------------------------------------------------------------
+# Constraints.merge — curveball re-grounding tests
+# ---------------------------------------------------------------------------
+
+
+def test_merge_adds_new_drug_preserves_existing():
+    base = Constraints(drugs=["Humira"], providers=["UCSF"], family_size=2)
+    update = Constraints(drugs=["metformin"], providers=[], family_size=1)
+    merged = base.merge(update)
+    assert "Humira" in merged.drugs
+    assert "metformin" in merged.drugs
+    assert merged.providers == ["UCSF"]
+    assert merged.family_size == 2  # not overwritten by default 1
+
+
+def test_merge_adds_new_provider_preserves_existing():
+    base = Constraints(providers=["UCSF"])
+    update = Constraints(providers=["Stanford Hospital"])
+    merged = base.merge(update)
+    assert "UCSF" in merged.providers
+    assert "Stanford Hospital" in merged.providers
+
+
+def test_merge_deduplicates_case_insensitive():
+    base = Constraints(drugs=["Humira"])
+    update = Constraints(drugs=["humira", "Metformin"])
+    merged = base.merge(update)
+    lower = [d.lower() for d in merged.drugs]
+    assert lower.count("humira") == 1
+    assert "metformin" in lower
+
+
+def test_merge_family_size_not_overwritten_by_default():
+    base = Constraints(family_size=3)
+    update = Constraints(family_size=1)  # LLM default — not mentioned this turn
+    merged = base.merge(update)
+    assert merged.family_size == 3
+
+
+def test_merge_family_size_updated_when_explicitly_set():
+    base = Constraints(family_size=1)
+    update = Constraints(family_size=4)
+    merged = base.merge(update)
+    assert merged.family_size == 4
+
+
+def test_merge_hsa_interest_latches_true():
+    base = Constraints(hsa_interest=True)
+    update = Constraints(hsa_interest=False)  # not mentioned this turn
+    merged = base.merge(update)
+    assert merged.hsa_interest is True
+
+
+def test_merge_budget_not_overwritten_by_none():
+    base = Constraints(budget="$300/month")
+    update = Constraints(budget=None)
+    merged = base.merge(update)
+    assert merged.budget == "$300/month"
+
+
+def test_merge_budget_updated_when_provided():
+    base = Constraints(budget="$300/month")
+    update = Constraints(budget="$500/month")
+    merged = base.merge(update)
+    assert merged.budget == "$500/month"
+
+
+def test_merge_language_always_updated():
+    base = Constraints(language="en")
+    update = Constraints(language="es")
+    merged = base.merge(update)
+    assert merged.language == "es"
+
+
+def test_merge_events_unioned():
+    base = Constraints(events=["pregnancy"])
+    update = Constraints(events=["surgery"])
+    merged = base.merge(update)
+    assert "pregnancy" in merged.events
+    assert "surgery" in merged.events
+
+
+async def test_extract_constraints_merges_on_second_call(stub_moss):
+    """Curveball: second call with a new provider keeps prior drugs."""
+    assistant = Assistant()
+    # Turn 1: Maria describes her drugs and family
+    await assistant.extract_constraints(
+        None,
+        drugs=["Humira"],
+        providers=["UCSF OB-GYN"],
+        events=["pregnancy"],
+        family_size=2,
+        hsa_interest=False,
+        budget=None,
+        language="en",
+    )
+    # Turn 2 (curveball): "What about Stanford?" — LLM only passes the new provider
+    result = await assistant.extract_constraints(
+        None,
+        drugs=[],
+        providers=["Stanford Hospital"],
+        events=[],
+        family_size=1,
+        hsa_interest=False,
+        budget=None,
+        language="en",
+    )
+    data = json.loads(result)
+    # Humira must survive the curveball
+    assert "Humira" in data["drugs"]
+    assert "UCSF OB-GYN" in data["providers"]
+    assert "Stanford Hospital" in data["providers"]
+    assert data["family_size"] == 2
+    assert "pregnancy" in data["events"]

@@ -21,6 +21,7 @@ from livekit.agents import (
     room_io,
 )
 from livekit.plugins import ai_coustics, silero
+from minimax_tts import TTS as MinimaxTTS
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 from moss import DocumentInfo, MossClient, QueryOptions
 
@@ -192,6 +193,39 @@ class Assistant(Agent):
         except Exception:
             logger.exception("Failed to publish moss_context data")
 
+    async def _publish_plan_comparison(self, payload: dict) -> None:
+        """Publish a `plan_comparison` data message for the frontend table.
+
+        Payload shape (contractual — frontend reads these exact keys):
+          type: "plan_comparison"
+          data.plans: ranked list of CostResult dicts (cheapest first)
+          data.lookup_count: total Moss queries fired this turn
+          data.trap: bool — True if any plan has uncovered specialty drug costs
+          data.trap_plan_id: plan_id of the cheapest trap plan, or null
+          data.timestamp: epoch seconds (frontend multiplies by 1000)
+        """
+        if self._room is None:
+            return
+        try:
+            plans = payload.get("plans", [])
+            trap_plan = next((p for p in plans if p.get("trap_flag")), None)
+            message = {
+                "type": "plan_comparison",
+                "data": {
+                    "plans": plans,
+                    "lookup_count": payload.get("lookup_count", 0),
+                    "trap": trap_plan is not None,
+                    "trap_plan_id": trap_plan["plan_id"] if trap_plan else None,
+                    "timestamp": datetime.now(timezone.utc).timestamp(),
+                },
+            }
+            encoded = json.dumps(message, default=str).encode("utf-8")
+            await self._room.local_participant.publish_data(
+                payload=encoded, reliable=True
+            )
+        except Exception:
+            logger.exception("Failed to publish plan_comparison data")
+
     @function_tool()
     async def search_knowledge(self, context: RunContext, query: str) -> str:
         """Search the health plan knowledge base to answer coverage questions.
@@ -283,19 +317,22 @@ class Assistant(Agent):
         """Extract the user's health insurance constraints from their description.
 
         Call this immediately when the user describes their health situation,
-        medications, providers, or asks for a plan comparison. Fill each
-        parameter from what the user said.
+        medications, providers, or asks for a plan comparison. Previously
+        extracted items are automatically preserved — only pass what the user
+        explicitly mentioned in THIS message.
 
         Args:
-            drugs: Medication names mentioned (brand or generic), e.g. ["Humira"].
-            providers: Doctors, hospitals, or clinics, e.g. ["UCSF Medical Center"].
-            events: Life events, e.g. ["pregnancy", "surgery"].
-            family_size: Number of people to cover including the user (default 1).
-            hsa_interest: True if the user mentioned HSA or tax savings.
-            budget: Monthly premium budget as a string e.g. "$400/month", or null.
+            drugs: Medication names mentioned THIS turn (brand or generic), e.g. ["Humira"].
+                   Omit drugs the user did not mention — prior drugs are kept automatically.
+            providers: Doctors, hospitals, or clinics mentioned THIS turn, e.g. ["Stanford"].
+                   Omit providers the user did not mention — prior providers are kept.
+            events: Life events mentioned THIS turn, e.g. ["pregnancy", "surgery"].
+            family_size: Number of people to cover. Pass 1 if not mentioned this turn.
+            hsa_interest: True only if the user mentioned HSA or tax savings this turn.
+            budget: Monthly premium budget as a string e.g. "$400/month", or null if not mentioned.
             language: ISO-639-1 code of the user's language (e.g. "en", "es").
         """
-        self._constraints = Constraints(
+        incoming = Constraints(
             drugs=drugs,
             providers=providers,
             events=events,
@@ -304,7 +341,11 @@ class Assistant(Agent):
             budget=budget,
             language=language,
         )
-        logger.info("Extracted constraints: %s", self._constraints.to_dict())
+        if self._constraints is not None:
+            self._constraints = self._constraints.merge(incoming)
+        else:
+            self._constraints = incoming
+        logger.info("Merged constraints: %s", self._constraints.to_dict())
         return json.dumps(self._constraints.to_dict())
 
     @function_tool()
@@ -349,6 +390,7 @@ class Assistant(Agent):
             lookup_count,
             any(r.trap_flag for r in results),
         )
+        await self._publish_plan_comparison(payload)
         return json.dumps(payload)
 
 
@@ -390,10 +432,8 @@ async def my_agent(ctx: JobContext):
         # See all available models at https://docs.livekit.io/agents/models/stt/
         stt=inference.STT(model="deepgram/nova-3", language="multi"),
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
-        # See all available models as well as voice selections at https://docs.livekit.io/agents/models/tts/
-        # eleven_multilingual_v2 handles English + Spanish (and 27 other languages)
-        # automatically — no model swap needed when language switches mid-demo.
-        tts=inference.TTS(model="elevenlabs/eleven_multilingual_v2"),
+        # MiniMax Speech-02-HD: 40+ languages, inline code-switching, hackathon sponsor tool.
+        tts=MinimaxTTS(),
         # VAD and turn detection are used to determine when the user is speaking and when the agent should respond
         # See more at https://docs.livekit.io/agents/build/turns
         turn_detection=MultilingualModel(),
