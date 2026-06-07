@@ -15,7 +15,7 @@ function fmt(n: number) {
 
 function CitationChip({ citation }: { citation: Citation }) {
   const label = citation.source_text || `Page ${citation.page}`;
-  const href = `${citation.pdf_url}#page=${citation.page}`;
+  const href = `/pdf-viewer?file=${encodeURIComponent(citation.pdf_url)}&page=${citation.page}&source=${encodeURIComponent(label)}`;
   return (
     <a
       href={href}

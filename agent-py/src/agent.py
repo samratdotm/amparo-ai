@@ -7,6 +7,7 @@ import uuid
 from datetime import datetime, timezone
 
 from dotenv import load_dotenv
+from livekit import api as lkapi
 from livekit.agents import (
     Agent,
     AgentServer,
@@ -469,6 +470,23 @@ async def my_agent(ctx: JobContext):
             "something is covered."
         )
     )
+
+    # Wait for the session to finish (call ends / all participants leave).
+    await session.wait_for_inactive()
+
+    # Delete the room so the next SIP call gets a fresh dispatch.
+    # Without this, LiveKit keeps the empty room alive for ~5 minutes and
+    # the dispatch rule won't fire a new agent job when the next call arrives.
+    try:
+        lk_url = os.getenv("LIVEKIT_URL", "")
+        lk_key = os.getenv("LIVEKIT_API_KEY", "")
+        lk_secret = os.getenv("LIVEKIT_API_SECRET", "")
+        if lk_url and lk_key and lk_secret:
+            async with lkapi.LiveKitAPI(lk_url, lk_key, lk_secret) as lk:
+                await lk.room.delete_room(lkapi.DeleteRoomRequest(room=ctx.room.name))
+                logger.info("room deleted after call: %s", ctx.room.name)
+    except Exception as exc:
+        logger.warning("could not delete room after call: %s", exc)
 
 
 if __name__ == "__main__":
