@@ -59,6 +59,20 @@ filter by `{plan, type}`.
 
 ### Fallback (no Track C data yet)
 `compare_plans_engine.py` treats missing drug docs as uncovered at `$84k/year` — the Bronze trap fires even without real data, so a demo is possible before Track C finishes.
+
+### Provider resolution must fail SAFE (fixed Jun 7 2026)
+Provider lookups use `top_k=1`, which always returns the *nearest* doc even when a plan
+has **no** entry for the queried provider. The old code read that wrong doc's `in_network`
+flag (defaulting to `"true"` when absent), so an absent provider could be silently scored
+**in-network → $0**, hiding a real network trap (this is the "hallucinated cost = project-ending"
+rule). Symptom seen live: Stanford flagged out-of-network on CCHP/Trio but **not** Kaiser,
+despite none of the three having a Stanford record.
+**Fix:** `_provider_matches()` verifies the matched doc is `type=provider` AND its
+`provider_name` actually corresponds to the queried provider. On no match the provider is
+treated as **out-of-network at `_DEFAULT_OON_COST` ($25k)** — mirroring the uncovered-drug
+fallback. Regression tests in `tests/test_compare_plans.py`
+(`test_provider_absent_falls_back_to_out_of_network`, `_non_provider_doc_falls_back`,
+`_match_uses_real_doc`, `test_provider_matches_keyword_containment`).
 ## Code practices
 - Match the starter's structure/conventions; reuse its tools and panel — don't rebuild.
 - Small, single-purpose, typed functions; clear names.
@@ -166,15 +180,15 @@ All three P0 test cases passed with real Moss data (not fallback).
 
 ## Phone number — DONE (Jun 7 2026)
 - **Number:** `+1 (415) 417-6002` — purchased via `lk number purchase`
-- **Dispatch rule:** `SDR_arLc4mGRggJP` — catch-all (`SipTrunks: <any>`) → room `amparo-demo`, agent `agent-py`
-- Any call to the number creates room `amparo-demo` and dispatches `agent-py` automatically
+- **Dispatch rule:** the catch-all (`SipTrunks: <any>`, Type `Direct`) → room `amparo-demo`, **no agent field** (the rule ID rotates; check `lk sip dispatch list`). The agent joins via **automatic dispatch**, see SIP Dispatch section.
+- Any call to the number routes to room `amparo-demo`; the auto-dispatched worker is already present and answers
 - Live-tested: full call pipeline worked end-to-end (STT → extract_constraints → compare_plans → MiniMax TTS)
-- **Browser panel** must join room `amparo-demo` as a subscriber-only observer to display `plan_comparison` data
+- **Browser panel** joins room `amparo-demo` as a subscriber-only observer to display `plan_comparison` data — panel may be opened before or after the call (automatic dispatch tolerates either order)
 
 ### LiveKit dispatch rule gotchas (hard-won)
 - **Catch-all rules (`SipTrunks: <any>`) are the only thing that works for LiveKit hosted numbers.** They cannot be "assigned" to a number via the API (that API call errors), but they route correctly regardless.
 - **Dashboard-created rules** (with `SipTrunks: PN_*`) do NOT route correctly — the SIP engine doesn't match the phone number ID as a trunk.
-- **Stale room blocks dispatch**: if `amparo-demo` already exists (e.g., from a browser panel observer), close the browser panel tab AND `lk room delete amparo-demo` before calling. Otherwise the agent is dispatched but may not answer.
+- **Stale room** (was a problem under explicit dispatch): no longer blocks calls — automatic dispatch puts the agent in `amparo-demo` regardless of who created it. Just start the worker BEFORE the room is created (auto-dispatch fires on room *creation*); if the worker started after the room already existed, restart it or `lk room delete amparo-demo` once.
 - **`ctx.connect()` MUST come before `AgentSession()` and `session.start()`** — reversed order silently prevents SIP calls from being answered. The agent registers but never joins the room.
 
 ## Agent tuning — DONE (Jun 7 2026)
@@ -246,28 +260,38 @@ Agent says "CCHP Bronze looks cheapest at $990/month — but UCSF is out-of-netw
 `pnpm setup` · `lk app env -w` · build the Moss index · `pnpm dev`  (confirm against starter README).
 - Agent dev loop: `cd agent-py && uv run python src/agent.py download-files` (first run only), then `uv run python src/agent.py console` (local terminal test) or `uv run python src/agent.py dev` (with frontend).
 
-## SIP Dispatch — Hard-Won Gotchas (Jun 7 2026)
+## SIP Dispatch — Automatic Dispatch (updated Jun 7 2026)
 
-### Root problem: `agentDispatches` field is not settable via CLI or SDK
-The LiveKit SIP dispatch rule has an `agentDispatches` proto field that links the rule to a specific agent worker. Without it, the SIP call creates the room but no agent job is fired — the agent sits idle.
+### Current model: automatic dispatch — NO watch script, NO agent_name
+`agent.py` registers the entrypoint as `@server.rtc_session()` with **no `agent_name`**.
+This is **automatic dispatch**: the worker joins every new room the instant it's created.
+So whether the **SIP call** or the **browser panel** creates `amparo-demo` first, the agent
+is already there. The entrypoint then *waits for the actual caller* (ignoring the
+`panel-observer-*` participant) before greeting, so the caller hears audio instantly.
 
-**Why it can't be set:**
-- `lk sip dispatch create` — no `--agent-name` flag
-- `lk sip dispatch create <json-file>` — proto rejects `agentDispatches` as unknown field
-- Python SDK `CreateSIPDispatchRuleRequest` (v1.1.8) — field missing from proto
-- Dashboard JSON editor — rejects `agentDispatches` as "not allowed"
+**Why automatic dispatch and not explicit:** explicit dispatch (`agent_name` set + a SIP rule
+or watch script) only fires an agent job on **room creation**. The browser panel pre-creating
+`amparo-demo` therefore meant a later call joined the existing room and **never dispatched an
+agent → silent call, no logs**. Automatic dispatch is immune to that ordering entirely.
 
-**The rule `SDR_arLc4mGRggJP` had `Agents: agent-py`** (set by a prior session through an unknown path — possibly an older SDK/dashboard version). This was the only working rule. When deleted and recreated, the field cannot be set again.
-
-### Working setup for demo
-1. Create a dispatch rule with NO agent field (room routing only):
+**Demo setup (current):**
+1. SIP rule routes calls to `amparo-demo` (direct, no agent field) — already exists:
    ```bash
    lk sip dispatch create --direct amparo-demo
    ```
-2. Run `scripts/watch_and_dispatch.sh` in a second terminal — it polls `lk room list` every 1s, and the moment `amparo-demo` appears it runs `lk dispatch create --room amparo-demo --agent-name agent-py`
-3. Keep the agent terminal (`uv run python src/agent.py dev`) running separately
+2. Run ONE agent worker: `cd agent-py && uv run python src/agent.py dev` — confirm `registered worker`.
+3. Call the number. Open the browser panel whenever — order no longer matters.
 
-**Do NOT combine a rule with `Agents: agent-py` AND the watch script** — both dispatch simultaneously, two agents join the room, they talk to each other.
+**`scripts/watch_and_dispatch.sh` is DEPRECATED** — not needed with automatic dispatch.
+Do NOT run it; combining it with the worker double-dispatches and two agents join the room.
+
+### Correction to a prior note: `roomConfig.agents` IS settable
+The old "`agentDispatches` field is not settable" note was from an older CLI (v1.x). On
+**`lk` v2.16.4** a SIP rule can carry the agent via `roomConfig.agents`
+(`{"rule": {...}, "roomConfig": {"agents": [{"agentName": "agent-py"}]}}` to
+`lk sip dispatch create`). We chose automatic dispatch over this anyway, because
+`roomConfig.agents` still only dispatches on **room creation** — it shares the panel-pre-creates-room
+footgun. Automatic dispatch does not.
 
 ### No-logs + no-audio despite panel updating
 If the panel updates (Moss queries fire) but the agent terminal shows no logs and the caller hears silence:
@@ -279,5 +303,8 @@ If the panel updates (Moss queries fire) but the agent terminal shows no logs an
 - MiniMax adapter is in `src/minimax_tts.py` — overrides `base_url` to `api.minimax.io` (not `api.minimax.chat`)
 - If MiniMax fails, switch TTS in `agent.py` to `inference.TTS()` (OpenAI TTS via LiveKit Inference) as a fallback
 
-### Stale room blocking dispatch (fixed in code)
-`agent.py` now auto-deletes `amparo-demo` after every call using `participant_disconnected` room event + `lkapi.LiveKitAPI.room.delete_room()`. Without this, LiveKit keeps the empty room for ~5 min and the next SIP call joins the existing room without triggering a new agent dispatch.
+### Stale room (no longer blocks dispatch under automatic dispatch)
+With automatic dispatch the agent joins every new room, so a pre-existing `amparo-demo`
+no longer blocks the agent from answering. `agent.py` still auto-deletes the room after the
+**caller** leaves (`participant_disconnected` → `lkapi...room.delete_room()`), now keyed on
+`_is_caller()` so it fires even while the browser panel observer is still connected.

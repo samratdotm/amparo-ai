@@ -46,6 +46,26 @@ MEMORY_INDEX = os.getenv("MOSS_MEMORY_INDEX_NAME", "memory")
 DEFAULT_USER_ID = "user_1"
 
 
+# Generic role words that carry NO plan-network signal. If only one of these is
+# captured (e.g. STT fragments "my doctor at UCSF" and drops "UCSF"), it must not
+# become a comparison dimension — an unmatched provider fails safe to
+# out-of-network on every plan, making the agent announce a trap that isn't real.
+_GENERIC_PROVIDER_TERMS = {
+    "doctor", "doctors", "my doctor", "physician", "pcp",
+    "primary care", "primary care physician", "hospital", "clinic",
+    "provider", "specialist", "dentist", "care team", "gp",
+    "doctor's office", "doctors office", "medical group",
+}
+
+
+def _is_named_provider(name: str) -> bool:
+    """True if the string names a specific facility/provider, not a generic role."""
+    n = name.strip().lower().rstrip(".")
+    if n.startswith("my "):
+        n = n[3:].strip()
+    return bool(n) and n not in _GENERIC_PROVIDER_TERMS
+
+
 class Assistant(Agent):
     """Voice agent that wires Moss retrieval + per-user memory into LiveKit."""
 
@@ -317,27 +337,33 @@ class Assistant(Agent):
         budget: str | None,
         language: str,
     ) -> str:
-        """Extract the user's health insurance constraints from their description.
+        """Extract the user's health insurance constraints from the conversation.
 
-        Call this immediately when the user describes their health situation,
-        medications, providers, or asks for a plan comparison. Previously
-        extracted items are automatically preserved — only pass what the user
-        explicitly mentioned in THIS message.
+        Call this whenever the user mentions a medication, provider, life event, or
+        asks for a plan comparison. IMPORTANT: speech often arrives split across
+        several short turns (e.g. "I take" / "Humira" / "my doctor is at" / "UCSF"),
+        so always re-scan the WHOLE conversation and pass EVERY relevant item
+        mentioned so far — not just the latest message. Items are merged and
+        de-duplicated automatically, so repeating prior items is safe and expected.
 
         Args:
-            drugs: Medication names mentioned THIS turn (brand or generic), e.g. ["Humira"].
-                   Omit drugs the user did not mention — prior drugs are kept automatically.
-            providers: Doctors, hospitals, or clinics mentioned THIS turn, e.g. ["Stanford"].
-                   Omit providers the user did not mention — prior providers are kept.
-            events: Life events mentioned THIS turn, e.g. ["pregnancy", "surgery"].
-            family_size: Number of people to cover. Pass 1 if not mentioned this turn.
-            hsa_interest: True only if the user mentioned HSA or tax savings this turn.
-            budget: Monthly premium budget as a string e.g. "$400/month", or null if not mentioned.
-            language: ISO-639-1 code of the user's language (e.g. "en", "es").
+            drugs: ALL medication names mentioned so far (brand or generic), e.g. ["Humira"].
+            providers: ALL SPECIFIC named hospitals, clinics, or medical centers mentioned
+                   so far, e.g. ["UCSF", "Stanford", "Kaiser"]. Do NOT include generic
+                   references like "my doctor", "my hospital", or "my clinic" — only real
+                   facility names.
+            events: ALL life events mentioned so far, e.g. ["pregnancy", "surgery"].
+            family_size: Number of people to cover. Pass 1 if not mentioned.
+            hsa_interest: True if the user has mentioned HSA or tax savings at any point.
+            budget: Monthly premium budget as a string e.g. "$400/month", or null if none.
+            language: ISO-639-1 code of the user's current language (e.g. "en", "es").
         """
+        # Deterministic guard: drop generic role words ("my doctor") the LLM may
+        # still pass through, so they never become a fabricated network trap.
+        named_providers = [p for p in providers if _is_named_provider(p)]
         incoming = Constraints(
             drugs=drugs,
-            providers=providers,
+            providers=named_providers,
             events=events,
             family_size=max(1, family_size),
             hsa_interest=hsa_interest,
@@ -407,9 +433,20 @@ def prewarm(proc: JobProcess):
 server.setup_fnc = prewarm
 
 
-# Keep the registered dispatch name as "agent-py": the frontend (Task 6) sets
-# AGENT_NAME=agent-py to dispatch explicitly to this worker. Do not rename.
-@server.rtc_session(agent_name="agent-py")
+# The browser panel joins amparo-demo as a subscriber-only observer with an
+# identity like "panel-observer-<ts>". It is NOT a caller, so it must not
+# trigger the greeting or keep the room alive after the real caller hangs up.
+def _is_caller(participant) -> bool:
+    return not participant.identity.startswith("panel-observer")
+
+
+# Automatic dispatch (no agent_name): the worker joins every new room the moment
+# it is created, so a SIP call — or the browser panel — pre-stages this agent in
+# amparo-demo with no watch script and no stale-room race. The entrypoint below
+# then waits for the actual caller before greeting. Do NOT add agent_name back:
+# explicit dispatch only fires on room *creation*, so if the panel created the
+# room first the call would never dispatch an agent (the original silent-call bug).
+@server.rtc_session()
 async def my_agent(ctx: JobContext):
     # Logging setup
     # Add any other context you want in all log entries here
@@ -443,6 +480,13 @@ async def my_agent(ctx: JobContext):
         vad=ctx.proc.userdata["vad"],
         turn_handling={
             "turn_detection": MultilingualModel(),
+            # Be patient: callers pause mid-sentence ("I take" … "Humira" …
+            # "my doctor is at" … "UCSF"). With the default max_delay=3s those
+            # pauses force a turn end and the sentence gets chopped into pieces,
+            # so entities never assemble. A higher max_delay lets the semantic
+            # turn detector wait for a genuinely complete utterance; min_delay
+            # stays low so a clearly-finished turn still responds quickly.
+            "endpointing": {"mode": "dynamic", "min_delay": 0.5, "max_delay": 4.0},
             "preemptive_generation": {"enabled": True},
         },
     )
@@ -460,22 +504,26 @@ async def my_agent(ctx: JobContext):
         ),
     )
 
-    # If pre-dispatched to an empty room (SIP call not yet arrived), wait for
-    # the first remote participant before greeting. This lets us pre-stage the
-    # agent in amparo-demo so the caller hears audio instantly with no polling
-    # latency. Timeout after 10 minutes to avoid orphaned sessions.
-    if not ctx.room.remote_participants:
-        logger.info("no participants yet — waiting for caller to join")
+    # Pre-staged in amparo-demo (by the panel or an arriving call), wait for the
+    # actual caller before greeting so the caller hears audio instantly. The
+    # browser panel observer does NOT count — otherwise it trips the greeting
+    # into an empty room. Timeout after 1 hour to avoid orphaned sessions.
+    def _has_caller() -> bool:
+        return any(_is_caller(p) for p in ctx.room.remote_participants.values())
+
+    if not _has_caller():
+        logger.info("no caller yet — waiting for caller to join")
         caller_arrived = asyncio.Event()
 
-        def _on_participant_connected(_p):
-            caller_arrived.set()
+        def _on_participant_connected(p):
+            if _is_caller(p):
+                caller_arrived.set()
 
         ctx.room.on("participant_connected", _on_participant_connected)
         try:
-            await asyncio.wait_for(caller_arrived.wait(), timeout=600)
+            await asyncio.wait_for(caller_arrived.wait(), timeout=3600)
         except asyncio.TimeoutError:
-            logger.info("no caller arrived in 10 min — exiting")
+            logger.info("no caller arrived in 1 hour — exiting")
             return
 
     # Greet the user. Triggered here (not in Agent.on_enter) per the documented
@@ -497,13 +545,14 @@ async def my_agent(ctx: JobContext):
     call_ended = asyncio.Event()
 
     def _on_participant_disconnected(_participant):
-        if not ctx.room.remote_participants:
+        # Fire when the caller leaves, even if the panel observer is still here.
+        if not _has_caller():
             call_ended.set()
 
     ctx.room.on("participant_disconnected", _on_participant_disconnected)
 
-    # Also set immediately if the room is already empty (edge case).
-    if not ctx.room.remote_participants:
+    # Also set immediately if the caller is already gone (edge case).
+    if not _has_caller():
         call_ended.set()
 
     await call_ended.wait()

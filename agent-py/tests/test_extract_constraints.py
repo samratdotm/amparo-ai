@@ -10,7 +10,7 @@ import json
 import pytest
 
 import agent as agent_module
-from agent import Assistant
+from agent import Assistant, _is_named_provider
 from constraints import Constraints
 
 # ---------------------------------------------------------------------------
@@ -134,6 +134,35 @@ async def test_extract_constraints_returns_json(stub_moss) -> None:
     assert data["hsa_interest"] is False
     assert data["budget"] == "$400/month"
     assert data["language"] == "en"
+
+
+def test_is_named_provider_filters_generic_terms() -> None:
+    """Generic role words carry no network signal and must be dropped."""
+    assert _is_named_provider("UCSF")
+    assert _is_named_provider("Stanford Health Care")
+    assert _is_named_provider("Dr. Chen at UCSF")
+    assert not _is_named_provider("my doctor")
+    assert not _is_named_provider("Doctor")
+    assert not _is_named_provider("my hospital")
+    assert not _is_named_provider("clinic")
+    assert not _is_named_provider("")
+
+
+async def test_extract_constraints_drops_generic_provider(stub_moss) -> None:
+    """'my doctor' must not become a comparison dimension (fabricated trap bug)."""
+    assistant = Assistant()
+    result = await assistant.extract_constraints(
+        None,
+        drugs=["Humira"],
+        providers=["my doctor", "UCSF"],
+        events=[],
+        family_size=1,
+        hsa_interest=False,
+        budget=None,
+        language="en",
+    )
+    data = json.loads(result)
+    assert data["providers"] == ["UCSF"]
 
 
 async def test_extract_constraints_stores_on_assistant(stub_moss) -> None:

@@ -45,6 +45,12 @@ _DEFAULT_SPECIALTY_LIST_PRICE = 84_000.0
 # Fallback OOP-max when Moss has no benefit doc (ACA individual max 2024).
 _DEFAULT_OOP_MAX = 9_450.0
 
+# Fallback out-of-network cost when a plan has NO directory entry for a queried
+# provider. A provider absent from a narrow-network HMO's directory is, in
+# practice, out-of-network — so we fail toward the trap (same philosophy as the
+# uncovered-drug fallback) rather than silently assuming in-network coverage.
+_DEFAULT_OON_COST = 25_000.0
+
 # Per-query timeout — keeps total retrieval well under 200ms even with 40 queries.
 _QUERY_TIMEOUT = 2.0
 
@@ -100,6 +106,24 @@ def _first_meta(result: object | None) -> dict:
         return {}
     docs = getattr(result, "docs", None) or []
     return (getattr(docs[0], "metadata", {}) or {}) if docs else {}
+
+
+def _provider_matches(doc_name: str, queried: str) -> bool:
+    """True if a Moss provider doc actually corresponds to the queried provider.
+
+    top_k=1 retrieval always returns the *nearest* doc, even when the plan has no
+    entry for the provider. Without this check, querying "Stanford" against a plan
+    whose directory only lists UCSF/Kaiser facilities returns a wrong doc — and a
+    wrong in_network flag. We compare the provider's distinctive token (e.g.
+    "stanford", "ucsf") against the stored, lowercased provider_name.
+    """
+    doc_name = (doc_name or "").lower().strip()
+    queried = (queried or "").lower().strip()
+    if not doc_name or not queried:
+        return False
+    # Distinctive keyword containment in either direction handles
+    # "ucsf" ↔ "ucsf medical center" and "stanford" ↔ "stanford health care".
+    return queried in doc_name or doc_name in queried
 
 
 def _float(meta: dict, key: str, default: float) -> float:
@@ -195,7 +219,23 @@ async def _fetch_plan_data(
     network: dict[str, ProviderCoverage] = {}
     for provider, result in zip(constraints.providers, provider_results):
         meta = _first_meta(result)
-        in_network = meta.get("in_network", "true").lower() == "true"
+        # Only trust the doc if it is a provider doc that actually names this
+        # provider. top_k=1 returns the nearest doc even on a miss, so an absent
+        # provider would otherwise read a wrong (often in-network) doc.
+        matched = meta.get("type") == "provider" and _provider_matches(
+            meta.get("provider_name", ""), provider
+        )
+        if not matched:
+            # No directory entry for this provider on this plan → out-of-network.
+            network[provider] = ProviderCoverage(
+                name=provider,
+                in_network=False,
+                out_of_network_cost=_DEFAULT_OON_COST,
+                source="",
+                citation=None,
+            )
+            continue
+        in_network = meta.get("in_network", "false").lower() == "true"
         network[provider] = ProviderCoverage(
             name=provider,
             in_network=in_network,

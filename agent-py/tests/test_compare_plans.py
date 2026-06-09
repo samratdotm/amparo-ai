@@ -13,9 +13,11 @@ import pytest
 import agent as agent_module
 from agent import Assistant
 from compare_plans_engine import (
+    _DEFAULT_OON_COST,
     PLAN_IDS,
     _fetch_plan_data,
     _first_meta,
+    _provider_matches,
     comparison_to_dict,
     run_comparison,
 )
@@ -164,6 +166,68 @@ async def test_fetch_plan_data_covered_drug_parsed():
     assert drug is not None
     assert drug.covered is True
     assert drug.coinsurance == pytest.approx(0.30)
+
+
+# ---------------------------------------------------------------------------
+# Provider resolution — must fail SAFE (toward the trap) on an absent provider
+# ---------------------------------------------------------------------------
+
+_PROVIDER_ONLY = Constraints(providers=["Stanford Health Care"])
+
+
+def test_provider_matches_keyword_containment():
+    assert _provider_matches("ucsf medical center", "UCSF")
+    assert _provider_matches("stanford health care", "Stanford Health Care")
+    assert not _provider_matches("ucsf medical center", "Stanford")
+    assert not _provider_matches("kaiser redwood city", "Stanford")
+    assert not _provider_matches("", "Stanford")
+
+
+@pytest.mark.asyncio
+async def test_provider_absent_falls_back_to_out_of_network():
+    """top_k=1 returns the nearest doc on a miss; if it isn't the queried
+    provider, treat as out-of-network (not the old default of in-network)."""
+    moss = _FakeMossClient()
+    # Plan has only a UCSF provider doc; we ask about Stanford.
+    moss.set_plan_docs(
+        "kaiser-2024",
+        [_FakeDoc(metadata={"type": "provider", "provider_name": "ucsf medical center",
+                            "in_network": "false", "out_of_network_cost": "25000"})],
+    )
+    plan = await _fetch_plan_data(moss, "knowledge", "kaiser-2024", _PROVIDER_ONLY)
+    prov = plan.network["Stanford Health Care"]
+    assert prov.in_network is False
+    assert prov.out_of_network_cost == pytest.approx(_DEFAULT_OON_COST)
+
+
+@pytest.mark.asyncio
+async def test_provider_non_provider_doc_falls_back():
+    """A nearest doc of the wrong type (e.g. a benefit doc) must not be read as
+    an in-network provider — this is the bug that hid the Kaiser/Stanford trap."""
+    moss = _FakeMossClient()
+    moss.set_plan_docs(
+        "kaiser-2024",
+        [_FakeDoc(metadata={"type": "benefit", "field": "premium", "value": "1392"})],
+    )
+    plan = await _fetch_plan_data(moss, "knowledge", "kaiser-2024", _PROVIDER_ONLY)
+    prov = plan.network["Stanford Health Care"]
+    assert prov.in_network is False
+    assert prov.out_of_network_cost == pytest.approx(_DEFAULT_OON_COST)
+
+
+@pytest.mark.asyncio
+async def test_provider_match_uses_real_doc():
+    """When the doc actually names the provider, its real values are used."""
+    moss = _FakeMossClient()
+    moss.set_plan_docs(
+        "ppo-2024",
+        [_FakeDoc(metadata={"type": "provider", "provider_name": "stanford health care",
+                            "in_network": "true", "out_of_network_cost": "0"})],
+    )
+    plan = await _fetch_plan_data(moss, "knowledge", "ppo-2024", _PROVIDER_ONLY)
+    prov = plan.network["Stanford Health Care"]
+    assert prov.in_network is True
+    assert prov.out_of_network_cost == pytest.approx(0.0)
 
 
 # ---------------------------------------------------------------------------
