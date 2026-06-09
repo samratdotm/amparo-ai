@@ -10,13 +10,11 @@ Hackathon project — Moss @ YC.
 
 ## Demo
 
-▶️ **[Watch the 43-second demo](media/amparo-demo.mp4)** — voice in, cited plan comparison out.
+The panel below updates **live** during a phone call — Moss lookups fire, the cheap-plan
+trap surfaces, and every plan links to its source PDF. ▶️ **[Watch the full 43-second demo
+with voiceover](media/amparo-demo.mp4)**.
 
-[![Watch the Amparo AI demo](media/amparo-demo-thumb.png)](media/amparo-demo.mp4)
-
-<!-- For inline autoplay on github.com: open this README in the web editor, drag
-     media/amparo-demo.mp4 into it, and paste the resulting user-attachments URL
-     into a <video> tag here. -->
+[![Amparo AI — live coverage comparison (click for the full demo with audio)](media/amparo-demo.gif)](media/amparo-demo.mp4)
 
 ![Panel showing 28 Moss lookups and ranked plan comparison](screenshots/panel_demo.png)
 
